@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="Monitoring" table="Smcl_Monitoring" dynamic-update="true" lazy="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="MON_ID" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="Value" column="MON_VALUE" precision="10" scale="5" not-null="true"/>
+    <property name="DateTime" column="MON_DATETIME" type="DateTime" not-null="true"/>
+    <property name="CommentsOnAlarm" column="MON_COMMENTS_ON_ALARM" length="10000"/>
+
+    <many-to-one name="MappingTag" class="MappingTag" fetch="select">
+      <column name="MAP_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="User" class="User" fetch="select">
+      <column name="USR_ID" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

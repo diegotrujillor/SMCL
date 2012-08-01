@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SMCLCore.Domain.Model.AlarmType" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\AlarmType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Appliance" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\Appliance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Area" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Event" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Log" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAAAAAAAgAAAAQAAAAACAAAAAA=</HashCode>
+      <FileName>Domain\Model\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.MappingTag" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAABAAAAAAAAAAAAAAAQAAAAAAAQA=</HashCode>
+      <FileName>Domain\Model\MappingTag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Monitoring" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAAAAAAQAAgAAQAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\Model\Monitoring.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Role" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.Signal" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\Signal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.SignalAppliance" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\SignalAppliance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.SignalApplianceValue" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\Model\SignalApplianceValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.User" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEgAAAQAAAAAEAAQQAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Domain\Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMCLCore.Domain.Model.UserRole" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Model\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

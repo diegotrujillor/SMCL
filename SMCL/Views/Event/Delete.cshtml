@@ -1,0 +1,43 @@
+﻿@model SMCLCore.Domain.Model.Event
+
+@{
+    ViewBag.Title = "Eventos - Eliminar";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <div class="titlejQGrid">Eliminar</div>
+        </td>
+        <td style="text-align: right;">
+            <a href="../Index">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<h3>Desea eliminar este registro?</h3>
+<fieldset>
+    <legend>Eventos</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Descripción</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Eliminar" /> |
+        <a href="../Index" style="text-decoration: none;">
+            <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+        </a>
+        <span>&nbsp;Regresar...</span>
+    </p>
+}

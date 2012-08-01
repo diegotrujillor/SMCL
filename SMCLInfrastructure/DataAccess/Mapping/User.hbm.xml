@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="User" table="Smcl_Users" dynamic-update="true" lazy="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="USR_ID" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="DocumentId" column="USR_DOCUMENT_ID" type="Double" not-null="true"/>
+    <property name="LoginEmail" column="USR_LOGIN_EMAIL" length="256" not-null="true"/>
+    <property name="FirstName" column="USR_FIRST_NAME" length="80" not-null="true"/>
+    <property name="MiddleName" column="USR_MIDDLE_NAME" length="80"/>
+    <property name="LastName1" column="USR_LAST_NAME_1" length="80" not-null="true"/>
+    <property name="LastName2" column="USR_LAST_NAME_2" length="80"/>
+    <property name="PhoneNumber" column="USR_PHONE_NUMBER" length="50"/>
+    <property name="IsActive" column="USR_IS_ACTIVE" type="Boolean" not-null="true"/>
+    <property name="Password" column="USR_PASSWORD" length="80" not-null="true"/>
+    <property name="PassphraseId" column="USR_PASSPHRASE_ID" type="int" not-null="true"/>
+    <property name="PassphraseValue" column="USR_PASSPHRASE_VALUE" length="80" not-null="true"/>
+    <property name="IsLoggedFirstTime" column="USR_LOGGED_FIRST_TIME" type="Boolean" not-null="true"/>
+
+    <bag name="Logs" cascade="save-update" inverse="true">
+      <key column="USR_ID"/>
+      <one-to-many class="Log"/>
+    </bag>
+    <bag name="Roles" cascade="save-update" inverse="true">
+      <key column="USR_ID"/>
+      <one-to-many class="UserRole"/>
+    </bag>
+    <bag name="Monitorings" cascade="save-update" inverse="true">
+      <key column="USR_ID"/>
+      <one-to-many class="Monitoring"/>
+    </bag>
+  </class>
+</hibernate-mapping>

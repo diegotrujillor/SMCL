@@ -1,0 +1,38 @@
+﻿@model SMCLCore.Domain.Model.Role
+
+@{
+    ViewBag.Title = "Roles - Detalles";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <div class="titlejQGrid">Detalles</div>
+        </td>
+        <td style="text-align: right;">
+            <a href="../Index">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<fieldset>
+    <legend>Roles</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Descripción</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+@Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+<a href="../Index" style="text-decoration: none;">
+    <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+</a>
+<span>&nbsp;Regresar...</span>

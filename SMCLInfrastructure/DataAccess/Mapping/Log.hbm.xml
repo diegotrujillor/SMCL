@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="Log" table="Smcl_Log" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="LOG_ID" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="DateTime" column="LOG_DATE" type="DateTime" not-null="true"/>
+    <property name="Text" column="LOG_TEXT" length="2000"/>
+
+    <many-to-one name="Event" class="Event" fetch="select">
+      <column name="EVE_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="User" class="User" fetch="select">
+      <column name="USR_ID" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

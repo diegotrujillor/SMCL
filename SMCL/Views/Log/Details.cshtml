@@ -1,0 +1,55 @@
+﻿@model SMCLCore.Domain.Model.Log
+
+@{
+    ViewBag.Title = "Bitácora de Logs - Detalles";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <div class="titlejQGrid">Detalles</div>
+        </td>
+        <td style="text-align: right;">
+            <a href="../Index">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<fieldset>
+    <legend>Bitácora de Logs</legend>
+
+    <div class="display-label">Fecha</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateTime)
+    </div>
+
+    <br />
+
+    <div class="display-label">Texto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Text)
+    </div>
+    
+    <br />
+
+    <div class="display-label">Evento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Event.Name)
+    </div>
+    
+    <br />
+
+    <div class="display-label">Usuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.FirstName)
+        @Html.DisplayFor(model => model.User.LastName1)
+        (<b>@Html.DisplayFor(model => model.User.LoginEmail)</b>)
+    </div>
+</fieldset>
+<a href="../Index" style="text-decoration: none;">
+    <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+</a>
+<span>&nbsp;Regresar...</span>

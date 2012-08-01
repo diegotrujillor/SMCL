@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="MappingTag" table="Smcl_Mapping_Tags" dynamic-update="true" lazy="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="MAP_ID" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="Tag" column="MAP_TAG" length="80" not-null="true"/>
+    <property name="Description" column="MAP_DESCRIPTION" length="256"/>
+
+    <many-to-one name="Signal" class="Signal" fetch="select">
+      <column name="SIG_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="Appliance" class="Appliance" fetch="select">
+      <column name="APP_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="AlarmType" class="AlarmType" fetch="select">
+      <column name="ALA_TYP_ID" not-null="true"/>
+    </many-to-one>
+
+    <bag name="Monitorings" cascade="save-update" inverse="true">
+      <key column="MAP_ID"/>
+      <one-to-many class="Monitoring"/>
+    </bag>
+  </class>
+</hibernate-mapping>

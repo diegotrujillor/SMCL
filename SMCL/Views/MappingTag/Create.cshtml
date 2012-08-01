@@ -1,0 +1,101 @@
+﻿@model SMCLCore.Domain.Model.MappingTag
+
+@{
+    ViewBag.Title = "Etiquetas de Mapeo - Crear nuevo registro";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <div class="titlejQGrid">Crear nuevo registro</div>
+        </td>
+        <td style="text-align: right;">
+            <a href="~/../Index">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div style="color: #F00; text-decoration: blink;">
+            @ViewData["ValidationErrorMessage"].ToString()
+        </div>
+
+        <legend>Etiquetas de Mapeo</legend>
+
+        <table id="no_css" width="50%">
+            <tr>
+                <td style="width: 50%;">
+                    <div class="editor-label">
+                        <div style="color: #F00;">
+                            @Html.LabelFor(model => model.Tag, "Etiqueta (*)")
+                        </div>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Tag, new { style = "width: 90%;", maxlength = 80 })
+                        @Html.ValidationMessageFor(model => model.Tag, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Description, "Descripción")
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Description, new { style = "width: 90%;", maxlength = 256 })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        <div style="color: #F00;">
+                            @Html.LabelFor(model => model.Appliance.Id, "Equipos (*)")
+                        </div>
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("ApplianceId", null, String.Empty, new { style = "width: 90%;" })
+                        @Html.ValidationMessageFor(model => model.Appliance.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        <div style="color: #F00;">
+                            @Html.LabelFor(model => model.Signal.Id, "Señales (*)")
+                        </div>
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("SignalId", null, String.Empty, new { style = "width: 90%;" })
+                        @Html.ValidationMessageFor(model => model.Signal.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        <div style="color: #F00;">
+                            @Html.LabelFor(model => model.AlarmType.Id, "Tipos de Alarma (*)")
+                        </div>
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("AlarmTypeId", null, String.Empty, new { style = "width: 90%;" })
+                        @Html.ValidationMessageFor(model => model.AlarmType.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                    </div>
+                </td>
+                <td>
+                    <br />
+                    <input type="submit" value="Crear" />
+                </td>
+            </tr>
+        </table>
+        
+        <br />
+        <label class="display-message">(*) Campos obligatorios</label>
+    </fieldset>
+}

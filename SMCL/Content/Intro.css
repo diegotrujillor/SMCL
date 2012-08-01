@@ -1,0 +1,49 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Sans-Serif;
+    background: url('../Content/Images/jnj_background_intro.jpg') no-repeat center center fixed;
+    /*height: 80%;*/
+}
+
+table#main_logo {
+    width: 90%;
+    border: none;
+    margin-top: 6%;
+}
+
+.myButton {
+	background-color:#ededed;
+	-webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -khtml-border-radius: 14px;
+    border-radius: 14px;
+    behavior: url('../Content/PIE.htc');
+    -moz-box-shadow: 0px 0px 15px rgba(255,255,255,0.6);
+	-webkit-box-shadow: 0px 0px 15px rgba(255,255,255,0.6);
+	box-shadow: 0px 0px 15px rgba(255,255,255,0.6);
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:Verdana;
+	font-size:28px;
+	font-weight:bold;
+	padding:10px 44px;
+	text-decoration:none;
+	position: absolute;
+	bottom: 20%;
+	right:11%;
+}.myButton:hover {
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#DFDFDF), to(#EDEDED));
+    background: -webkit-linear-gradient(#DFDFDF, #EDEDED);
+    background: -moz-linear-gradient(#DFDFDF, #EDEDED);
+    background: -ms-linear-gradient(#DFDFDF, #EDEDED);
+    background: -o-linear-gradient(#DFDFDF, #EDEDED);
+    background: linear-gradient(#DFDFDF, #EDEDED);
+    -pie-background: linear-gradient(#DFDFDF, #EDEDED);
+    behavior: url('../Content/PIE.htc');
+	background-color:#dfdfdf;
+}/*.myButton:active {
+	position:relative;
+	top:1px;
+}*/

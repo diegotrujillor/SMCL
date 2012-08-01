@@ -1,0 +1,130 @@
+﻿
+.fisheye{
+	height: 24px;
+	text-align: left;
+	position: absolute;
+	padding-left: 17%;
+	padding-top: 8%;
+	/*border: solid 1px #F00;*/
+}
+a.fisheyeItem
+{
+	text-align: left;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	width: 40px;
+	position: absolute;
+	display: block;
+	/*top: 0;*/
+	bottom: 0;
+}
+a.fisheyeItem2
+{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	width: 40px;
+	position: absolute;
+	display: block;
+	bottom: 0;	
+}
+a.fisheyeItem3
+{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	width: 40px;
+	position: absolute;
+	display: block;
+	bottom: 0;
+}
+a.fisheyeItem4
+{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	width: 40px;
+	position: absolute;
+	display: block;
+	bottom: 0;
+}
+.fisheyeItem img
+{
+	border: none;
+	margin: 0 auto 5px auto;
+	width: 100%;
+}
+.fisheyeItem2 img
+{
+	border: none;	
+	margin: 5px auto 0 auto;
+	width: 100%;
+	/*border: solid 1px #F00;*/
+}
+.fisheyeItem3 img
+{
+	border: none;
+	margin: 5px auto 0 auto;
+	width: 100%;
+}
+.fisheyeItem4 img
+{
+	border: none;
+	margin: 5px auto 0 auto;
+	width: 100%;
+}
+.fisheyeItem span,
+.fisheyeItem2 span
+{
+	color: #777;
+	display: none;
+	position: absolute;	
+    font-size: x-small;
+    font-weight: lighter;
+}
+.fisheyeItem3 span
+{
+	color: #777;
+	display: none;
+	position: absolute;	
+    font-size: x-small;
+    font-weight: lighter;
+}
+.fisheyeItem4 span
+{
+	color: #777;
+	display: none;
+	position: absolute;	
+    font-size: x-small;
+    font-weight: lighter;
+}
+.fisheyeContainter
+{
+	background-color: Transparent;
+	height: 24px;
+	width: 200px;
+	left: 500px;
+	position: absolute;
+}
+#fisheye2
+{
+	/*position: absolute;*/
+	width: 100%;
+	bottom: 0px;
+}
+#fisheye3
+{
+	/*position: absolute;*/
+	width: 100%;
+	bottom: 0px;
+}
+#fisheye4
+{
+	/*position: absolute;*/
+	width: 100%;
+	bottom: 0px;
+}

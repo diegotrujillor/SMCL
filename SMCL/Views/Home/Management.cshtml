@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "SMCL - Administración de Parámetros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="titlejQGrid">
+    Administración de Parámetros
+</div>
+<div id="sidebar" style="position: relative; top: 1%;">
+    <table id="tIcons" class="aManagement">
+        <tr>
+            <td>
+                <a href="@Url.Content("~/User/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_users.png")" alt="usuarios" title="Usuarios" class="iconsManagement"/>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Content("~/Role/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_rol.png")" alt="roles" title="Roles" class="iconsManagement"/>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Content("~/Event/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_events.png")" alt="event" title="Eventos del Sistema" class="iconsManagement"/>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Usuarios</span>
+                <div style="border-bottom: solid 1px #d2d3d4;" />
+            </td>
+            <td>
+                <span>Roles</span>
+                <div style="border-bottom: solid 1px #d2d3d4;" />
+            </td>
+            <td>
+                <span>Eventos del Sistema</span>
+                <div style="border-bottom: solid 1px #d2d3d4;" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Content("~/Area/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_areas.png")" alt="areas" title="Áreas" class="iconsManagement" />
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Content("~/Appliance/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_equipment.png")" alt="equipos" title="Equipos" class="iconsManagement"/>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Content("~/MappingTag/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_labels.png")" alt="etiquetas" title="Etiquetas de Mapeo" class="iconsManagement"/>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Áreas</span>
+                <div style="border-bottom: solid 1px #d2d3d4;" />
+            </td>
+            <td>
+                <span>Equipos</span>
+                <div style="border-bottom: solid 1px #d2d3d4;" />
+            </td>
+            <td>
+                <span>Etiquetas de Mapeo</span>
+                <div style="border-bottom: solid 1px #d2d3d4;" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Content("~/AlarmType/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_alarm.png")" alt="alarmas" title="Tipos de Alarma" class="iconsManagement"/>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Content("~/Signal/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_signalVista.png")" alt="senales" title="Tipos de Señales" class="iconsManagement"/>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Content("~/SignalApplianceValue/Index")">
+                    <img src="@Url.Content("~/Content/Images/mgm_signalEquipment.png")" alt="senales_equipo" title="Valores de Señales por Equipo" class="iconsManagement"/>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Tipos de Alarmas</span>
+            </td>
+            <td>
+                <span>Señales</span>
+            </td>
+            <td>
+                <span>Señales por Equipo</span>
+            </td>
+        </tr>
+    </table>
+</div>
+<a href="~/../Index">
+    <img src="@Url.Content("~/Content/Images/jnj_reports_go_back2.png")" alt="regresar" title="Regresar" border="0" style="position: fixed; left: 9%; bottom: 25%;" />
+</a><span style="position: fixed; left: 9%; bottom: 23%;">Regresar...</span>
+<script type="text/javascript">
+    //Detect if browser is IE<=7
+    var Browser = {
+        Version: function () {
+            var version = 999; // we assume a sane browser
+            if (navigator.appVersion.indexOf("MSIE") != -1)
+            // bah, IE again, lets downgrade version number
+                version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+            return version;
+        }
+    }
+
+    //Opaque image hover
+    $(document).ready(function () {
+        //If browser is IE7, disable effects.
+        if (Browser.Version() > 7) {
+            $('#sidebar table img').hover(function () {
+                $(this).animate({ opacity: '0.5' }, { duration: 300 });
+            }, function () {
+                $(this).animate({ opacity: '1' }, { duration: 300 });
+            });
+        }
+    });
+</script>

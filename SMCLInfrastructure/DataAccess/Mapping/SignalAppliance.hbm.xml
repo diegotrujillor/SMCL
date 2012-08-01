@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="SignalAppliance" table="Smcl_Signals_In_Appliances" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="SA_ID" type="guid" unsaved-value="00000000-0000-0000-0000-000000000000">
+      <generator class="guid.comb"/>
+    </id>
+
+    <many-to-one name="Signal" class="Signal" fetch="select">
+      <column name="SIG_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="Appliance" class="Appliance" fetch="select">
+      <column name="APP_ID" not-null="true"/>
+    </many-to-one>
+
+    <bag name="SignalApplianceValues" cascade="save-update" inverse="true">
+      <key column="SA_ID"/>
+      <one-to-many class="SignalApplianceValue"/>
+    </bag>
+  </class>
+</hibernate-mapping>

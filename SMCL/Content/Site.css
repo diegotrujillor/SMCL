@@ -1,0 +1,514 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+/*elementos para lograr alto porcentual en main y page divs*/
+html, body 
+{
+    font-size: 0.90em;
+    font-family: Tahoma, Sans-Serif;
+    margin: 0;
+    padding: 1px;
+    color: #696969;
+    background-image: url('../Content/Images/jnj_background_intro.jpg');
+}
+
+img
+{
+    border-style: none;
+}
+
+a:link {
+    color: #034af3;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #505abc;
+}
+
+a:hover {
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active {
+    color: #12eb87;
+}
+
+p, ul {
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1 {
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page {
+    left: 5%;
+    position: fixed;
+    width: 90%;
+    margin: auto;
+    height: 67%;
+}
+
+header, #header {
+    position: relative;
+    color: #000;
+}
+
+header h1, #header h1 {
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+    border: none;
+    font-size: 32px !important;
+    text-shadow: 1px 1px 2px #111;
+}
+
+.titlejQGrid {
+    color: #00F;
+    font-size: medium;
+    font-weight: bold;
+    padding-bottom: 0;
+}
+
+.inbox {
+    width: 87%; 
+    margin: 0 auto; 
+    height: 75%;
+    overflow: auto;
+    position: relative;
+}
+
+table#alarmbox {
+    float: right;
+    border: none;
+}
+
+table#alarmbox td {
+    width: 120px;
+    border: none;
+    padding: 0;
+}
+
+.alarmbox_td {
+    height: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border:1px solid #CCC;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    behavior: url('../Content/PIE.htc');
+}
+
+#alarmbox div:hover {
+    color: #000;
+    background-color: #EEE;
+}
+
+#overlay {
+    visibility: hidden;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width:100%;
+    height:100%;
+    text-align:center;
+    z-index: 1000;
+    background: transparent url('../Content/Images/black50.png') top left repeat;
+    background: rgba(0,0,0,0.5) none;
+}
+
+#overlay div {
+    top: 15%;
+    margin: 0 auto;
+    position: relative;
+    width:50%;
+    background-color: #fff;
+    border:1px solid #000;
+    padding:15px;
+    text-align:center;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    -pie-background: rgba(255,255,255,0.85);
+    behavior: url('../Content/PIE.htc');
+    background: rgba(255,255,255,0.85);
+}
+
+#main {
+    height:80%;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 0.8%;
+    padding: 30px 30px 15px 30px;
+    background-color: #FFF;
+    -moz-border-radius: 4px 0 4px 4px;
+    -webkit-border-radius: 4px 0 4px 4px;
+    -khtml-border-radius: 4px 0 4px 4px;
+    border-radius: 4px 0 4px 4px;
+    -pie-background: rgba(255,255,255,0.75);
+    behavior: url('../Content/PIE.htc');
+    background: rgba(255,255,255,0.75);
+}
+
+footer, 
+#footer {
+    background-color: #fff;
+    color: #f76363;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0 0 30px 0;
+    font-size: .9em;
+    -moz-border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -khtml-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+    behavior: url('../Content/PIE.htc');
+    filter: alpha(opacity=75);
+    opacity: 0.75;
+	-ms-filter: progid : DXImageTransform.Microsoft.Alpha (Opacity=57);
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+ul#menu {
+    padding: 0 0 2px;
+    margin: 0;
+    margin-top: 2%;
+    text-align: right;
+}
+
+ul#menu li {
+    display: inline;
+    list-style: none;
+    position: relative;
+    margin: 2px;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -khtml-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    behavior: url('../Content/PIE.htc');
+}
+
+ul#menu li#greeting {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    color: #fff;
+}
+
+ul#menu li a {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #e8eef4;
+    color: #034af3;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -khtml-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    behavior: url('../Content/PIE.htc');
+}
+
+ul#menu li a:hover {
+    background-color: #fff;
+    text-decoration: none;
+}
+
+ul#menu li a:active {
+    background-color: #a6e2a6;
+    text-decoration: none;
+}
+
+ul#menu li.selected a {
+    background-color: #fff;
+    color: #000;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset {
+    border: 1px solid #B9B9B9;
+    padding: 0 1.4em 0 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+textarea {
+    font:normal 18px Verdana;
+	color: #999999;
+	padding:3px 5px 3px 19px;
+	background-color: #FFF;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+	-ms-filter: progid : DXImageTransform.Microsoft.Alpha (Opacity=57);
+    background: rgba(255,255,255,0.7);
+}
+
+textarea:focus, textarea:hover {
+	background-color:#F0FFE6;
+}
+
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.1em;
+    font-family: Verdana;
+    color: #444;
+    width: 200px;
+    background-color: #FFF;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+	-ms-filter: progid : DXImageTransform.Microsoft.Alpha (Opacity=57);
+    background: rgba(255,255,255,0.70);
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+}
+
+input[type="submit"] {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Verdana;
+    padding: 5px;
+    background-color: #FFF;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+	-ms-filter: progid : DXImageTransform.Microsoft.Alpha (Opacity=57);
+    background: rgba(255,255,255,0.7);
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+table#no_css {
+    border: none;
+}
+
+table#no_css td {
+    border: none;
+}
+
+table#no_css td h2 {
+    padding: 0px;
+}
+
+table#no_css td h3 {
+    padding: 0px;
+    font-size: 1.2em;
+}
+
+table#no_css td a {
+    text-decoration: none;
+}
+
+table#no_css th {
+    border: none;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear {
+    clear: both;
+}
+
+.error {
+    color: Red;
+}
+
+nav, 
+#menucontainer {
+    /*margin-top: 40px;*/
+}
+
+div#title {
+    display: block;
+    float: left;
+    text-align: left;
+}
+
+#logindisplay {
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    color: White;
+}
+
+#logindisplay a:link {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, 
+.editor-label {
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: Verdana;
+    margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+    font-size: 0.95em;
+    font-family: Verdana;
+    margin: 0.5em 0 0 0;
+}
+
+.display-message 
+{
+    color: #F00;
+    font-family: Verdana;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}
+
+.iconsManagement
+{
+   width: 70px;
+   margin-left: 10%;
+   border-style: none;
+   padding-top: 1%;
+   text-align: center;     
+}
+
+.aManagement
+{   
+   width: 70%;
+   margin: 0 auto;
+   text-align: center;
+   border-color: transparent;   
+}
+
+.aManagement a
+{
+   text-decoration: none;
+}
+
+
+ table#tIcons td
+{
+   border: none; 
+   padding: 0.1% 0px 0.1% 0px;   
+}

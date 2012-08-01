@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="AlarmType" table="Smcl_Alarm_Types" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="ALA_TYP_ID" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="NameAlarmType" column="ALA_TYP_NAME" length="80" not-null="true"/>
+    <property name="Description" column="ALA_TYP_DESCRIPTION" length="256"/>
+
+    <bag name="SignalApplianceValues" cascade="save-update" inverse="true">
+      <key column="ALA_TYP_ID"/>
+      <one-to-many class="SignalApplianceValue"/>
+    </bag>
+    <bag name="MappingTags" cascade="save-update" inverse="true">
+      <key column="ALA_TYP_ID"/>
+      <one-to-many class="MappingTag"/>
+    </bag>
+  </class>
+</hibernate-mapping>

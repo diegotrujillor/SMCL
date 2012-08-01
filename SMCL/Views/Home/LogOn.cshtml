@@ -1,0 +1,251 @@
+﻿@model SMCLCore.Domain.Model.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SMCL - Acceso al Sistema</title>
+    <link rel="Shortcut Icon" href="@Url.Content("~/Content/Images/johnson_and_johnson_no_bg.ico")" />
+    <link href="@Url.Content("~/Content/LogOn.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jquery.sidebar.css")" rel="Stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.sidebar.js")" type="text/javascript"></script>
+</head>
+<body>
+    <table id="main_logo">
+        <tr>
+            <td>
+                <a href="http://www.jnjcolombia.com.co" target="_blank">
+                    <img src="@Url.Content("~/Content/Images/jnj-blanco-title.png")" alt="J&J" title="Johnson & Johnson de Colombia S.A" width="60%" border="0" style="float: right;" />
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div id="container">
+        <div id="leftSide">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>Datos de Acceso</legend>
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="label" for="username">
+                                    Usuario:</label>
+                            </td>
+                            <td>
+                                <div class="div_texbox">
+                                    @Html.TextBoxFor(model => model.LoginEmail, new { @id = "username", @class = "username", style = "width: 80%;" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label" for="password">
+                                    Contraseña:</label>
+                            </td>
+                            <td>
+                                <div class="div_texbox">
+                                    @Html.PasswordFor(model => model.Password, new { @id = "username", @class = "username", style = "width: 80%;" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: right;">
+                                <input type="submit" value="VALIDAR" class="myButton" />
+                                <input type="reset" value="LIMPIAR" class="myButton" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="div_error">
+                        @ViewData["ValidationErrorMessage"].ToString()
+                    </div>
+                </fieldset>
+            }
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <a id="rememberPassword" href="#" onclick="overlay()" style="margin: 0; padding: 0;">
+        ¿Recordar Contraseña?</a>
+    <div id="overlay">
+        <div>
+            <table id="no_css" style="width: 96%; margin: 0 auto; text-align: left;">
+                <tr>
+                    <td style="width: 50%;">
+                        <h3 style="color: #2078c0; text-align: left;">
+                            Recordar Contraseña</h3>
+                    </td>
+                    <td style="text-align: right;">
+                        @Html.Image("AlarmCheckOut", "~/Content/Images/support.png", "alarmCheckOut", new { border = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label id="lastRowLabel">
+                            Nro. Documento:</label>
+                    </td>
+                    <td>
+                        <input id="lastRowInput" type="text" name="documentId" class="textbox" maxlength="12" />
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table id="alarmbox">
+                <tr>
+                    <td>
+                        <div id="submit" class="alarmbox_td" onclick='replaceDOMElements()'>
+                            Siguiente
+                        </div>
+                    </td>
+                    <td>
+                        <div class="alarmbox_td" onclick="javascript: document.location.reload();">
+                            Cancelar
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br />
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $("#rememberPassword").sidebar({
+        position: "right"
+    });
+
+    function overlay() {
+        el = document.getElementById("overlay");
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+    }
+
+    function replaceDOMElements() {
+        if (document.getElementById("lastRowInput").value) {
+            var label = document.getElementById("lastRowLabel");
+            var input = document.getElementById("lastRowInput");
+            var passphrase = getPassphrase(input.value);
+
+            if (passphrase != 'documentIdNotFound') {
+                currentLabel = label;
+                currentInput = input;
+
+                label1 = document.createElement("label");
+                label1.appendChild(document.createTextNode("Pregunta clave:"));
+                labelPassphrase = document.createElement("label");
+                labelPassphrase.appendChild(document.createTextNode(passphrase));
+
+                currentLabel.parentNode.replaceChild(label1, currentLabel);
+                currentInput.parentNode.replaceChild(labelPassphrase, currentInput);
+
+                this.tableAddRow("no_css");
+
+                document.getElementById("submit").innerHTML = "Recordar";
+                document.getElementById("submit").onclick = function () {
+                    rememberPassword(input.value, document.getElementById('rememberMe').value);
+                };
+            }
+        }
+    }
+
+    function tableAddRow(tableId) {
+        var table = document.getElementById(tableId);
+        var tableRows = table.rows.length;
+
+        var tbody = document.createElement("tbody"); //Specify this element to get works on IE.
+        var row = document.createElement("tr")
+        var data1 = document.createElement("td")
+
+        label2 = document.createElement("label");
+        label2.appendChild(document.createTextNode("Respuesta secreta:"));
+        input2 = document.createElement("input");
+        input2.id = "rememberMe";
+        input2.type = "password";
+        if (navigator.appName == "Microsoft Internet Explorer") {
+            input2.className = "textbox";
+        } else {
+            input2.setAttribute("class", "textbox");
+        }
+        input2.style.width = "80%";
+
+        data1.appendChild(label2)
+        var data2 = document.createElement("td")
+        data2.appendChild(input2)
+        row.appendChild(data1);
+        row.appendChild(data2);
+
+        tbody.appendChild(row);
+        table.appendChild(tbody);
+    }
+
+    function getPassphrase(documentId) {
+        var valor;
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: '../Home/GetPassphrase?Callback=values' + '&iDocumentId=' + documentId,
+            async: false,
+            success: function (jsonData) {
+                if (jsonData == 'documentIdNotFound') {
+                    alert('Documento de identidad no existe!');
+                    document.location.reload();
+                }
+                valor = jsonData;
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+                alert(thrownError);
+                document.location.reload();
+            }
+        });
+
+        return valor;
+    }
+
+    function rememberPassword(documentId, passphraseValue) {
+        var counter = 0;
+        var error = false;
+        var dataArray = new Array();
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: '../Home/RememberPassword?Callback=values' + '&iDocumentId=' + documentId + '&iPassphraseValue=' + passphraseValue,
+            async: false,
+            success: function (jsonData) {
+                if (jsonData == 'documentIdNotFound') {
+                    error = true;
+                    alert('Documento de identidad no existe!');
+                    document.location.reload();
+                } else
+                    if (jsonData == 'invalidPassphraseValue') {
+                        error = true;
+                        alert('Respuesta secreta incorrecta!');
+                    } else {
+                        $.each(jsonData, function (index) {
+                            dataArray[counter] = jsonData[index];
+                            counter++;
+                        });
+                    }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+                alert(thrownError);
+            }
+        });
+
+        if (!error) {
+            if (dataArray.length > 0) {
+                alert('Por seguridad, su contraseña ha sido regerada automáticamente. \n\nLogin/Email de usuario: ' + dataArray[0] + '\n' + 'Contraseña de usuario: ' + dataArray[1]);
+            }
+
+            document.location.reload();
+        }
+    }
+</script>

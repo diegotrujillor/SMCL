@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "SMCL - Bandeja de entrada";
+}
+<table id="no_css" style="width: 95%;">
+    <tr>
+        <td style="width: 2%;">
+            @Html.Image("IndexError", "../Content/Images/envelope_open.png", "indexError", new { border = "0" })
+        </td>
+        <td style="width: 39%;">
+            <h2 style="color: #AAA;">@ViewBag.InboxTitle</h2>
+            <h3 style="color: #2078c0;">@ViewBag.Message @ViewBag.FullName!</h3>
+            <h3 class="error">@ViewBag.ErrorMessage</h3>
+        </td>
+        <td style="text-align: right; width: 59%;">
+            <a id="refreshButton" href="../Home/Index">
+                <img src="@Url.Content("~/Content/Images/6refresh.png")" alt="refresh" title="Refrescar" border="0" />
+            </a>
+            <div id="inboxClock"></div>
+        </td>
+    </tr>
+</table>
+
+<div class="inbox">
+    <div id="inboxLoad">
+    </div>
+    <br />
+    <div class="div_error" style="color: #F00;">
+        @ViewData["ValidationErrorMessage"].ToString()
+    </div>
+</div>
+
+<div id="overlay">
+    <div>
+        <table id="no_css" style="width: 96%; margin: 0 auto;">
+            <tr>
+                <td style="width: 50%;">
+                    <h2 style="color: #2078c0; text-align:left;">@ViewBag.AlarmCheckOut</h2>
+                </td>
+                <td style="text-align: right;">
+                    @Html.Image("AlarmCheckOut", "~/Content/Images/alarm.png", "alarmCheckOut", new { border = "0" })
+                </td>
+            </tr>
+        </table>
+        <br />
+        @Html.TextArea("commentsOnAlarm", String.Empty, 5, 65, new { @class = "textbox", style = "margin: 0 auto; width: 94%;", maxlength="500", placeholder = @ViewBag.AlarmPlaceHolder })
+        <br />
+        <table id="alarmbox">
+            <tr>
+                <td>
+                    <div class="alarmbox_td" onclick="saveCommentsOnAlarm()">
+                        @ViewBag.AlarmSaveButton
+                        <input type="hidden" id="monitorId" />
+                    </div>
+                </td>
+                <td>
+                    <div class="alarmbox_td" onclick="overlay()">
+                        @ViewBag.AlarmCancelButton
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+</div>
+<script type="text/javascript">
+    function overlay(id) {
+        el = document.getElementById("overlay");
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+        if (el.style.visibility == "visible") {
+            document.getElementById("monitorId").setAttribute("value", id);
+            document.getElementById("commentsOnAlarm").value = new String();
+        }
+    }
+
+    function saveCommentsOnAlarm() {
+        var pagePath = window.location.pathname;
+        var arrayMonitor = new Array();
+        arrayMonitor[0] = document.getElementById("monitorId").value;
+        arrayMonitor[1] = document.getElementById("commentsOnAlarm").value;
+        //Call ASP.NET page method asynchronous (send and receives data in JSON format)
+        $.ajax({
+            type: "POST",
+            url: pagePath + "?Callback=saveCommentsOnAlarm&monitorId=" + arrayMonitor[0].valueOf().toString() + "&commentsOnAlarm=" + arrayMonitor[1].valueOf().toString(),
+            contentType: "application/json; charset=utf-8",
+            data: arrayMonitor,
+            dataType: "json"
+        });
+        overlay();
+    }
+</script>
+
+<script type="text/javascript">
+    function reloadInbox() {
+        $("#inboxLoad").load("../Home/Inbox").fadeIn(2000);
+        //The first time, the interval is assigned through 'intervalFirstTime' variable, bottom of this function.
+        //For the others times, the 'intervalFirstTime' is cleared and a new interval (with more seconds) is assigned.
+        //This produces that inbox has loaded inmmediately, but refresh rate occurs with a bigger time scale.
+        clearInterval(intervalFirstTime);
+    }
+    var intervalFirstTime = setInterval("reloadInbox()", 1000);    //Setted only by first time.
+    setInterval("reloadInbox()", parseInt(@System.Configuration.ConfigurationManager.AppSettings["RefreshRateMilliSeconds"]));
+
+    function reloadInboxClock() {
+        $("#inboxClock").load("../Home/InboxClock");
+    }
+    setInterval("reloadInboxClock()", 1000);
+</script>

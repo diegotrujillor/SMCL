@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <sql-query name="GetDataGraphSP">
+    <return-scalar column="resultado_c" type="string"/>
+    { call SANPRO.SMCL_GET_SIGNALS_DATA (:areaId, :applianceId, :alarmId, :signalId, :startDate, :finalDate, ?) }
+  </sql-query>
+</hibernate-mapping>

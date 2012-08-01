@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Acerca de";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="titlejQGrid">Información Técnica</div>
+
+<br />
+
+<table id="no_css">
+    <tr>
+        <td>
+            <ul>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["ASPNET"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["FrameworkNET"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["C#Version"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["PersistenTool"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["DBSystem"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["PackageManager"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["TestUnit"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["LogTool"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["CSS"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["JS"]</li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["jQuery"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["jQueryGrid"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["jQPlot"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["ReportingServices"]</li>
+                <li>@System.Configuration.ConfigurationManager.AppSettings["XHTML"]</li>
+                <br />
+                <br />
+                <br />
+                <br />
+                <li>@System.Configuration.ConfigurationManager.AppSettings["Version"]</li>
+            </ul>
+
+            
+        </td>
+    </tr>
+</table>
+    

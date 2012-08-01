@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="Event" table="Smcl_Events" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="EVE_ID" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="Name" column="EVE_NAME" length="80" not-null="true"/>
+    <property name="Description" column="EVE_DESCRIPTION" length="256"/>
+
+    <bag name="Logs" cascade="save-update" inverse="true">
+      <key column="EVE_ID"/>
+      <one-to-many class="Log"/>
+    </bag>
+  </class>
+</hibernate-mapping>

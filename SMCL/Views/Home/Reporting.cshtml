@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Generación de Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="titlejQGrid">Generación de Reportes</div>
+
+<table id="no_css" style="margin-top: 3%; width: auto; display: block;">
+    <tr>
+        <td>
+            <a href="@Url.Content("~/Extensions/Containers/ReportMonitoringComments.aspx")">
+                <img src="@Url.Content("~/Content/Images/Icon-Con-Search.png")" alt="reportDataSignal" title="Reporte de señales (Comentarios)" width="96" style="margin-left: 10%;" />
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Content("~/Extensions/Containers/ReportingMonitoringNoComments.aspx")">
+                <img src="@Url.Content("~/Content/Images/Icon-Con-Search.png")" alt="reportDataSignalUncomment" title="Reporte de señales (Sin Comentarios)" width="96" style="margin-left: 5%;" />
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Content("~/Extensions/Containers/ReportGraphicSignalPanel.aspx")">
+                <img src="@Url.Content("~/Content/Images/Icon-HC-Edit.png")" alt="reportGraphicSignal" title="Reporte de señales (Tendencia Gráfica)" width="96" style="margin-left: 5%;" />
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>Reporte Señales</span><br />
+            <span>(Comentarios)</span>
+        </td>
+        <td>
+            <span>Reporte Señales</span><br />
+            <span>(Sin Comentarios)</span>
+        </td>
+        <td>
+            <span>Reporte Señales</span><br />
+            <span>(Tendencia Gráfica)</span>
+        </td>
+    </tr>
+</table>
+
+<a href="~/../Index">
+    <img src="@Url.Content("~/Content/Images/jnj_reports_go_back2.png")" alt="regresar" title="Regresar" border="0" style="position: fixed; left: 10%; bottom: 25%;" />
+</a>
+<span style="position: fixed; left: 10%; bottom: 23%;">Regresar...</span>

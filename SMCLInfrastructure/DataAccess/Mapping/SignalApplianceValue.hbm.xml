@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="SignalApplianceValue" table="Smcl_Signals_In_Appliances_Val" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="CSA_ID" type="guid" unsaved-value="00000000-0000-0000-0000-000000000000">
+      <generator class="guid.comb"/>
+    </id>
+    <property name="Value" column="CSA_VALUE" precision="10" scale="5" not-null="true"/>
+    
+    <many-to-one name="SignalAppliance" class="SignalAppliance" fetch="select">
+      <column name="SA_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="AlarmType" class="AlarmType" fetch="select">
+      <column name="ALA_TYP_ID" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

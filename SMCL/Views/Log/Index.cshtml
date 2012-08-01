@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SMCLCore.Domain.Model.Log>
+
+@{
+    ViewBag.Title = "SMCL - Bitácora de Logs";
+}
+
+<div class="titlejQGrid">Bitácora de Logs</div>
+
+<table id="no_css" width="100%">
+    <tr>
+        <td style="text-align: right;">
+            <a href="../Home/Management">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+//<![CDATA[
+    var jsonData;
+    $(document).ready(function () {
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: '../Log/DynamicGridData',
+        data:{sidx:"LOG_DATE", sord:'asc', page:1, rows:10},
+        success: function(response){
+            jsonData = response;
+        }});
+
+        var mydata = [{ }],
+        getColumnIndexByName = function (grid, columnName) {
+            var cm = grid.jqGrid('getGridParam', 'colModel');
+            for (var i = 0, l = cm.length; i < l; i++) {
+                if (cm[i].name === columnName) {
+                    return i; // return the index
+                }
+            }
+            return -1;
+        },
+        grid = $('#list'), firstButtonColumnIndex, buttonNames = {};
+        
+        grid.jqGrid({
+            datastr: jsonData,
+            datatype: 'jsonstring',
+            colNames: ['Id', 'Fecha', 'Texto', ''],
+            colModel: [
+                { name: 'LOG_ID', index: 'LOG_ID', hidden: true, align: 'left' },
+                { name: 'LOG_DATE', index: 'LOG_DATE', width: 80, align: 'left' },
+                { name: 'LOG_TEXT', index: 'LOG_TEXT', width: 150, align: 'left' },                
+                { name: 'details', width: 10, sortable: false, search: false,
+                    formatter: function (cell, options, row) {
+                        return "<div style='text-align: center;'><a href='@Url.Action("Details", new { })/"+options.rowId+"'><img src='../Content/Images/5details.png' alt='details' title='Ver detalles' border='0' /></a></div>"
+                    } 
+                }
+            ],            
+            pager: '#pager',
+            rowNum: 10,
+            autowidth: true,
+            rowList: [5, 10, 20, 50],
+            sortname: 'LOG_ID',
+            sortorder: "asc",
+            viewrecords: true,
+            gridview: true,
+            rownumbers: true,
+            imgpath: '',
+            loadtext: 'Cargando...',
+            recordtext: "Visualizando {0} - {1} de {2}",
+            pgtext: "Página {0} de {1}",
+            emptyrecords: 'No hay registros',
+            caption: 'Tabla de registros'
+        });
+        grid.setGridHeight('175');
+        firstButtonColumnIndex = getColumnIndexByName(grid, 'edit');
+        buttonNames[firstButtonColumnIndex + 2] = 'Detalles';
+    });
+
+//]]>
+</script>
+
+<table id="list" class="scroll" cellpadding="0" cellspacing="0"></table>
+<div id="pager" class="scroll" style="text-align:center;"></div>

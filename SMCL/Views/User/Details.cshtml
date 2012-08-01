@@ -1,0 +1,95 @@
+﻿@model SMCLCore.Domain.Model.User
+
+@{
+    ViewBag.Title = "Usuarios - Detalles";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <div class="titlejQGrid">Detalles</div>
+        </td>
+        <td style="text-align: right;">
+            <a href="../Index">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<fieldset>
+    <legend>Usuarios</legend>
+
+    <table id="no_css" width="90%">
+        <tr>
+            <td style="width: 25%;">
+                <div class="display-label">Nro. Documento</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.DocumentId)
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Primer Nombre</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.FirstName)
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Segundo Nombre</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.MiddleName)
+                </div>
+            </td>
+            <td rowspan="2">
+                <div class="editor-label">
+                    <div style="color: #F00;">
+                        @Html.Label("Roles (*)")
+                    </div>
+                </div>
+                <div class="editor-field">
+                    @Html.ListBox("RoleIds", ViewData["Roles"] as MultiSelectList, new { disabled = true, size = System.Configuration.ConfigurationManager.AppSettings["AmountOfRolesToShowInListBox"], style = "width: 80%;" })
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">E-mail</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.LoginEmail)
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Primer Apellido</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.LastName1)
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Segundo Apellido</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.LastName2)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">Nro. Telefónico</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Activo?</div>
+                <div class="display-field">
+                    @Html.Image("IsActive", Url.Content(ViewData["urlImage"].ToString()), "status", new { border = "0" })
+                </div>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+@Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+<a href="../Index" style="text-decoration: none;">
+    <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+</a>
+<span>&nbsp;Regresar...</span>

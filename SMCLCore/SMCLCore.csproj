@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6A6BB2AB-B7B9-44D7-AFD0-BB99F1173BED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMCLCore</RootNamespace>
+    <AssemblyName>SMCLCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\Model\SignalApplianceValue.cs" />
+    <Compile Include="Domain\Model\SignalAppliance.cs" />
+    <Compile Include="Domain\Model\UserRole.cs" />
+    <Compile Include="Domain\Repositories\AlarmTypeRepository.cs" />
+    <Compile Include="Domain\Repositories\AreaRepository.cs" />
+    <Compile Include="Domain\Repositories\ApplianceRepository.cs" />
+    <Compile Include="Domain\Repositories\SignalApplianceValueRepository.cs" />
+    <Compile Include="Domain\Repositories\SignalApplianceRepository.cs" />
+    <Compile Include="Domain\Repositories\UserRoleRepository.cs" />
+    <Compile Include="Domain\Repositories\UserRepository.cs" />
+    <Compile Include="Domain\Repositories\SignalRepository.cs" />
+    <Compile Include="Domain\Repositories\RoleRepository.cs" />
+    <Compile Include="Domain\Repositories\MonitoringRepository.cs" />
+    <Compile Include="Domain\Repositories\MappingTagRepository.cs" />
+    <Compile Include="Domain\Repositories\LogRepository.cs" />
+    <Compile Include="Domain\Repositories\EventRepository.cs" />
+    <Compile Include="Domain\Repositories\NHibernateHelper.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Domain\Model\AlarmType.cs" />
+    <Compile Include="Domain\Model\Appliance.cs" />
+    <Compile Include="Domain\Model\Area.cs" />
+    <Compile Include="Domain\Model\Event.cs" />
+    <Compile Include="Domain\Model\Log.cs" />
+    <Compile Include="Domain\Model\MappingTag.cs" />
+    <Compile Include="Domain\Model\Monitoring.cs" />
+    <Compile Include="Domain\Model\Role.cs" />
+    <Compile Include="Domain\Model\Signal.cs" />
+    <Compile Include="Domain\Model\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Domain\Model\SMCL.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="hibernate.cfg.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

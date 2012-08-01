@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "SMCL - Menú Principal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td rowspan="2">
+            @Html.Image("IndexError", "~/Content/Images/lightbulb.png", "indexError", new { border = "0" })
+        </td>
+        <td>
+            <h3 class="error">@ViewBag.ErrorMessage</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>@ViewBag.ErrorDescription</label>
+        </td>
+    </tr>
+</table>

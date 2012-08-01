@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SMCLCore.Domain.Model" assembly="SMCLCore">
+  <class name="UserRole" table="Smcl_Users_In_Roles" dynamic-update="true" lazy="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="UR_ID" type="guid" unsaved-value="00000000-0000-0000-0000-000000000000">
+      <generator class="guid.comb"/>
+    </id>
+
+    <many-to-one name="User" class="User" fetch="select">
+      <column name="USR_ID"/>
+    </many-to-one>
+    <many-to-one name="Role" class="Role" fetch="select">
+      <column name="ROL_ID"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>
