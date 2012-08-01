@@ -181,7 +181,11 @@ namespace SMCL.Controllers
 
         private void InitializeInbox()
         {
+            ViewBag.MonApplianceName = ConfigurationManager.AppSettings["MonApplianceName"].ToString();
+            ViewBag.MonAlarmTypeName = ConfigurationManager.AppSettings["MonAlarmTypeName"].ToString();
             ViewBag.DateTitle = ConfigurationManager.AppSettings["DateTitle"].ToString();
+            ViewBag.MonValue = ConfigurationManager.AppSettings["MonValue"].ToString();
+            ViewBag.MonSignalName = ConfigurationManager.AppSettings["MonSignalName"].ToString();
             ViewBag.SenderTitle = ConfigurationManager.AppSettings["SenderTitle"].ToString();
             ViewBag.SubjectTitle = ConfigurationManager.AppSettings["SubjectTitle"].ToString();
         }
@@ -218,10 +222,15 @@ namespace SMCL.Controllers
         {
             IRepository<AlarmType> dbAT = new AlarmTypeRepository();
             IRepository<MappingTag> dbMT = new MappingTagRepository();
+            IRepository<Signal> dbSgn = new SignalRepository();
+            IRepository<Appliance> dbAppl = new ApplianceRepository();
+
 
             var monitoring = from m in dbM.GetAll()
                              join mt in dbMT.GetAll() on m.MappingTag.Id equals mt.Id
                              join at in dbAT.GetAll() on mt.AlarmType.Id equals at.Id
+                             join sgn in dbSgn.GetAll() on mt.Signal.Id equals sgn.Id
+                             join appl in dbAppl.GetAll() on mt.Appliance.Id equals appl.Id
                              where m.CommentsOnAlarm == null &&
                                    (at.Id == Convert.ToInt32(ConfigurationManager.AppSettings["HighAlarmId"]) ||
                                     at.Id == Convert.ToInt32(ConfigurationManager.AppSettings["LowAlarmId"]))
@@ -234,9 +243,11 @@ namespace SMCL.Controllers
             var result = from c in
                              items.OrderByDescending(d => d.m.DateTime)
                          select new[] {
-                             ConfigurationManager.AppSettings["SenderMapperName"],
-                             this.GetAlarmSubject(dbAT.GetById(dbMT.GetById(c.m.MappingTag.Id).AlarmType.Id).Id),
                              c.m.DateTime.ToString(),
+                             dbAppl.GetById(dbMT.GetById(c.m.MappingTag.Id).Appliance.Id).NameAppliance,
+                             dbAT.GetById(dbMT.GetById(c.m.MappingTag.Id).AlarmType.Id).NameAlarmType,
+                             c.m.Value.ToString(),
+                             dbSgn.GetById(dbMT.GetById(c.m.MappingTag.Id).Signal.Id).Name,
                              c.m.Id.ToString()
                          };
 

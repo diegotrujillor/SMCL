@@ -2,10 +2,10 @@
 	<thead>
 		<tr>
 			<th style="width: 20%; padding-left: 2%; font-weight: bold;">@ViewBag.DateTitle</th>
-            <th style="width: 15%; padding-left: 2%; font-weight: bold;">@ViewBag.Appliance</th>
-            <th style="width: 15%; padding-left: 2%; font-weight: bold;">@ViewBag.AlarmType</th>
-            <th style="width: 15%; padding-left: 2%; font-weight: bold;">@ViewBag.Value</th>
-            <th style="width: 33%; padding-left: 2%; font-weight: bold;">@ViewBag.Variable</th>
+            <th style="width: 33%; padding-left: 2%; font-weight: bold;">@ViewBag.MonApplianceName</th>
+            <th style="width: 15%; padding-left: 2%; font-weight: bold;">@ViewBag.MonSignalName</th>
+            <th style="width: 15%; padding-left: 2%; font-weight: bold;">@ViewBag.MonAlarmTypeName</th>
+            <th style="width: 15%; padding-left: 2%; font-weight: bold;">@ViewBag.MonValue</th>            
             <th style="width: 2%; padding-left: 2%; font-weight: bold;">@String.Empty</th>
 		</tr>
 	</thead>
@@ -26,12 +26,20 @@
                 "sUrl": "../Content/es-CO.txt"
             },
             "aoColumns": [
-                            { "sName": "SENDER",
-                              "bSortable": false },
-                            { "sName": "SUBJECT",
-                                "bSortable": false },
                             { "sName": "DATE",
-                                "bSortable": false },
+                              "bSortable": false },
+                            { "sName": "MON_APPLIANCE_NAME",
+                                "bSortable": false
+                            },
+                            { "sName": "MON_SIGNAL_NAME",
+                                "bSortable": false
+                            },
+                            { "sName": "MON_ALARMTYPE_NAME",
+                                "bSortable": false
+                            },
+                            { "sName": "MON_VALUE",
+                                "bSortable": false
+                            },
                             {
                                 "sName": "ID",
                                 "bSearchable": false,
