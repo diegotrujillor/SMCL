@@ -512,3 +512,38 @@ div#title {
    border: none; 
    padding: 0.1% 0px 0.1% 0px;   
 }
+
+/* SignalApplianceValue view styles */
+
+#alarms {
+    margin: 20px auto;
+    width: 300px;
+}
+
+#alarms table {
+    border: none;
+    text-align: center;
+}
+
+#alarms table td {
+    border: none;
+}
+
+#alarms table td input {
+    width: 75px;
+}
+
+.colAlarmDesc 
+{
+    width: 15%;
+}
+
+.colAlarmVal 
+{
+    width: 35%;
+}
+
+#displayMessages {
+    clear: left;
+    margin: 15px 0px 0px;
+}

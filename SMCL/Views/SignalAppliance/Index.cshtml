@@ -1,0 +1,103 @@
+﻿@model IEnumerable<SMCLCore.Domain.Model.SignalAppliance>
+
+@{
+    ViewBag.Title = "SMCL - Señales por Equipo";
+}
+
+<div class="titlejQGrid">Señales por Equipo</div>
+
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <img src="@Url.Content("~/Content/Images/0add_48.png")" alt="add" width="20" />
+            @Html.ActionLink("Crear nuevo registro", "Create")
+        </td>
+        <td style="text-align: right;">
+            <a href="../Home/Management">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<table id="list" class="scroll" cellpadding="0" cellspacing="0"></table>
+<div id="pager" class="scroll" style="text-align:center;"></div>
+
+<script type="text/javascript">
+//<![CDATA[
+    var jsonData;
+    $(document).ready(function () {
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: '../SignalAppliance/DynamicGridData',
+        data:{sidx:"SA_ID", sord:'asc', page:1, rows:10},
+        success: function(response){
+            jsonData = response;
+        }});
+
+        var mydata = [{ }],
+        getColumnIndexByName = function (grid, columnName) {
+            var cm = grid.jqGrid('getGridParam', 'colModel');
+            for (var i = 0, l = cm.length; i < l; i++) {
+                if (cm[i].name === columnName) {
+                    return i; // return the index
+                }
+            }
+            return -1;
+        },
+        grid = $('#list'), firstButtonColumnIndex, buttonNames = {};
+        
+        grid.jqGrid({
+            datastr: jsonData,
+            datatype: 'jsonstring',
+            colNames: ['Id', 'Aplicación', 'Señal', 'Tipo de Alarma', 'Valor', '', '', ''],
+            colModel: [
+                { name: 'CSA_ID', index: 'CSA_ID', hidden: true, align: 'left' },
+                { name: 'APP_NAME', index: 'APP_NAME', width: 150, align: 'left' },
+                { name: 'SIG_NAME', index: 'SIG_NAME', width: 80, align: 'left' },
+                { name: 'ALA_TYP_NAME', index: 'ALA_TYP_NAME', width: 80, align: 'left' },          
+                { name: 'CSA_VALUE', index: 'CSA_VALUE', width: 150, align: 'left' }, 
+                { name: 'edit', width: 10, sortable: false, search: false,
+                formatter: function (cell, options, row) {
+                        return "<div style='text-align: center;'><a href='@Url.Action("Edit", new { })/"+options.rowId+"'><img src='../Content/Images/3edit.png' alt='edit' title='Editar registro' border='0' /></a></div>"
+                    }
+                },
+                { name: 'del', width: 10, sortable: false, search: false,
+                    formatter: function (cell, options, row) {
+                        return "<div style='text-align: center;'><a href='@Url.Action("Delete", new { })/"+options.rowId+"'><img src='../Content/Images/2delete.png' alt='delete' title='Eliminar registro' border='0' /></a></div>"
+                    } 
+                },
+                { name: 'details', width: 10, sortable: false, search: false,
+                    formatter: function (cell, options, row) {
+                        return "<div style='text-align: center;'><a href='@Url.Action("Details", new { })/"+options.rowId+"'><img src='../Content/Images/5details.png' alt='details' title='Ver detalles' border='0' /></a></div>"
+                    } 
+                }
+            ],            
+            pager: '#pager',
+            rowNum: 10,
+            autowidth: true,
+            rowList: [5, 10, 20, 50],
+            sortname: 'CSA_ID',
+            sortorder: "asc",
+            viewrecords: true,
+            gridview: true,
+            rownumbers: true,
+            imgpath: '',
+            loadtext: 'Cargando...',
+            recordtext: "Visualizando {0} - {1} de {2}",
+            pgtext: "Página {0} de {1}",
+            emptyrecords: 'No hay registros',
+            caption: 'Tabla de registros'
+        });
+        grid.setGridHeight('175');
+        firstButtonColumnIndex = getColumnIndexByName(grid, 'edit');
+        buttonNames[firstButtonColumnIndex] = 'Editar';
+        buttonNames[firstButtonColumnIndex + 1] = 'Eliminar';
+        buttonNames[firstButtonColumnIndex + 2] = 'Detalles';
+    });
+
+//]]>
+</script>

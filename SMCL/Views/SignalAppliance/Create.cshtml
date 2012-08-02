@@ -1,7 +1,7 @@
-﻿@model SMCLCore.Domain.Model.SignalApplianceValue
+﻿@model SMCLCore.Domain.Model.SignalAppliance
 
 @{
-    ViewBag.Title = "Señales por equipo - Create nuevo registro";
+    ViewBag.Title = "Señales por equipo - Crear nuevo registro";
 }
 
 <table id="no_css" width="100%">
@@ -21,8 +21,7 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.numeric.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
         <div id="ErrorMessage" style="color: #F00; text-decoration: blink;">
@@ -31,28 +30,27 @@
 
         <legend>Señales por equipos</legend>
 
-        <table id="no_css" width="50%" style="float:left; width: 600px;">
+        <table id="no_css" style="margin: 0 auto;">
             <tr>
-                <td style="width: 50%;">
+                <td>
                     <div class="editor-label" style="font-weight: normal;">
                         <div style="color: #F00;">
-                            @Html.LabelFor(model => model.SignalAppliance.Signal.Id, "Señal (*)")
+                            @Html.LabelFor(model => model.Signal.Id, "Señal (*)")
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.DropDownList("SignalId", null, String.Empty, new { style = "width: 90%;" })
-                        @Html.ValidationMessageFor(model => model.SignalAppliance.Signal.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                        @Html.DropDownList("SignalId", null, String.Empty, null)
+                        @Html.ValidationMessageFor(model => model.Signal.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
                     </div>
                 </td>
                 <td>
                     <div class="editor-label" style="font-weight: normal;">
                         <div style="color: #F00;">
-                            @Html.LabelFor(model => model.Value, "Set Point (*)")
+                            @Html.Label("Set Point", "Set Point (*)")
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Value, new { style = "width: 80%;", @class = "positive", maxlength = 7 })
-                        @Html.ValidationMessageFor(model => model.Value, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                        @Html.TextBox("SetPoint", null, new { style = "width: 80%;", @class = "positive", maxlength = 7 })
                     </div>
                 </td>
                 <td>
@@ -62,7 +60,7 @@
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.TextBox("tolerance", null, new { style = "width: 80%;"})
+                        @Html.TextBox("Tolerance", null, new { style = "width: 80%;" })
                     </div>
                 </td>
                 <td>
@@ -75,28 +73,21 @@
                         <label id="MeasureUnit">N/A</label>
                     </div>
                 </td>
-            </tr>            
-            <tr>
                 <td>
                     <div class="editor-label" style="font-weight: normal;">
                         <div style="color: #F00;">
-                            @Html.LabelFor(model => model.SignalAppliance.Appliance.Id, "Equipo (*)")
+                            @Html.LabelFor(model => model.Appliance.Id, "Equipo (*)")
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.DropDownList("ApplianceId", null, String.Empty, new { style = "width: 90%;" })
-                        @Html.ValidationMessageFor(model => model.SignalAppliance.Appliance.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                        @Html.DropDownList("ApplianceId", null, String.Empty, null)
+                        @Html.ValidationMessageFor(model => model.Appliance.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
                     </div>
                 </td>        
             </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="Crear" />
-                </td>
-            </tr>
         </table>
 
-        <div id="alarms" align="center" style="float:left; margin-left: 115px; margin-top: 70px;">
+        <div id="alarms" align="center">
             <fieldset>
                 <legend>Alarmas</legend>
 
@@ -117,6 +108,10 @@
                     </tbody>
                 </table>
             </fieldset>
+        </div>
+
+        <div>
+            <input type="submit" value="Crear" />
         </div>
 
         <div id="displayMessages">

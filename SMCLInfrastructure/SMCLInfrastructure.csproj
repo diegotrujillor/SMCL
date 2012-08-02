@@ -99,7 +99,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataAccess\Mapping\SignalAppliance.hbm.xml" />
+    <EmbeddedResource Include="DataAccess\Mapping\SignalAppliance.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DataAccess\Mapping\SignalApplianceValue.hbm.xml" />

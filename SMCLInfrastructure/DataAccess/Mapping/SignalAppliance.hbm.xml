@@ -6,6 +6,8 @@
       <generator class="guid.comb"/>
     </id>
 
+    <property name="Tolerance" column="SA_TOLERANCE" precision="10" scale="2" not-null="true"/>
+    
     <many-to-one name="Signal" class="Signal" fetch="select">
       <column name="SIG_ID" not-null="true"/>
     </many-to-one>

@@ -115,6 +115,7 @@
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\MappingTagController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SignalApplianceController.cs" />
     <Compile Include="Controllers\SignalApplianceValueController.cs" />
     <Compile Include="Controllers\SignalController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -402,6 +403,9 @@
     </None>
     <Content Include="Views\Log\Index.cshtml" />
     <Content Include="Views\Log\Details.cshtml" />
+    <Content Include="Views\SignalAppliance\Create.cshtml" />
+    <Content Include="Views\SignalAppliance\Index.cshtml" />
+    <Content Include="Views\SignalAppliance\Edit.cshtml" />
     <None Include="_bin_deployableAssemblies\es\Microsoft.Web.Infrastructure.resources.dll" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
     <None Include="_bin_deployableAssemblies\es\System.Web.WebPages.Razor.resources.dll" />

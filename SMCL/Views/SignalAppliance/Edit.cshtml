@@ -1,16 +1,16 @@
-﻿@model SMCLCore.Domain.Model.SignalApplianceValue
+﻿@model SMCLCore.Domain.Model.SignalAppliance
 
 @{
-    ViewBag.Title = "Señales por equipo - Create nuevo registro";
+    ViewBag.Title = "Señales por equipo - Editar";
 }
 
 <table id="no_css" width="100%">
     <tr>
         <td>
-            <div class="titlejQGrid">Crear nuevo registro</div>
+            <div class="titlejQGrid">Editar registro</div>
         </td>
         <td style="text-align: right;">
-            <a href="~/../Index">
+            <a href="../Index">
                 <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
             </a>
             <span>&nbsp;Regresar...</span>
@@ -19,10 +19,9 @@
 </table>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.numeric.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
         <div id="ErrorMessage" style="color: #F00; text-decoration: blink;">
@@ -36,23 +35,22 @@
                 <td style="width: 50%;">
                     <div class="editor-label" style="font-weight: normal;">
                         <div style="color: #F00;">
-                            @Html.LabelFor(model => model.SignalAppliance.Signal.Id, "Señal (*)")
+                            @Html.LabelFor(model => model.Signal.Id, "Señal (*)")
                         </div>
                     </div>
                     <div class="editor-field">
                         @Html.DropDownList("SignalId", null, String.Empty, new { style = "width: 90%;" })
-                        @Html.ValidationMessageFor(model => model.SignalAppliance.Signal.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                        @Html.ValidationMessageFor(model => model.Signal.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
                     </div>
                 </td>
                 <td>
                     <div class="editor-label" style="font-weight: normal;">
                         <div style="color: #F00;">
-                            @Html.LabelFor(model => model.Value, "Set Point (*)")
+                            @Html.Label("Set Point", "Set Point (*)")
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Value, new { style = "width: 80%;", @class = "positive", maxlength = 7 })
-                        @Html.ValidationMessageFor(model => model.Value, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                        @Html.TextBox("SetPoint", null, new { style = "width: 80%;", @class = "positive", maxlength = 7 })
                     </div>
                 </td>
                 <td>
@@ -62,7 +60,7 @@
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.TextBox("tolerance", null, new { style = "width: 80%;"})
+                        @Html.TextBox("Tolerance", null, new { style = "width: 80%;" })
                     </div>
                 </td>
                 <td>
@@ -72,7 +70,7 @@
                         </div>
                     </div>
                     <div class="editor-field">
-                        <label id="MeasureUnit">N/A</label>
+                        <label id="MeasureUnit"></label>
                     </div>
                 </td>
             </tr>            
@@ -80,18 +78,18 @@
                 <td>
                     <div class="editor-label" style="font-weight: normal;">
                         <div style="color: #F00;">
-                            @Html.LabelFor(model => model.SignalAppliance.Appliance.Id, "Equipo (*)")
+                            @Html.LabelFor(model => model.Appliance.Id, "Equipo (*)")
                         </div>
                     </div>
                     <div class="editor-field">
                         @Html.DropDownList("ApplianceId", null, String.Empty, new { style = "width: 90%;" })
-                        @Html.ValidationMessageFor(model => model.SignalAppliance.Appliance.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
+                        @Html.ValidationMessageFor(model => model.Appliance.Id, System.Configuration.ConfigurationManager.AppSettings["EmptyFieldErrorMessage"].ToString())
                     </div>
                 </td>        
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="Crear" />
+                    <input type="submit" value="Guardar" />
                 </td>
             </tr>
         </table>
@@ -126,26 +124,38 @@
 }
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        getMeasureUnit(document.getElementById("SignalId").value);
+    });
     $("#SignalId").change(function () {
+        getMeasureUnit($(this).val().toString());
+    });
+</script>
+
+<script type="text/javascript">
+    function getMeasureUnit(signalId) {
         var diffPresure = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DifferentialPressure"]));
         var temperature = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Temperature"]));
         var rh = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["RH"]));
         
-        switch ($(this).val().toString()) {
+        switch (signalId) {
+
             case diffPresure:
-                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["InchesOfWater"]));
+                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Percentage"]));
+
                 break;
             case temperature:
                 document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DegreeCelsius"]));
                 break;
             case rh:
-                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Percentage"]));
+                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["InchesOfWater"]));
+
                 break;
             default:
                 document.getElementById("MeasureUnit").innerHTML = "N/A";
                 break;
         }
-    });
+    }
 </script>
 
 <script type="text/javascript">

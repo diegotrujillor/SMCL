@@ -19,6 +19,8 @@ namespace SMCLCore.Domain.Model
 
         public virtual  IList<SignalApplianceValue> SignalApplianceValues { get; set; }
 
+        public virtual float Tolerance { get; set; }
+
         public override bool Equals(object obj)
         {
             if (this == obj) return true;
