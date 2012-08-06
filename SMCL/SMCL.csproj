@@ -119,12 +119,12 @@
     <Compile Include="Controllers\SignalApplianceValueController.cs" />
     <Compile Include="Controllers\SignalController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Enums\SMCLSignals.cs" />
-    <Compile Include="Models\DataSetMonitoring.Designer.cs">
+    <Compile Include="DataSetReporting.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetMonitoring.xsd</DependentUpon>
+      <DependentUpon>DataSetReporting.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Enums\SMCLSignals.cs" />
     <Compile Include="Enums\SMCLEnums.cs" />
     <Compile Include="Extensions\Containers\ReportingMonitoringNoComments.aspx.cs">
       <DependentUpon>ReportingMonitoringNoComments.aspx</DependentUpon>
@@ -151,6 +151,11 @@
     <Compile Include="Filters\LogonAuthorize.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataSetMonitoring.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMonitoring.xsd</DependentUpon>
     </Compile>
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\SMCLContext.cs" />
@@ -390,13 +395,24 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\Inbox.cshtml" />
     <Content Include="Views\Home\InboxClock.cshtml" />
+    <None Include="DataSetReporting.xsc">
+      <DependentUpon>DataSetReporting.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReporting.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetReporting.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetReporting.xss">
+      <DependentUpon>DataSetReporting.xsd</DependentUpon>
+    </None>
     <None Include="Models\DataSetMonitoring.xsc">
       <DependentUpon>DataSetMonitoring.xsd</DependentUpon>
     </None>
     <None Include="Models\DataSetMonitoring.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetMonitoring.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>DataSetMonitoring.Designer.cs</LastGenOutput>
     </None>
     <None Include="Models\DataSetMonitoring.xss">
       <DependentUpon>DataSetMonitoring.xsd</DependentUpon>
@@ -406,6 +422,8 @@
     <Content Include="Views\SignalAppliance\Create.cshtml" />
     <Content Include="Views\SignalAppliance\Index.cshtml" />
     <Content Include="Views\SignalAppliance\Edit.cshtml" />
+    <Content Include="Views\SignalAppliance\Details.cshtml" />
+    <Content Include="Views\SignalAppliance\Delete.cshtml" />
     <None Include="_bin_deployableAssemblies\es\Microsoft.Web.Infrastructure.resources.dll" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
     <None Include="_bin_deployableAssemblies\es\System.Web.WebPages.Razor.resources.dll" />
