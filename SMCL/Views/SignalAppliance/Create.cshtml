@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.TextBox("Tolerance", null, new { style = "width: 80%;" })
+                        @Html.TextBox("Tolerance", null, new { style = "width: 80%;", @class = "positive", maxlength = 7 })
                     </div>
                 </td>
                 <td>
@@ -121,28 +121,70 @@
 }
 
 <script type="text/javascript">
-    $("#SignalId").change(function () {
-        var diffPresure = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DifferentialPressure"]));
-        var temperature = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Temperature"]));
-        var rh = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["RH"]));
+    $(function(){
+            $("#SignalId").change(function () {
+            var diffPresure = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DifferentialPressure"]));
+            var temperature = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Temperature"]));
+            var rh = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["RH"]));
         
-        switch ($(this).val().toString()) {
-            case diffPresure:
-                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["InchesOfWater"]));
-                break;
-            case temperature:
-                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DegreeCelsius"]));
-                break;
-            case rh:
-                document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Percentage"]));
-                break;
-            default:
-                document.getElementById("MeasureUnit").innerHTML = "N/A";
-                break;
-        }
-    });
-</script>
+            switch ($(this).val().toString()) {
+                case diffPresure:
+                    document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["InchesOfWater"]));
+                    break;
+                case temperature:
+                    document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DegreeCelsius"]));
+                    break;
+                case rh:
+                    document.getElementById("MeasureUnit").innerHTML = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Percentage"]));
+                    break;
+                default:
+                    document.getElementById("MeasureUnit").innerHTML = "N/A";
+                    break;
+            }
+        });
 
-<script type="text/javascript">
-    $(".positive").numeric({ negative: true }, function () { alert("N/A"); this.value = ""; this.focus(); });
+        $("#SetPoint").keyup(function(){
+            if(notANumber($(this).val()) || notANumber($("#Tolerance").val())){
+                $("input[name=highAlarm]").val("");
+                $("input[name=lowAlarm]").val("");
+            }else{
+                var setPoint = strToFloat($(this).val(), 2);
+                var tolerance = strToFloat($("#Tolerance").val(), 2);
+                $("input[name=highAlarm]").val(floatSum(setPoint, tolerance, 2));
+                $("input[name=lowAlarm]").val(floatSub(setPoint, tolerance, 2));
+            }
+        });
+        
+        $("#Tolerance").keyup(function(){
+            if(notANumber($(this).val()) || notANumber($("#SetPoint").val())){
+                $("input[name=highAlarm]").val("");
+                $("input[name=lowAlarm]").val("");
+            }else{
+                var setPoint = strToFloat($("#SetPoint").val(), 2);
+                var tolerance = strToFloat($(this).val(), 2);
+                $("input[name=highAlarm]").val(floatSum(setPoint, tolerance, 2));
+                $("input[name=lowAlarm]").val(floatSub(setPoint, tolerance, 2));
+            }
+        });
+
+        $(".positive").numeric({ negative: true }, function () { alert("N/A"); this.value = ""; this.focus(); });
+
+    });
+
+    function notANumber(value){
+        return value == null || value == "" || value.match(/^\d+([\.,]\d+)?$/g) == null;
+    }
+
+    function strToFloat(value, numberOfDecimals){
+        return parseFloat(value.replace(/,/g, ".")).toFixed(numberOfDecimals);
+    }
+
+    function floatSum(a, b, numberOfDecimals){
+        return (parseFloat(a) + parseFloat(b)).toFixed(numberOfDecimals);
+    }
+
+    function floatSub(a, b, numberOfDecimals){
+        return (parseFloat(a) - parseFloat(b)).toFixed(numberOfDecimals);
+    }
+    
 </script>

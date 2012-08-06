@@ -1,0 +1,83 @@
+﻿@model SMCLCore.Domain.Model.SignalAppliance
+
+@{
+    ViewBag.Title = "Señales por equipo - Detalles";
+}
+
+<table id="no_css" width="100%">
+    <tr>
+        <td>
+            <div class="titlejQGrid">Detalles</div>
+        </td>
+        <td style="text-align: right;">
+            <a href="../Index">
+                <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+            </a>
+            <span>&nbsp;Regresar...</span>
+        </td>
+    </tr>
+</table>
+
+<fieldset>
+    <legend>Señales por equipo</legend>
+
+    <table id="no_css" width="80%">
+        <tr>
+            <td>
+                <div class="display-label">Señal</div>
+                <div class="display-field">
+                    @Html.Display("SignalName")
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Set Point</div>
+                <div class="display-field">
+                    @Html.Display("SetPoint")
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Und Medida</div>
+                <div class="display-field">
+                    @Html.Display("MeasureUnit")
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">Equipo</div>
+                <div class="display-field">
+                    @Html.Display("ApplianceName")
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Tolerancia</div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Tolerance)
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Vr. par&aacute;metro alto</div>
+                <div class="display-field">
+                    @Html.Display("HighValue")
+                </div>
+            </td>
+            <td>
+                <div class="display-label">Vr. par&aacute;metro bajo</div>
+                <div class="display-field">
+                    @Html.Display("LowValue")
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>                    
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+                    <a href="../Index">
+                        <img src="@Url.Content("~/Content/Images/jnj_reports_go_back.png")" alt="regresar" title="Regresar" border="0" />
+                    </a>
+                    <span>&nbsp;Regresar...</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+</fieldset>

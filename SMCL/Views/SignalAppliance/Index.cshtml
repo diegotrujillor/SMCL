@@ -53,24 +53,25 @@
         grid.jqGrid({
             datastr: jsonData,
             datatype: 'jsonstring',
-            colNames: ['Id', 'Aplicación', 'Señal', 'Tipo de Alarma', 'Valor', '', '', ''],
+            colNames: ['Equipo', 'Señal', 'SetPoint', 'Tolerancia (+/-)', 'Vr. parámetro alto', 'Vr. parámetro bajo', '', '', ''],
             colModel: [
-                { name: 'CSA_ID', index: 'CSA_ID', hidden: true, align: 'left' },
-                { name: 'APP_NAME', index: 'APP_NAME', width: 150, align: 'left' },
-                { name: 'SIG_NAME', index: 'SIG_NAME', width: 80, align: 'left' },
-                { name: 'ALA_TYP_NAME', index: 'ALA_TYP_NAME', width: 80, align: 'left' },          
-                { name: 'CSA_VALUE', index: 'CSA_VALUE', width: 150, align: 'left' }, 
-                { name: 'edit', width: 10, sortable: false, search: false,
+                { name: 'APP_NAME', index: 'APP_NAME', width: 25, align: 'left' },
+                { name: 'SIG_NAME', index: 'SIG_NAME', width: 20, align: 'left' },
+                { name: 'SET_POINT', index: 'SET_POINT', width: 10, align: 'center' },          
+                { name: 'TOLERANCE', index: 'TOLERANCE', width: 10, align: 'center' }, 
+                { name: 'HIGH_VALUE', index: 'HIGH_VALUE', width: 10, align: 'center' }, 
+                { name: 'LOW_VALUE', index: 'LOW_VALUE', width: 10, align: 'center' }, 
+                { name: 'edit', width: 5, sortable: false, search: false,
                 formatter: function (cell, options, row) {
                         return "<div style='text-align: center;'><a href='@Url.Action("Edit", new { })/"+options.rowId+"'><img src='../Content/Images/3edit.png' alt='edit' title='Editar registro' border='0' /></a></div>"
                     }
                 },
-                { name: 'del', width: 10, sortable: false, search: false,
+                { name: 'del', width: 5, sortable: false, search: false,
                     formatter: function (cell, options, row) {
                         return "<div style='text-align: center;'><a href='@Url.Action("Delete", new { })/"+options.rowId+"'><img src='../Content/Images/2delete.png' alt='delete' title='Eliminar registro' border='0' /></a></div>"
                     } 
                 },
-                { name: 'details', width: 10, sortable: false, search: false,
+                { name: 'details', width: 5, sortable: false, search: false,
                     formatter: function (cell, options, row) {
                         return "<div style='text-align: center;'><a href='@Url.Action("Details", new { })/"+options.rowId+"'><img src='../Content/Images/5details.png' alt='details' title='Ver detalles' border='0' /></a></div>"
                     } 
@@ -80,7 +81,7 @@
             rowNum: 10,
             autowidth: true,
             rowList: [5, 10, 20, 50],
-            sortname: 'CSA_ID',
+            sortname: 'APP_NAME',
             sortorder: "asc",
             viewrecords: true,
             gridview: true,

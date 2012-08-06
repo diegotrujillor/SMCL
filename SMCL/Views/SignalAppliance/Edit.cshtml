@@ -19,7 +19,7 @@
 </table>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.numeric.js")" type="text/javascript"></script>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="editor-field">
-                        @Html.TextBox("Tolerance", null, new { style = "width: 80%;" })
+                        @Html.TextBox("Tolerance", null, new { style = "width: 80%;", @class = "positive", maxlength = 7 })
                     </div>
                 </td>
                 <td>
@@ -124,15 +124,41 @@
 }
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(function () {
         getMeasureUnit(document.getElementById("SignalId").value);
-    });
-    $("#SignalId").change(function () {
-        getMeasureUnit($(this).val().toString());
-    });
-</script>
 
-<script type="text/javascript">
+        $("#SetPoint").keyup(function(){
+            if(notANumber($(this).val()) || notANumber($("#Tolerance").val())){
+                $("input[name=highAlarm]").val("");
+                $("input[name=lowAlarm]").val("");
+            }else{
+                var setPoint = strToFloat($(this).val(), 2);
+                var tolerance = strToFloat($("#Tolerance").val(), 2);
+                $("input[name=highAlarm]").val(floatSum(setPoint, tolerance, 2));
+                $("input[name=lowAlarm]").val(floatSub(setPoint, tolerance, 2));
+            }
+        });
+        
+        $("#Tolerance").keyup(function(){
+            if(notANumber($(this).val()) || notANumber($("#SetPoint").val())){
+                $("input[name=highAlarm]").val("");
+                $("input[name=lowAlarm]").val("");
+            }else{
+                var setPoint = strToFloat($("#SetPoint").val(), 2);
+                var tolerance = strToFloat($(this).val(), 2);
+                $("input[name=highAlarm]").val(floatSum(setPoint, tolerance, 2));
+                $("input[name=lowAlarm]").val(floatSub(setPoint, tolerance, 2));
+            }
+        });
+        
+        $("#SignalId").change(function () {
+            getMeasureUnit($(this).val().toString());
+        });
+
+        $(".positive").numeric({ negative: true }, function () { alert("N/A"); this.value = ""; this.focus(); });
+
+    });
+
     function getMeasureUnit(signalId) {
         var diffPresure = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["DifferentialPressure"]));
         var temperature = @Html.Raw(Json.Encode(System.Configuration.ConfigurationManager.AppSettings["Temperature"]));
@@ -156,8 +182,20 @@
                 break;
         }
     }
-</script>
 
-<script type="text/javascript">
-    $(".positive").numeric({ negative: true }, function () { alert("N/A"); this.value = ""; this.focus(); });
+    function notANumber(value){
+        return value == null || value == "" || value.match(/^\d+([\.,]\d+)?$/g) == null;
+    }
+
+    function strToFloat(value, numberOfDecimals){
+        return parseFloat(value.replace(/,/g, ".")).toFixed(numberOfDecimals);
+    }
+
+    function floatSum(a, b, numberOfDecimals){
+        return (parseFloat(a) + parseFloat(b)).toFixed(numberOfDecimals);
+    }
+
+    function floatSub(a, b, numberOfDecimals){
+        return (parseFloat(a) - parseFloat(b)).toFixed(numberOfDecimals);
+    }
 </script>
