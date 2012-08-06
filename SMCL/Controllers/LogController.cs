@@ -45,21 +45,23 @@ namespace SMCL.Controllers
             var totalRecords = db.GetAll().Count;
             var totalPages = (totalRecords + pageSize - 1) / pageSize;
 
-            var questions = db.GetAll().OrderBy(o => o.DateTime).Skip(pageIndex * pageSize);//.Take(pageSize);
+            var logs = db.GetAll().OrderBy(o => o.DateTime).Skip(pageIndex * pageSize);//.Take(pageSize);
 
-            var questionDatas = (from question in questions
-                                 select new { question.Id, question.DateTime, question.Text }).OrderBy(o => o.Id).ToList();
+            var result = (from log in logs
+                          join ev in dbE.GetAll() on log.Event.Id equals ev.Id
+                          join u in dbU.GetAll() on log.User.Id equals u.Id
+                          select new { log.Id, log.DateTime, EventName = ev.Name, log.Text, User = u.FirstName + " " + u.LastName1 + "(" + u.LoginEmail + ")"}).OrderBy(o => o.Id).ToList();
 
             var jsonData = new
             {
                 total = totalPages,
                 page,
                 records = totalRecords,
-                rows = (from question in questionDatas
+                rows = (from log in result
                         select new
                         {
-                            id = question.Id,
-                            cell = new[] { question.Id.ToString(), question.DateTime.ToString(), question.Text }
+                            id = log.Id,
+                            cell = new[] { log.Id.ToString(), log.DateTime.ToString(), log.EventName, log.Text, log.User }
                         }).ToList()
             };
             return Json(jsonData);

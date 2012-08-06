@@ -45,11 +45,13 @@
         grid.jqGrid({
             datastr: jsonData,
             datatype: 'jsonstring',
-            colNames: ['Id', 'Fecha', 'Texto', ''],
+            colNames: ['Id', 'Fecha', 'Texto', 'Evento', 'Usuario', ''],
             colModel: [
                 { name: 'LOG_ID', index: 'LOG_ID', hidden: true, align: 'left' },
-                { name: 'LOG_DATE', index: 'LOG_DATE', width: 80, align: 'left' },
-                { name: 'LOG_TEXT', index: 'LOG_TEXT', width: 150, align: 'left' },                
+                { name: 'LOG_DATE', index: 'LOG_DATE', width: 15, align: 'left' },
+                { name: 'LOG_TEXT', index: 'LOG_TEXT', width: 15, align: 'left' },                
+                { name: 'LOG_EVENT', index: 'LOG_EVENT', width: 40, align: 'left' },
+                { name: 'LOG_USER', index: 'LOG_USER', width: 20, align: 'left' },
                 { name: 'details', width: 10, sortable: false, search: false,
                     formatter: function (cell, options, row) {
                         return "<div style='text-align: center;'><a href='@Url.Action("Details", new { })/"+options.rowId+"'><img src='../Content/Images/5details.png' alt='details' title='Ver detalles' border='0' /></a></div>"
