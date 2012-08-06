@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DataSetMonitoring" targetNamespace="http://tempuri.org/DataSetMonitoring.xsd" xmlns:mstns="http://tempuri.org/DataSetMonitoring.xsd" xmlns="http://tempuri.org/DataSetMonitoring.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="DataSetReporting" targetNamespace="http://tempuri.org/DataSetReporting.xsd" xmlns:mstns="http://tempuri.org/DataSetReporting.xsd" xmlns="http://tempuri.org/DataSetReporting.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SMCL_GET_SIGNALS_DATATableAdapter" GeneratorDataComponentClassName="SMCL_GET_SIGNALS_DATATableAdapter" Name="SMCL_GET_SIGNALS_DATA" UserDataComponentName="SMCL_GET_SIGNALS_DATATableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ReportsMonitoringData (Web.config)" DbObjectName="SANPRO.SMCL_GET_SIGNALS_DATA" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ReportsMonitoringData (Web.config)" DbObjectName="SANPRO.SMCL_GET_SIGNALS_DATA" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>SANPRO.SMCL_GET_SIGNALS_DATA</CommandText>
@@ -43,7 +43,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DataSetMonitoring" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetMonitoring" msprop:Generator_UserDSName="DataSetMonitoring">
+  <xs:element name="DataSetReporting" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetReporting" msprop:Generator_UserDSName="DataSetReporting">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="SMCL_GET_SIGNALS_DATA" msprop:Generator_TableClassName="SMCL_GET_SIGNALS_DATADataTable" msprop:Generator_TableVarName="tableSMCL_GET_SIGNALS_DATA" msprop:Generator_TablePropName="SMCL_GET_SIGNALS_DATA" msprop:Generator_RowDeletingName="SMCL_GET_SIGNALS_DATARowDeleting" msprop:Generator_UserTableName="SMCL_GET_SIGNALS_DATA" msprop:Generator_RowChangingName="SMCL_GET_SIGNALS_DATARowChanging" msprop:Generator_RowEvHandlerName="SMCL_GET_SIGNALS_DATARowChangeEventHandler" msprop:Generator_RowDeletedName="SMCL_GET_SIGNALS_DATARowDeleted" msprop:Generator_RowEvArgName="SMCL_GET_SIGNALS_DATARowChangeEvent" msprop:Generator_RowChangedName="SMCL_GET_SIGNALS_DATARowChanged" msprop:Generator_RowClassName="SMCL_GET_SIGNALS_DATARow">

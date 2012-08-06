@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SMCL.Models {
+namespace SMCL {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace SMCL.Models {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSetMonitoring")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetReporting")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSetMonitoring : global::System.Data.DataSet {
+    public partial class DataSetReporting : global::System.Data.DataSet {
         
         private SMCL_GET_SIGNALS_DATADataTable tableSMCL_GET_SIGNALS_DATA;
         
@@ -30,7 +30,7 @@ namespace SMCL.Models {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DataSetMonitoring() {
+        public DataSetReporting() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace SMCL.Models {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected DataSetMonitoring(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetReporting(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace SMCL.Models {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSetMonitoring cln = ((DataSetMonitoring)(base.Clone()));
+            DataSetReporting cln = ((DataSetReporting)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace SMCL.Models {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSetMonitoring";
+            this.DataSetName = "DataSetReporting";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSetMonitoring.xsd";
+            this.Namespace = "http://tempuri.org/DataSetReporting.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableSMCL_GET_SIGNALS_DATA = new SMCL_GET_SIGNALS_DATADataTable();
@@ -225,7 +225,7 @@ namespace SMCL.Models {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSetMonitoring ds = new DataSetMonitoring();
+            DataSetReporting ds = new DataSetReporting();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -554,7 +554,7 @@ namespace SMCL.Models {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetMonitoring ds = new DataSetMonitoring();
+                DataSetReporting ds = new DataSetReporting();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -776,7 +776,7 @@ namespace SMCL.Models {
         }
     }
 }
-namespace SMCL.Models.DataSetMonitoringTableAdapters {
+namespace SMCL.DataSetReportingTableAdapters {
     
     
     /// <summary>
@@ -986,7 +986,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetMonitoring.SMCL_GET_SIGNALS_DATADataTable dataTable, global::System.Nullable<decimal> ALARM_PARAM, global::System.Nullable<decimal> SIGNAL_PARAM, global::System.Nullable<decimal> APPLIANCE_PARAM, global::System.Nullable<decimal> AREA_PARAM, string INIT_DATE_PARAM, string END_DATE_PARAM, global::System.Nullable<decimal> ALARM_TYPE_EXCLUSION, out object RESULTADO_C) {
+        public virtual int Fill(DataSetReporting.SMCL_GET_SIGNALS_DATADataTable dataTable, global::System.Nullable<decimal> ALARM_PARAM, global::System.Nullable<decimal> SIGNAL_PARAM, global::System.Nullable<decimal> APPLIANCE_PARAM, global::System.Nullable<decimal> AREA_PARAM, string INIT_DATE_PARAM, string END_DATE_PARAM, global::System.Nullable<decimal> ALARM_TYPE_EXCLUSION, out object RESULTADO_C) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((ALARM_PARAM.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(ALARM_PARAM.Value));
@@ -1048,7 +1048,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetMonitoring.SMCL_GET_SIGNALS_DATADataTable GetData(global::System.Nullable<decimal> ALARM_PARAM, global::System.Nullable<decimal> SIGNAL_PARAM, global::System.Nullable<decimal> APPLIANCE_PARAM, global::System.Nullable<decimal> AREA_PARAM, string INIT_DATE_PARAM, string END_DATE_PARAM, global::System.Nullable<decimal> ALARM_TYPE_EXCLUSION, out object RESULTADO_C) {
+        public virtual DataSetReporting.SMCL_GET_SIGNALS_DATADataTable GetData(global::System.Nullable<decimal> ALARM_PARAM, global::System.Nullable<decimal> SIGNAL_PARAM, global::System.Nullable<decimal> APPLIANCE_PARAM, global::System.Nullable<decimal> AREA_PARAM, string INIT_DATE_PARAM, string END_DATE_PARAM, global::System.Nullable<decimal> ALARM_TYPE_EXCLUSION, out object RESULTADO_C) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((ALARM_PARAM.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(ALARM_PARAM.Value));
@@ -1092,7 +1092,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            DataSetMonitoring.SMCL_GET_SIGNALS_DATADataTable dataTable = new DataSetMonitoring.SMCL_GET_SIGNALS_DATADataTable();
+            DataSetReporting.SMCL_GET_SIGNALS_DATADataTable dataTable = new DataSetReporting.SMCL_GET_SIGNALS_DATADataTable();
             this.Adapter.Fill(dataTable);
             if (((this.Adapter.SelectCommand.Parameters[7].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[7].Value.GetType() == typeof(global::System.DBNull)))) {
@@ -1173,7 +1173,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(DataSetMonitoring dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSetReporting dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1183,7 +1183,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(DataSetMonitoring dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSetReporting dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1193,7 +1193,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(DataSetMonitoring dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSetReporting dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1227,7 +1227,7 @@ namespace SMCL.Models.DataSetMonitoringTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(DataSetMonitoring dataSet) {
+        public virtual int UpdateAll(DataSetReporting dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

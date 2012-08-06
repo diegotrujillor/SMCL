@@ -157,6 +157,7 @@ namespace SMCL.Extensions.Containers
                 {
                     Dictionary<string, object> propertiesSA = new Dictionary<string, object>();
                     propertiesSA.Add("SignalAppliance.Id", signalAppliance.Id);
+                    propertiesSA.Add("AlarmType.Id", int.Parse(ConfigurationManager.AppSettings["NormalAlarmId"]));
                     IList<SignalApplianceValue> signalApplianceValueList = dbSAV.GetByProperties(propertiesSA);
 
                     foreach (var signalApplianceValue in signalApplianceValueList.OrderByDescending(o => o.Value))
@@ -164,14 +165,17 @@ namespace SMCL.Extensions.Containers
                         if (signalAppliance.Signal.Id == SMCLSignals.DifferentialPressure)
                         {
                             arrayDiffPressureParam.Add(signalApplianceValue.Value);
+                            arrayDiffPressureParam.Add(signalAppliance.Tolerance);
                         }
                         if (signalAppliance.Signal.Id == SMCLSignals.Temperature)
                         {
                             arrayTemperatureParam.Add(signalApplianceValue.Value);
+                            arrayTemperatureParam.Add(signalAppliance.Tolerance);
                         }
                         if (signalAppliance.Signal.Id == SMCLSignals.RH)
                         {
                             arrayRHParam.Add(signalApplianceValue.Value);
+                            arrayRHParam.Add(signalAppliance.Tolerance);
                         }
                     }
                 }

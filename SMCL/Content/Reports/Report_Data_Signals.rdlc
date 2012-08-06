@@ -46,12 +46,12 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSetMonitoring</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Administrador\Documents\Visual Studio 2010\Projects\SMCL\SMCL\DataSetMonitoring.xsd</rd:SchemaPath>
-        <rd:TableName>GET_SIGNALS_DATA</rd:TableName>
+        <rd:DataSetName>DataSetReporting</rd:DataSetName>
+        <rd:SchemaPath>C:\Documents and Settings\Administrator\My Documents\Visual Studio 2010\Projects\SMCL\SMCL\DataSetReporting.xsd</rd:SchemaPath>
+        <rd:TableName>SMCL_GET_SIGNALS_DATA</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>GET_SIGNALS_DATATableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>SMCL_GET_SIGNALS_DATATableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -488,7 +488,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!MON_VALUE.Value</Value>
+                              <Value>=FormatNumber(Fields!MON_VALUE.Value, 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -496,7 +496,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>MON_VALUE1</rd:DefaultName>
@@ -703,7 +705,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!MON_VALUE.Value)</Value>
+                              <Value>=FormatNumber(Sum(Fields!MON_VALUE.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -711,7 +713,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox21</rd:DefaultName>
@@ -958,7 +962,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Reporte de  Monitoreo  de Señales</Value>
+                  <Value>Reporte de Alarmas</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                     <Color>Blue</Color>

@@ -45,6 +45,7 @@
 </head>
 <body>
     <form id="formReportingData" runat="server" class="report_form1">
+        <input id="alarmTypeExclusionId" name="alarmTypeExclusionId" runat="server" type="hidden" />
         <table id="no_css" style="width: 100%; table-layout: fixed;">
             <tr>
                 <td style="width: 25%">
@@ -213,6 +214,8 @@
                                 Name="INIT_DATE_PARAM" PropertyName="Value" Type="String" />
                             <asp:ControlParameter ControlID="finalDate" DefaultValue="0" 
                                 Name="END_DATE_PARAM" PropertyName="Value" Type="String" />
+                            <asp:ControlParameter ControlID="alarmTypeExclusionId" DefaultValue="0" 
+                                Name="ALARM_TYPE_EXCLUSION" PropertyName="Value" Type="Decimal" />
                             <asp:Parameter Direction="Output" Name="RESULTADO_C" Type="Object" />
                         </SelectParameters>
                     </asp:ObjectDataSource>
