@@ -146,19 +146,86 @@ namespace SMCL.Tests
             IRepository<Signal> dbS = new SignalRepository();
             IRepository<Appliance> dbApp = new ApplianceRepository();
             IRepository<SignalApplianceValue> dbSAppV = new SignalApplianceValueRepository();
-            IRepository<AlarmType> dbA = new AlarmTypeRepository();
+            IRepository<AlarmType> dbAT = new AlarmTypeRepository();
+            IRepository<Area> dbA = new AreaRepository();
+            
+            Area area = new Area();
+            area = dbA.GetById(1);
+            AlarmType normalAlarm = new AlarmType();
+            normalAlarm = dbAT.GetById(1);
+            AlarmType highAlarm = new AlarmType();
+            highAlarm = dbAT.GetById(2);
+            AlarmType lowAlarm = new AlarmType();
+            lowAlarm = dbAT.GetById(3);
 
-            var signalAppliances = from sa in dbSA.GetAll()
+            Signal signal = new Signal();
+            signal.Name = "PruebaSenal";
+            signal.Description = "Prueba descriptiva senal";
+
+            dbS.Save(signal);
+
+            Appliance appliance = new Appliance();
+            appliance.NameAppliance = "PruebaAppliance";
+            appliance.Description = "Prueba descriptiva appliance";
+            appliance.Area = area;
+
+            SignalAppliance signalAppliance = new SignalAppliance();
+            signalAppliance.Signal = signal;
+            signalAppliance.Appliance = appliance;
+            signalAppliance.Tolerance = SIGNAL_APPLIANCE_TOLERANCE;
+
+            appliance.Signals.Add(signalAppliance);
+
+            SignalApplianceValue normalValue = new SignalApplianceValue();
+            normalValue.AlarmType = normalAlarm;
+            normalValue.SignalAppliance = signalAppliance;
+            normalValue.Value = SIGNAL_APPLIANCE_SET_POINT;
+
+            SignalApplianceValue highValue = new SignalApplianceValue();
+            highValue.AlarmType = highAlarm;
+            highValue.SignalAppliance = signalAppliance;
+            highValue.Value = SIGNAL_APPLIANCE_SET_POINT + SIGNAL_APPLIANCE_TOLERANCE;
+
+            SignalApplianceValue lowValue = new SignalApplianceValue();
+            lowValue.AlarmType = lowAlarm;
+            lowValue.SignalAppliance = signalAppliance;
+            lowValue.Value = SIGNAL_APPLIANCE_SET_POINT - SIGNAL_APPLIANCE_TOLERANCE;
+
+            signalAppliance.SignalApplianceValues.Add(normalValue);
+            signalAppliance.SignalApplianceValues.Add(highValue);
+            signalAppliance.SignalApplianceValues.Add(lowValue);
+
+            dbApp.Save(appliance);
+
+            var result = from sa in dbSA.GetAll()
                                    join s in dbS.GetAll() on sa.Signal.Id equals s.Id
                                    join app in dbApp.GetAll() on sa.Appliance.Id equals app.Id
                                    join sapv in dbSAppV.GetAll() on sa.Id equals sapv.SignalAppliance.Id
-                                   join a in dbA.GetAll() on sapv.AlarmType.Id equals a.Id
-                                   where sa.Id.ToString().Equals("37d8e6dd-94a9-4ce8-9956-a0a100ffa9fb")
-                                   select new { sa.Id, app.NameAppliance, s.Name, sa.Tolerance, a.NameAlarmType, sapv.Value};
+                                   join a in dbAT.GetAll() on sapv.AlarmType.Id equals a.Id
+                                   where sa.Id.Equals(signalAppliance.Id)
+                                   group new {a.Id, a.NameAlarmType, sapv.Value } by new {sa.Id, app.NameAppliance, s.Name, sa.Tolerance} into g
+                         select new { signalAppliance = g.Key, setPoint = from v in g where v.Id == 1 select v.Value, highValue = from v in g where v.Id == 2 select v.Value, lowValue = from v in g where v.Id == 3 select v.Value };
 
-            ObjectDumper.Write(signalAppliances);
+            foreach (var sa in result)
+            {
+                Assert.AreEqual(sa.signalAppliance.Id, signalAppliance.Id);
+                ObjectDumper.Write(sa.setPoint);
+                Assert.AreEqual(normalValue.Value, sa.setPoint.ElementAtOrDefault(0));
+                ObjectDumper.Write(sa.highValue);
+                Assert.AreEqual(highValue.Value, sa.highValue.ElementAtOrDefault(0));
+                ObjectDumper.Write(sa.lowValue);
+                Assert.AreEqual(lowValue.Value, sa.lowValue.ElementAtOrDefault(0));
+            }
 
-            Console.WriteLine("*******************");
+            dbSAppV.Delete(normalValue.Id);
+            dbSAppV.Delete(highValue.Id);
+            dbSAppV.Delete(lowValue.Id);
+
+            dbSA.Delete(signalAppliance.Id);
+
+            dbApp.Delete(appliance.Id);
+
+            dbS.Delete(signal.Id);
         }
     }
 }
