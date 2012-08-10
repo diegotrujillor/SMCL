@@ -26,6 +26,8 @@ namespace SMCL {
         
         private SMCL_GET_SIGNALS_DATADataTable tableSMCL_GET_SIGNALS_DATA;
         
+        private SMCL_GET_SIGNALS_DATA_GRAPHICDataTable tableSMCL_GET_SIGNALS_DATA_GRAPHIC;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace SMCL {
                 if ((ds.Tables["SMCL_GET_SIGNALS_DATA"] != null)) {
                     base.Tables.Add(new SMCL_GET_SIGNALS_DATADataTable(ds.Tables["SMCL_GET_SIGNALS_DATA"]));
                 }
+                if ((ds.Tables["SMCL_GET_SIGNALS_DATA_GRAPHIC"] != null)) {
+                    base.Tables.Add(new SMCL_GET_SIGNALS_DATA_GRAPHICDataTable(ds.Tables["SMCL_GET_SIGNALS_DATA_GRAPHIC"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace SMCL {
         public SMCL_GET_SIGNALS_DATADataTable SMCL_GET_SIGNALS_DATA {
             get {
                 return this.tableSMCL_GET_SIGNALS_DATA;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public SMCL_GET_SIGNALS_DATA_GRAPHICDataTable SMCL_GET_SIGNALS_DATA_GRAPHIC {
+            get {
+                return this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC;
             }
         }
         
@@ -155,6 +170,9 @@ namespace SMCL {
                 if ((ds.Tables["SMCL_GET_SIGNALS_DATA"] != null)) {
                     base.Tables.Add(new SMCL_GET_SIGNALS_DATADataTable(ds.Tables["SMCL_GET_SIGNALS_DATA"]));
                 }
+                if ((ds.Tables["SMCL_GET_SIGNALS_DATA_GRAPHIC"] != null)) {
+                    base.Tables.Add(new SMCL_GET_SIGNALS_DATA_GRAPHICDataTable(ds.Tables["SMCL_GET_SIGNALS_DATA_GRAPHIC"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace SMCL {
                     this.tableSMCL_GET_SIGNALS_DATA.InitVars();
                 }
             }
+            this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC = ((SMCL_GET_SIGNALS_DATA_GRAPHICDataTable)(base.Tables["SMCL_GET_SIGNALS_DATA_GRAPHIC"]));
+            if ((initTable == true)) {
+                if ((this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC != null)) {
+                    this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace SMCL {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableSMCL_GET_SIGNALS_DATA = new SMCL_GET_SIGNALS_DATADataTable();
             base.Tables.Add(this.tableSMCL_GET_SIGNALS_DATA);
+            this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC = new SMCL_GET_SIGNALS_DATA_GRAPHICDataTable();
+            base.Tables.Add(this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeSMCL_GET_SIGNALS_DATA() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeSMCL_GET_SIGNALS_DATA_GRAPHIC() {
             return false;
         }
         
@@ -272,6 +304,9 @@ namespace SMCL {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void SMCL_GET_SIGNALS_DATARowChangeEventHandler(object sender, SMCL_GET_SIGNALS_DATARowChangeEvent e);
         
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEventHandler(object sender, SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent e);
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -283,15 +318,29 @@ namespace SMCL {
             
             private global::System.Data.DataColumn columnARE_NAME;
             
-            private global::System.Data.DataColumn columnAPP_NAME;
-            
             private global::System.Data.DataColumn columnSIG_NAME;
             
             private global::System.Data.DataColumn columnALA_TYP_NAME;
             
-            private global::System.Data.DataColumn columnMON_COMMENTS_ON_ALARM;
+            private global::System.Data.DataColumn columnMON_COMMENT_ON_ALARM;
+            
+            private global::System.Data.DataColumn columnAPP_NAME;
             
             private global::System.Data.DataColumn columnMON_VALUE;
+            
+            private global::System.Data.DataColumn columnUSERNAME;
+            
+            private global::System.Data.DataColumn columnPRESSURE_SETPOINT;
+            
+            private global::System.Data.DataColumn columnPRESSURE_TOLERANCE;
+            
+            private global::System.Data.DataColumn columnTEMPERATURE_SETPOINT;
+            
+            private global::System.Data.DataColumn columnTEMPERATURE_TOLERANCE;
+            
+            private global::System.Data.DataColumn columnHUMIDITY_SETPOINT;
+            
+            private global::System.Data.DataColumn columnHUMIDITY_TOLERANCE;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -344,14 +393,6 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn APP_NAMEColumn {
-                get {
-                    return this.columnAPP_NAME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn SIG_NAMEColumn {
                 get {
                     return this.columnSIG_NAME;
@@ -368,9 +409,17 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MON_COMMENTS_ON_ALARMColumn {
+            public global::System.Data.DataColumn MON_COMMENT_ON_ALARMColumn {
                 get {
-                    return this.columnMON_COMMENTS_ON_ALARM;
+                    return this.columnMON_COMMENT_ON_ALARM;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn APP_NAMEColumn {
+                get {
+                    return this.columnAPP_NAME;
                 }
             }
             
@@ -379,6 +428,62 @@ namespace SMCL {
             public global::System.Data.DataColumn MON_VALUEColumn {
                 get {
                     return this.columnMON_VALUE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn USERNAMEColumn {
+                get {
+                    return this.columnUSERNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PRESSURE_SETPOINTColumn {
+                get {
+                    return this.columnPRESSURE_SETPOINT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PRESSURE_TOLERANCEColumn {
+                get {
+                    return this.columnPRESSURE_TOLERANCE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TEMPERATURE_SETPOINTColumn {
+                get {
+                    return this.columnTEMPERATURE_SETPOINT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TEMPERATURE_TOLERANCEColumn {
+                get {
+                    return this.columnTEMPERATURE_TOLERANCE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HUMIDITY_SETPOINTColumn {
+                get {
+                    return this.columnHUMIDITY_SETPOINT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HUMIDITY_TOLERANCEColumn {
+                get {
+                    return this.columnHUMIDITY_TOLERANCE;
                 }
             }
             
@@ -419,16 +524,23 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SMCL_GET_SIGNALS_DATARow AddSMCL_GET_SIGNALS_DATARow(System.DateTime MON_DATETIME, string ARE_NAME, string APP_NAME, string SIG_NAME, string ALA_TYP_NAME, string MON_COMMENTS_ON_ALARM, double MON_VALUE) {
+            public SMCL_GET_SIGNALS_DATARow AddSMCL_GET_SIGNALS_DATARow(string MON_DATETIME, string ARE_NAME, string SIG_NAME, string ALA_TYP_NAME, string MON_COMMENT_ON_ALARM, string APP_NAME, decimal MON_VALUE, string USERNAME, string PRESSURE_SETPOINT, string PRESSURE_TOLERANCE, string TEMPERATURE_SETPOINT, string TEMPERATURE_TOLERANCE, string HUMIDITY_SETPOINT, string HUMIDITY_TOLERANCE) {
                 SMCL_GET_SIGNALS_DATARow rowSMCL_GET_SIGNALS_DATARow = ((SMCL_GET_SIGNALS_DATARow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MON_DATETIME,
                         ARE_NAME,
-                        APP_NAME,
                         SIG_NAME,
                         ALA_TYP_NAME,
-                        MON_COMMENTS_ON_ALARM,
-                        MON_VALUE};
+                        MON_COMMENT_ON_ALARM,
+                        APP_NAME,
+                        MON_VALUE,
+                        USERNAME,
+                        PRESSURE_SETPOINT,
+                        PRESSURE_TOLERANCE,
+                        TEMPERATURE_SETPOINT,
+                        TEMPERATURE_TOLERANCE,
+                        HUMIDITY_SETPOINT,
+                        HUMIDITY_TOLERANCE};
                 rowSMCL_GET_SIGNALS_DATARow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSMCL_GET_SIGNALS_DATARow);
                 return rowSMCL_GET_SIGNALS_DATARow;
@@ -453,40 +565,67 @@ namespace SMCL {
             internal void InitVars() {
                 this.columnMON_DATETIME = base.Columns["MON_DATETIME"];
                 this.columnARE_NAME = base.Columns["ARE_NAME"];
-                this.columnAPP_NAME = base.Columns["APP_NAME"];
                 this.columnSIG_NAME = base.Columns["SIG_NAME"];
                 this.columnALA_TYP_NAME = base.Columns["ALA_TYP_NAME"];
-                this.columnMON_COMMENTS_ON_ALARM = base.Columns["MON_COMMENTS_ON_ALARM"];
+                this.columnMON_COMMENT_ON_ALARM = base.Columns["MON_COMMENT_ON_ALARM"];
+                this.columnAPP_NAME = base.Columns["APP_NAME"];
                 this.columnMON_VALUE = base.Columns["MON_VALUE"];
+                this.columnUSERNAME = base.Columns["USERNAME"];
+                this.columnPRESSURE_SETPOINT = base.Columns["PRESSURE_SETPOINT"];
+                this.columnPRESSURE_TOLERANCE = base.Columns["PRESSURE_TOLERANCE"];
+                this.columnTEMPERATURE_SETPOINT = base.Columns["TEMPERATURE_SETPOINT"];
+                this.columnTEMPERATURE_TOLERANCE = base.Columns["TEMPERATURE_TOLERANCE"];
+                this.columnHUMIDITY_SETPOINT = base.Columns["HUMIDITY_SETPOINT"];
+                this.columnHUMIDITY_TOLERANCE = base.Columns["HUMIDITY_TOLERANCE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnMON_DATETIME = new global::System.Data.DataColumn("MON_DATETIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnMON_DATETIME = new global::System.Data.DataColumn("MON_DATETIME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMON_DATETIME);
                 this.columnARE_NAME = new global::System.Data.DataColumn("ARE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnARE_NAME);
-                this.columnAPP_NAME = new global::System.Data.DataColumn("APP_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAPP_NAME);
                 this.columnSIG_NAME = new global::System.Data.DataColumn("SIG_NAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSIG_NAME);
                 this.columnALA_TYP_NAME = new global::System.Data.DataColumn("ALA_TYP_NAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnALA_TYP_NAME);
-                this.columnMON_COMMENTS_ON_ALARM = new global::System.Data.DataColumn("MON_COMMENTS_ON_ALARM", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMON_COMMENTS_ON_ALARM);
-                this.columnMON_VALUE = new global::System.Data.DataColumn("MON_VALUE", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnMON_COMMENT_ON_ALARM = new global::System.Data.DataColumn("MON_COMMENT_ON_ALARM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMON_COMMENT_ON_ALARM);
+                this.columnAPP_NAME = new global::System.Data.DataColumn("APP_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAPP_NAME);
+                this.columnMON_VALUE = new global::System.Data.DataColumn("MON_VALUE", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMON_VALUE);
+                this.columnUSERNAME = new global::System.Data.DataColumn("USERNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUSERNAME);
+                this.columnPRESSURE_SETPOINT = new global::System.Data.DataColumn("PRESSURE_SETPOINT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRESSURE_SETPOINT);
+                this.columnPRESSURE_TOLERANCE = new global::System.Data.DataColumn("PRESSURE_TOLERANCE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRESSURE_TOLERANCE);
+                this.columnTEMPERATURE_SETPOINT = new global::System.Data.DataColumn("TEMPERATURE_SETPOINT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTEMPERATURE_SETPOINT);
+                this.columnTEMPERATURE_TOLERANCE = new global::System.Data.DataColumn("TEMPERATURE_TOLERANCE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTEMPERATURE_TOLERANCE);
+                this.columnHUMIDITY_SETPOINT = new global::System.Data.DataColumn("HUMIDITY_SETPOINT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHUMIDITY_SETPOINT);
+                this.columnHUMIDITY_TOLERANCE = new global::System.Data.DataColumn("HUMIDITY_TOLERANCE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHUMIDITY_TOLERANCE);
+                this.columnMON_DATETIME.MaxLength = 19;
                 this.columnARE_NAME.AllowDBNull = false;
                 this.columnARE_NAME.MaxLength = 80;
-                this.columnAPP_NAME.AllowDBNull = false;
-                this.columnAPP_NAME.MaxLength = 80;
                 this.columnSIG_NAME.AllowDBNull = false;
                 this.columnSIG_NAME.MaxLength = 80;
-                this.columnALA_TYP_NAME.AllowDBNull = false;
-                this.columnALA_TYP_NAME.MaxLength = 80;
-                this.columnMON_COMMENTS_ON_ALARM.MaxLength = 2000;
-                this.columnMON_VALUE.AllowDBNull = false;
+                this.columnALA_TYP_NAME.MaxLength = 11;
+                this.columnMON_COMMENT_ON_ALARM.MaxLength = 4000;
+                this.columnAPP_NAME.AllowDBNull = false;
+                this.columnAPP_NAME.MaxLength = 80;
+                this.columnUSERNAME.MaxLength = 419;
+                this.columnPRESSURE_SETPOINT.MaxLength = 4000;
+                this.columnPRESSURE_TOLERANCE.MaxLength = 4000;
+                this.columnTEMPERATURE_SETPOINT.MaxLength = 4000;
+                this.columnTEMPERATURE_TOLERANCE.MaxLength = 4000;
+                this.columnHUMIDITY_SETPOINT.MaxLength = 4000;
+                this.columnHUMIDITY_TOLERANCE.MaxLength = 4000;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -614,6 +753,347 @@ namespace SMCL {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SMCL_GET_SIGNALS_DATA_GRAPHICDataTable : global::System.Data.TypedTableBase<SMCL_GET_SIGNALS_DATA_GRAPHICRow> {
+            
+            private global::System.Data.DataColumn columnMON_DATETIME;
+            
+            private global::System.Data.DataColumn columnARE_NAME;
+            
+            private global::System.Data.DataColumn columnAPP_NAME;
+            
+            private global::System.Data.DataColumn columnSIG_NAME;
+            
+            private global::System.Data.DataColumn columnALA_TYP_NAME;
+            
+            private global::System.Data.DataColumn columnMON_COMMENTS_ON_ALARM;
+            
+            private global::System.Data.DataColumn columnMON_VALUE;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SMCL_GET_SIGNALS_DATA_GRAPHICDataTable() {
+                this.TableName = "SMCL_GET_SIGNALS_DATA_GRAPHIC";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SMCL_GET_SIGNALS_DATA_GRAPHICDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected SMCL_GET_SIGNALS_DATA_GRAPHICDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MON_DATETIMEColumn {
+                get {
+                    return this.columnMON_DATETIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ARE_NAMEColumn {
+                get {
+                    return this.columnARE_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn APP_NAMEColumn {
+                get {
+                    return this.columnAPP_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SIG_NAMEColumn {
+                get {
+                    return this.columnSIG_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ALA_TYP_NAMEColumn {
+                get {
+                    return this.columnALA_TYP_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MON_COMMENTS_ON_ALARMColumn {
+                get {
+                    return this.columnMON_COMMENTS_ON_ALARM;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MON_VALUEColumn {
+                get {
+                    return this.columnMON_VALUE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SMCL_GET_SIGNALS_DATA_GRAPHICRow this[int index] {
+                get {
+                    return ((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEventHandler SMCL_GET_SIGNALS_DATA_GRAPHICRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEventHandler SMCL_GET_SIGNALS_DATA_GRAPHICRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEventHandler SMCL_GET_SIGNALS_DATA_GRAPHICRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEventHandler SMCL_GET_SIGNALS_DATA_GRAPHICRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddSMCL_GET_SIGNALS_DATA_GRAPHICRow(SMCL_GET_SIGNALS_DATA_GRAPHICRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SMCL_GET_SIGNALS_DATA_GRAPHICRow AddSMCL_GET_SIGNALS_DATA_GRAPHICRow(System.DateTime MON_DATETIME, string ARE_NAME, string APP_NAME, string SIG_NAME, string ALA_TYP_NAME, string MON_COMMENTS_ON_ALARM, double MON_VALUE) {
+                SMCL_GET_SIGNALS_DATA_GRAPHICRow rowSMCL_GET_SIGNALS_DATA_GRAPHICRow = ((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        MON_DATETIME,
+                        ARE_NAME,
+                        APP_NAME,
+                        SIG_NAME,
+                        ALA_TYP_NAME,
+                        MON_COMMENTS_ON_ALARM,
+                        MON_VALUE};
+                rowSMCL_GET_SIGNALS_DATA_GRAPHICRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSMCL_GET_SIGNALS_DATA_GRAPHICRow);
+                return rowSMCL_GET_SIGNALS_DATA_GRAPHICRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SMCL_GET_SIGNALS_DATA_GRAPHICDataTable cln = ((SMCL_GET_SIGNALS_DATA_GRAPHICDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SMCL_GET_SIGNALS_DATA_GRAPHICDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnMON_DATETIME = base.Columns["MON_DATETIME"];
+                this.columnARE_NAME = base.Columns["ARE_NAME"];
+                this.columnAPP_NAME = base.Columns["APP_NAME"];
+                this.columnSIG_NAME = base.Columns["SIG_NAME"];
+                this.columnALA_TYP_NAME = base.Columns["ALA_TYP_NAME"];
+                this.columnMON_COMMENTS_ON_ALARM = base.Columns["MON_COMMENTS_ON_ALARM"];
+                this.columnMON_VALUE = base.Columns["MON_VALUE"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnMON_DATETIME = new global::System.Data.DataColumn("MON_DATETIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMON_DATETIME);
+                this.columnARE_NAME = new global::System.Data.DataColumn("ARE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnARE_NAME);
+                this.columnAPP_NAME = new global::System.Data.DataColumn("APP_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAPP_NAME);
+                this.columnSIG_NAME = new global::System.Data.DataColumn("SIG_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSIG_NAME);
+                this.columnALA_TYP_NAME = new global::System.Data.DataColumn("ALA_TYP_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnALA_TYP_NAME);
+                this.columnMON_COMMENTS_ON_ALARM = new global::System.Data.DataColumn("MON_COMMENTS_ON_ALARM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMON_COMMENTS_ON_ALARM);
+                this.columnMON_VALUE = new global::System.Data.DataColumn("MON_VALUE", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMON_VALUE);
+                this.columnARE_NAME.AllowDBNull = false;
+                this.columnARE_NAME.MaxLength = 80;
+                this.columnAPP_NAME.AllowDBNull = false;
+                this.columnAPP_NAME.MaxLength = 80;
+                this.columnSIG_NAME.AllowDBNull = false;
+                this.columnSIG_NAME.MaxLength = 80;
+                this.columnALA_TYP_NAME.AllowDBNull = false;
+                this.columnALA_TYP_NAME.MaxLength = 80;
+                this.columnMON_COMMENTS_ON_ALARM.MaxLength = 2000;
+                this.columnMON_VALUE.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SMCL_GET_SIGNALS_DATA_GRAPHICRow NewSMCL_GET_SIGNALS_DATA_GRAPHICRow() {
+                return ((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SMCL_GET_SIGNALS_DATA_GRAPHICRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SMCL_GET_SIGNALS_DATA_GRAPHICRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SMCL_GET_SIGNALS_DATA_GRAPHICRowChanged != null)) {
+                    this.SMCL_GET_SIGNALS_DATA_GRAPHICRowChanged(this, new SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent(((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SMCL_GET_SIGNALS_DATA_GRAPHICRowChanging != null)) {
+                    this.SMCL_GET_SIGNALS_DATA_GRAPHICRowChanging(this, new SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent(((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SMCL_GET_SIGNALS_DATA_GRAPHICRowDeleted != null)) {
+                    this.SMCL_GET_SIGNALS_DATA_GRAPHICRowDeleted(this, new SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent(((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SMCL_GET_SIGNALS_DATA_GRAPHICRowDeleting != null)) {
+                    this.SMCL_GET_SIGNALS_DATA_GRAPHICRowDeleting(this, new SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent(((SMCL_GET_SIGNALS_DATA_GRAPHICRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveSMCL_GET_SIGNALS_DATA_GRAPHICRow(SMCL_GET_SIGNALS_DATA_GRAPHICRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetReporting ds = new DataSetReporting();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SMCL_GET_SIGNALS_DATA_GRAPHICDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class SMCL_GET_SIGNALS_DATARow : global::System.Data.DataRow {
@@ -629,10 +1109,10 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime MON_DATETIME {
+            public string MON_DATETIME {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSMCL_GET_SIGNALS_DATA.MON_DATETIMEColumn]));
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.MON_DATETIMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'MON_DATETIME\' de la tabla \'SMCL_GET_SIGNALS_DATA\' es DBNu" +
@@ -657,17 +1137,6 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string APP_NAME {
-                get {
-                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.APP_NAMEColumn]));
-                }
-                set {
-                    this[this.tableSMCL_GET_SIGNALS_DATA.APP_NAMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string SIG_NAME {
                 get {
                     return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.SIG_NAMEColumn]));
@@ -681,7 +1150,13 @@ namespace SMCL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ALA_TYP_NAME {
                 get {
-                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.ALA_TYP_NAMEColumn]));
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.ALA_TYP_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ALA_TYP_NAME\' de la tabla \'SMCL_GET_SIGNALS_DATA\' es DBNu" +
+                                "ll.", e);
+                    }
                 }
                 set {
                     this[this.tableSMCL_GET_SIGNALS_DATA.ALA_TYP_NAMEColumn] = value;
@@ -690,29 +1165,164 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MON_COMMENTS_ON_ALARM {
+            public string MON_COMMENT_ON_ALARM {
                 get {
                     try {
-                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENTS_ON_ALARMColumn]));
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENT_ON_ALARMColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MON_COMMENTS_ON_ALARM\' de la tabla \'SMCL_GET_SIGNALS_DATA" +
-                                "\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MON_COMMENT_ON_ALARM\' de la tabla \'SMCL_GET_SIGNALS_DATA\'" +
+                                " es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENTS_ON_ALARMColumn] = value;
+                    this[this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENT_ON_ALARMColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double MON_VALUE {
+            public string APP_NAME {
                 get {
-                    return ((double)(this[this.tableSMCL_GET_SIGNALS_DATA.MON_VALUEColumn]));
+                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.APP_NAMEColumn]));
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.APP_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal MON_VALUE {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableSMCL_GET_SIGNALS_DATA.MON_VALUEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MON_VALUE\' de la tabla \'SMCL_GET_SIGNALS_DATA\' es DBNull." +
+                                "", e);
+                    }
                 }
                 set {
                     this[this.tableSMCL_GET_SIGNALS_DATA.MON_VALUEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string USERNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.USERNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'USERNAME\' de la tabla \'SMCL_GET_SIGNALS_DATA\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.USERNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PRESSURE_SETPOINT {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_SETPOINTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PRESSURE_SETPOINT\' de la tabla \'SMCL_GET_SIGNALS_DATA\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_SETPOINTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PRESSURE_TOLERANCE {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_TOLERANCEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PRESSURE_TOLERANCE\' de la tabla \'SMCL_GET_SIGNALS_DATA\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_TOLERANCEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TEMPERATURE_SETPOINT {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_SETPOINTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TEMPERATURE_SETPOINT\' de la tabla \'SMCL_GET_SIGNALS_DATA\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_SETPOINTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TEMPERATURE_TOLERANCE {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_TOLERANCEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TEMPERATURE_TOLERANCE\' de la tabla \'SMCL_GET_SIGNALS_DATA" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_TOLERANCEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HUMIDITY_SETPOINT {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_SETPOINTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HUMIDITY_SETPOINT\' de la tabla \'SMCL_GET_SIGNALS_DATA\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_SETPOINTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HUMIDITY_TOLERANCE {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_TOLERANCEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HUMIDITY_TOLERANCE\' de la tabla \'SMCL_GET_SIGNALS_DATA\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_TOLERANCEColumn] = value;
                 }
             }
             
@@ -730,14 +1340,250 @@ namespace SMCL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsALA_TYP_NAMENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.ALA_TYP_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetALA_TYP_NAMENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.ALA_TYP_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMON_COMMENT_ON_ALARMNull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENT_ON_ALARMColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMON_COMMENT_ON_ALARMNull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENT_ON_ALARMColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMON_VALUENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.MON_VALUEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMON_VALUENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.MON_VALUEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUSERNAMENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.USERNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUSERNAMENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.USERNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRESSURE_SETPOINTNull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_SETPOINTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRESSURE_SETPOINTNull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_SETPOINTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRESSURE_TOLERANCENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_TOLERANCEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRESSURE_TOLERANCENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.PRESSURE_TOLERANCEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTEMPERATURE_SETPOINTNull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_SETPOINTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTEMPERATURE_SETPOINTNull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_SETPOINTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTEMPERATURE_TOLERANCENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_TOLERANCEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTEMPERATURE_TOLERANCENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.TEMPERATURE_TOLERANCEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHUMIDITY_SETPOINTNull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_SETPOINTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHUMIDITY_SETPOINTNull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_SETPOINTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHUMIDITY_TOLERANCENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_TOLERANCEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHUMIDITY_TOLERANCENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA.HUMIDITY_TOLERANCEColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SMCL_GET_SIGNALS_DATA_GRAPHICRow : global::System.Data.DataRow {
+            
+            private SMCL_GET_SIGNALS_DATA_GRAPHICDataTable tableSMCL_GET_SIGNALS_DATA_GRAPHIC;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SMCL_GET_SIGNALS_DATA_GRAPHICRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC = ((SMCL_GET_SIGNALS_DATA_GRAPHICDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime MON_DATETIME {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_DATETIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MON_DATETIME\' de la tabla \'SMCL_GET_SIGNALS_DATA_GRAPHIC\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_DATETIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ARE_NAME {
+                get {
+                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.ARE_NAMEColumn]));
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.ARE_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string APP_NAME {
+                get {
+                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.APP_NAMEColumn]));
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.APP_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SIG_NAME {
+                get {
+                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.SIG_NAMEColumn]));
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.SIG_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ALA_TYP_NAME {
+                get {
+                    return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.ALA_TYP_NAMEColumn]));
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.ALA_TYP_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MON_COMMENTS_ON_ALARM {
+                get {
+                    try {
+                        return ((string)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_COMMENTS_ON_ALARMColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MON_COMMENTS_ON_ALARM\' de la tabla \'SMCL_GET_SIGNALS_DATA" +
+                                "_GRAPHIC\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_COMMENTS_ON_ALARMColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double MON_VALUE {
+                get {
+                    return ((double)(this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_VALUEColumn]));
+                }
+                set {
+                    this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_VALUEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMON_DATETIMENull() {
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_DATETIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMON_DATETIMENull() {
+                this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_DATETIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMON_COMMENTS_ON_ALARMNull() {
-                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENTS_ON_ALARMColumn);
+                return this.IsNull(this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_COMMENTS_ON_ALARMColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMON_COMMENTS_ON_ALARMNull() {
-                this[this.tableSMCL_GET_SIGNALS_DATA.MON_COMMENTS_ON_ALARMColumn] = global::System.Convert.DBNull;
+                this[this.tableSMCL_GET_SIGNALS_DATA_GRAPHIC.MON_COMMENTS_ON_ALARMColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -761,6 +1607,40 @@ namespace SMCL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SMCL_GET_SIGNALS_DATARow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent : global::System.EventArgs {
+            
+            private SMCL_GET_SIGNALS_DATA_GRAPHICRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SMCL_GET_SIGNALS_DATA_GRAPHICRowChangeEvent(SMCL_GET_SIGNALS_DATA_GRAPHICRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SMCL_GET_SIGNALS_DATA_GRAPHICRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -902,11 +1782,18 @@ namespace SMCL.DataSetReportingTableAdapters {
             tableMapping.DataSetTable = "SMCL_GET_SIGNALS_DATA";
             tableMapping.ColumnMappings.Add("MON_DATETIME", "MON_DATETIME");
             tableMapping.ColumnMappings.Add("ARE_NAME", "ARE_NAME");
-            tableMapping.ColumnMappings.Add("APP_NAME", "APP_NAME");
             tableMapping.ColumnMappings.Add("SIG_NAME", "SIG_NAME");
             tableMapping.ColumnMappings.Add("ALA_TYP_NAME", "ALA_TYP_NAME");
-            tableMapping.ColumnMappings.Add("MON_COMMENTS_ON_ALARM", "MON_COMMENTS_ON_ALARM");
+            tableMapping.ColumnMappings.Add("MON_COMMENT_ON_ALARM", "MON_COMMENT_ON_ALARM");
+            tableMapping.ColumnMappings.Add("APP_NAME", "APP_NAME");
             tableMapping.ColumnMappings.Add("MON_VALUE", "MON_VALUE");
+            tableMapping.ColumnMappings.Add("USERNAME", "USERNAME");
+            tableMapping.ColumnMappings.Add("PRESSURE_SETPOINT", "PRESSURE_SETPOINT");
+            tableMapping.ColumnMappings.Add("PRESSURE_TOLERANCE", "PRESSURE_TOLERANCE");
+            tableMapping.ColumnMappings.Add("TEMPERATURE_SETPOINT", "TEMPERATURE_SETPOINT");
+            tableMapping.ColumnMappings.Add("TEMPERATURE_TOLERANCE", "TEMPERATURE_TOLERANCE");
+            tableMapping.ColumnMappings.Add("HUMIDITY_SETPOINT", "HUMIDITY_SETPOINT");
+            tableMapping.ColumnMappings.Add("HUMIDITY_TOLERANCE", "HUMIDITY_TOLERANCE");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1100,6 +1987,314 @@ namespace SMCL.DataSetReportingTableAdapters {
             }
             else {
                 RESULTADO_C = ((object)(this.Adapter.SelectCommand.Parameters[7].Value));
+            }
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class SMCL_GET_SIGNALS_DATA_GRAPHICTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Oracle.DataAccess.Client.OracleDataAdapter _adapter;
+        
+        private global::Oracle.DataAccess.Client.OracleConnection _connection;
+        
+        private global::Oracle.DataAccess.Client.OracleTransaction _transaction;
+        
+        private global::Oracle.DataAccess.Client.OracleCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public SMCL_GET_SIGNALS_DATA_GRAPHICTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::Oracle.DataAccess.Client.OracleDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::Oracle.DataAccess.Client.OracleConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Oracle.DataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::Oracle.DataAccess.Client.OracleTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::Oracle.DataAccess.Client.OracleCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Oracle.DataAccess.Client.OracleDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "SMCL_GET_SIGNALS_DATA_GRAPHIC";
+            tableMapping.ColumnMappings.Add("MON_DATETIME", "MON_DATETIME");
+            tableMapping.ColumnMappings.Add("ARE_NAME", "ARE_NAME");
+            tableMapping.ColumnMappings.Add("APP_NAME", "APP_NAME");
+            tableMapping.ColumnMappings.Add("SIG_NAME", "SIG_NAME");
+            tableMapping.ColumnMappings.Add("ALA_TYP_NAME", "ALA_TYP_NAME");
+            tableMapping.ColumnMappings.Add("MON_COMMENTS_ON_ALARM", "MON_COMMENTS_ON_ALARM");
+            tableMapping.ColumnMappings.Add("MON_VALUE", "MON_VALUE");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Oracle.DataAccess.Client.OracleConnection();
+            this._connection.ConnectionString = "DATA SOURCE=192.168.1.104;PASSWORD=sanpro;PERSIST SECURITY INFO=True;USER ID=SANP" +
+                "RO";
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Oracle.DataAccess.Client.OracleCommand[1];
+            this._commandCollection[0] = new global::Oracle.DataAccess.Client.OracleCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SANPRO.SMCL_GET_SIGNALS_DATA_GRAPHIC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            global::Oracle.DataAccess.Client.OracleParameter param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "ALARM_PARAM";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.Decimal;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "SIGNAL_PARAM";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.Decimal;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "APPLIANCE_PARAM";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.Decimal;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "AREA_PARAM";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.Decimal;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "INIT_DATE_PARAM";
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.Varchar2;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "END_DATE_PARAM";
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.Varchar2;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::Oracle.DataAccess.Client.OracleParameter();
+            param.ParameterName = "RESULTADO_C";
+            param.DbType = global::System.Data.DbType.Object;
+            param.OracleDbType = global::Oracle.DataAccess.Client.OracleDbType.RefCursor;
+            param.Direction = global::System.Data.ParameterDirection.Output;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSetReporting.SMCL_GET_SIGNALS_DATA_GRAPHICDataTable dataTable, global::System.Nullable<decimal> ALARM_PARAM, global::System.Nullable<decimal> SIGNAL_PARAM, global::System.Nullable<decimal> APPLIANCE_PARAM, global::System.Nullable<decimal> AREA_PARAM, string INIT_DATE_PARAM, string END_DATE_PARAM, out object RESULTADO_C) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ALARM_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(ALARM_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((SIGNAL_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((decimal)(SIGNAL_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((APPLIANCE_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((decimal)(APPLIANCE_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((AREA_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((decimal)(AREA_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((INIT_DATE_PARAM == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(INIT_DATE_PARAM));
+            }
+            if ((END_DATE_PARAM == null)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(END_DATE_PARAM));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            if (((this.Adapter.SelectCommand.Parameters[6].Value == null) 
+                        || (this.Adapter.SelectCommand.Parameters[6].Value.GetType() == typeof(global::System.DBNull)))) {
+                RESULTADO_C = global::System.DBNull.Value;
+            }
+            else {
+                RESULTADO_C = ((object)(this.Adapter.SelectCommand.Parameters[6].Value));
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSetReporting.SMCL_GET_SIGNALS_DATA_GRAPHICDataTable GetData(global::System.Nullable<decimal> ALARM_PARAM, global::System.Nullable<decimal> SIGNAL_PARAM, global::System.Nullable<decimal> APPLIANCE_PARAM, global::System.Nullable<decimal> AREA_PARAM, string INIT_DATE_PARAM, string END_DATE_PARAM, out object RESULTADO_C) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ALARM_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(ALARM_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((SIGNAL_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((decimal)(SIGNAL_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((APPLIANCE_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((decimal)(APPLIANCE_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((AREA_PARAM.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((decimal)(AREA_PARAM.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((INIT_DATE_PARAM == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(INIT_DATE_PARAM));
+            }
+            if ((END_DATE_PARAM == null)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(END_DATE_PARAM));
+            }
+            DataSetReporting.SMCL_GET_SIGNALS_DATA_GRAPHICDataTable dataTable = new DataSetReporting.SMCL_GET_SIGNALS_DATA_GRAPHICDataTable();
+            this.Adapter.Fill(dataTable);
+            if (((this.Adapter.SelectCommand.Parameters[6].Value == null) 
+                        || (this.Adapter.SelectCommand.Parameters[6].Value.GetType() == typeof(global::System.DBNull)))) {
+                RESULTADO_C = global::System.DBNull.Value;
+            }
+            else {
+                RESULTADO_C = ((object)(this.Adapter.SelectCommand.Parameters[6].Value));
             }
             return dataTable;
         }

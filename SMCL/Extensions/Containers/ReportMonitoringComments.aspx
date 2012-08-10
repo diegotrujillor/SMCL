@@ -189,7 +189,7 @@
                 <br />
                 <div style="border-top: solid 1px #CCC;" />
                 <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" 
-                Font-Size="8pt" InteractiveDeviceInfos="(Collection)" 
+                Font-Size="8pt" InteractiveDeviceInfos="(Colección)" 
                 WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" 
                     BorderWidth="1px" BorderColor="LightGray" ShowFindControls="False">
                 <LocalReport ReportPath="Content\Reports\Report_Data_Signals.rdlc">

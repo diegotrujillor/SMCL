@@ -90,7 +90,14 @@ namespace SMCL.Extensions
                 IList alarms = session.CreateCriteria(typeof(AlarmType)).AddOrder(Order.Asc("NameAlarmType")).List();
                 foreach (AlarmType item in alarms)
                 {
-                    ddlAlarmsG.Items.Add(new ListItem(item.NameAlarmType, item.Id.ToString()));
+                    if (item.NameAlarmType.Equals("Valor"))
+                    {
+                        ddlAlarmsG.Items.Add(new ListItem("Normal", item.Id.ToString()));
+                    }
+                    else
+                    {
+                        ddlAlarmsG.Items.Add(new ListItem(item.NameAlarmType, item.Id.ToString()));
+                    }
                 }
             }
         }
