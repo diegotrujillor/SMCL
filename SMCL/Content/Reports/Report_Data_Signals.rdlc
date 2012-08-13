@@ -1583,7 +1583,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!MON_VALUE.Value</Value>
+                              <Value>=FormatNumber(Fields!MON_VALUE.Value, 3)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -1591,7 +1591,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>MON_VALUE</rd:DefaultName>
@@ -1640,7 +1642,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1749,7 +1750,7 @@
         <Top>0.22966cm</Top>
         <Left>0.81174cm</Left>
         <Height>4.86146cm</Height>
-        <Width>27.73234cm</Width>
+        <Width>27.73233cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

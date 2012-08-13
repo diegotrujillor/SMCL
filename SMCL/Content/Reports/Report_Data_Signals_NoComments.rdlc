@@ -68,6 +68,10 @@
           <DataField>HUMIDITY_TOLERANCE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SIG_ID">
+          <DataField>SIG_ID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>SMCLSP</DataSourceName>
@@ -1400,7 +1404,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!MON_VALUE.Value</Value>
+                              <Value>=IIf(Fields!SIG_ID.Value = 1, FormatNumber(Fields!MON_VALUE.Value, 2), FormatNumber(Fields!MON_VALUE.Value, 1))</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -1408,7 +1412,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>MON_VALUE</rd:DefaultName>

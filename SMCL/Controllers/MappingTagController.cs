@@ -53,7 +53,7 @@ namespace SMCL.Controllers
             ViewData["ValidationErrorMessage"] = String.Empty;
             ViewBag.ApplianceId = new SelectList(dbA.GetAll(), "Id", "NameAppliance");
             ViewBag.SignalId = new SelectList(dbS.GetAll(), "Id", "Name");
-            ViewBag.AlarmTypeId = new SelectList(dbAT.GetAll(), "Id", "NameAlarmType");
+            ViewBag.AlarmTypeId = new SelectList((from at in dbAT.GetAll() where at.Id != 4 select at).ToList(), "Id", "NameAlarmType");
             
             return View();
         } 
