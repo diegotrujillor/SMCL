@@ -1,0 +1,1 @@
+Sistema de monitoreo de condiciones del laboratorio
