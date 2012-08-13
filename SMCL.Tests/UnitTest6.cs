@@ -227,5 +227,47 @@ namespace SMCL.Tests
 
             dbS.Delete(signal.Id);
         }
+
+        [TestMethod]
+        [DeploymentItem("hibernate.cfg.xml")]
+        public void ListMonitoringRecordsForInbox()
+        {
+            IRepository<SignalAppliance> dbSA = new SignalApplianceRepository();
+            IRepository<MappingTag> dbMapT = new MappingTagRepository();
+            IRepository<Monitoring> dbMon = new MonitoringRepository();
+            IRepository<Signal> dbS = new SignalRepository();
+            IRepository<Appliance> dbApp = new ApplianceRepository();
+            IRepository<SignalApplianceValue> dbSAppV = new SignalApplianceValueRepository();
+            IRepository<AlarmType> dbAT = new AlarmTypeRepository();
+            IRepository<Area> dbA = new AreaRepository();
+
+            var result = from m in ( 
+                             from r in (
+                                      from mon in dbMon.GetAll()
+                                      join mapp in dbMapT.GetAll() on mon.MappingTag.Id equals mapp.Id
+                                     where mapp.Id.ToString().Equals("8") || mapp.Id.ToString().Equals("70") || mapp.Id.ToString().Equals("132")
+                                    select new { monDatetime = mon.DateTime, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id, pv =  (mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mon.Value: 0 ), alarm = (mon.Value == 1 && !mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mapp.AlarmType.Id : 0 ) ,userId = mon.User.Id})
+                            group r by new {r.monDatetime, r.appId, r.sigId, r.userId} into g
+                           select new { record = g.Key, monValue = g.Sum(d => d.pv), alarm = g.Sum(d => d.alarm) == 2 ? "A" : g.Sum(d => d.alarm) == 3 ? "B" : g.Sum(d => d.alarm) == 0 ? "N" : "D" })
+                       select m;
+            /*
+                to_char(tmp.datetime, 'yyyy/mm/dd hh24:mi:ss') mon_datetime, area.are_name, sig.sig_name,
+                decode(tmp.alarm, 'A', 'Alta', 'B', 'Baja', 'N', 'Normal', 'Desconodido') ala_typ_name,
+                smcl_get_appl_signal_comment(tmp.datetime, tmp.app_id, tmp.sig_id, tmp.alarm) mon_comment_on_alarm,
+                appl.app_name, case when tmp.sig_id = 1 then round_half_way_down(trunc(tmp.mon_value, 3), 2) else round_half_way_down(trunc(tmp.mon_value, 2), 1) end mon_value ,
+                tmp.sig_id, usr.usr_first_name || ' ' || usr.usr_last_name_1 || '(' || usr.usr_login_email || ')' username,
+             */
+            //group new {a.Id, a.NameAlarmType, sapv.Value } by new {sa.Id, app.NameAppliance, s.Name, sa.Tolerance} into g
+            //select new { signalAppliance = g.Key, setPoint = from v in g where v.Id == 1 select v.Value, highValue = from v in g where v.Id == 2 select v.Value, lowValue = from v in g where v.Id == 3 select v.Value };
+
+            ObjectDumper.Write(result.Count());
+
+            foreach (var v in result)
+            {
+                ObjectDumper.Write(v.record);
+                ObjectDumper.Write(v.alarm);
+                ObjectDumper.Write(v.monValue);
+            }
+        }
     }
 }
