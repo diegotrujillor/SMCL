@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Ver Mapa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="titlejQGrid">Mapa de Laboratorio</div>
+
+<div id="overlay" style="overflow: auto;">
+    <div style="width: 95%;">
+        <table id="no_css" style="width: 96%; margin: 0 auto;">
+            <tr>
+                <td style="width: 50%;">
+                    <h2 style="color: #2078c0; text-align: left;">A</h2>
+                </td>
+                <td style="text-align: right;">
+                    @Html.Image("AlarmCheckOut", "~/Content/Images/alarm.png", "alarmCheckOut", new { border = "0" })
+                </td>
+            </tr>
+        </table>
+        <br />
+        @Html.TextArea("commentsOnAlarm", String.Empty, 5, 65, new { @class = "textbox", style = "margin: 0 auto; width: 94%;", maxlength = "500" })
+        <br />
+        <table id="alarmbox">
+            <tr>
+                <td>
+                    <div class="alarmbox_td" onclick="window.location='../Home/Index'">
+                        @System.Configuration.ConfigurationManager.AppSettings["MapCloseButton"]
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+</div>
+
+<script type="text/javascript">
+    function overlay() {
+        el = document.getElementById("overlay");
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+        if (el.style.visibility == "visible") {
+            document.getElementById("commentsOnAlarm").value = new String();
+        }
+    }
+
+    window.onload = overlay();
+</script>

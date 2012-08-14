@@ -4,10 +4,10 @@
 }*/
 
 div.sidebar-container-left {
-	width : 100px;
-	height : 200px;
+	width : 203px;
+	height : 150px;
     position:fixed;
-    top:50%;
+    top:0%;
     left:0px;
     background-color:#000000;
     filter: alpha(opacity=87);
@@ -23,7 +23,7 @@ div.sidebar-container-left {
 }
 
 div.sidebar-container-right {
-    width : 220px;
+    width : 223px;
     height : 50px;
     position:fixed;
     top:50%;

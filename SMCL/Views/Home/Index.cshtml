@@ -15,7 +15,8 @@
             <a id="refreshButton" href="../Home/Index">
                 <img src="@Url.Content("~/Content/Images/6refresh.png")" alt="refresh" title="Refrescar" border="0" />
             </a>
-            <div id="inboxClock"></div>
+            <div id="inboxClock">
+            </div>
         </td>
     </tr>
 </table>
@@ -34,7 +35,7 @@
         <table id="no_css" style="width: 96%; margin: 0 auto;">
             <tr>
                 <td style="width: 50%;">
-                    <h2 style="color: #2078c0; text-align:left;">@ViewBag.AlarmCheckOut</h2>
+                    <h2 style="color: #2078c0; text-align: left;">@ViewBag.AlarmCheckOut</h2>
                 </td>
                 <td style="text-align: right;">
                     @Html.Image("AlarmCheckOut", "~/Content/Images/alarm.png", "alarmCheckOut", new { border = "0" })
@@ -42,7 +43,7 @@
             </tr>
         </table>
         <br />
-        @Html.TextArea("commentsOnAlarm", String.Empty, 5, 65, new { @class = "textbox", style = "margin: 0 auto; width: 94%;", maxlength="500", placeholder = @ViewBag.AlarmPlaceHolder })
+        @Html.TextArea("commentsOnAlarm", String.Empty, 5, 65, new { @class = "textbox", style = "margin: 0 auto; width: 94%;", maxlength = "500", placeholder = @ViewBag.AlarmPlaceHolder })
         <br />
         <table id="alarmbox">
             <tr>
@@ -88,7 +89,6 @@
         overlay();
     }
 </script>
-
 <script type="text/javascript">
     function reloadInbox() {
         $("#inboxLoad").load("../Home/Inbox").fadeIn(2000);

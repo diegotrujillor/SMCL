@@ -100,6 +100,19 @@ namespace SMCL.Controllers
             return View();
         }
 
+        public ActionResult Map()
+        {
+            if (Session["Id"] != null)
+            {
+                if (!Security.IsOptionInUserRoles(dbUR.GetByUserId(Convert.ToInt32(Session["Id"].ToString())), this.ControllerContext.RouteData.Values["Action"].ToString()))
+                {
+                    return RedirectToAction("Error");
+                }
+            }
+
+            return View();
+        }
+
         public ActionResult Reporting()
         {
             if (Session["Id"] != null)
