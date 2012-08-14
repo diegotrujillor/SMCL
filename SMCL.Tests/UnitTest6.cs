@@ -241,15 +241,19 @@ namespace SMCL.Tests
             IRepository<AlarmType> dbAT = new AlarmTypeRepository();
             IRepository<Area> dbA = new AreaRepository();
 
-            var result = from m in ( 
-                             from r in (
-                                      from mon in dbMon.GetAll()
-                                      join mapp in dbMapT.GetAll() on mon.MappingTag.Id equals mapp.Id
-                                     where mapp.Id.ToString().Equals("8") || mapp.Id.ToString().Equals("70") || mapp.Id.ToString().Equals("132")
-                                    select new { monDatetime = mon.DateTime, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id, pv =  (mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mon.Value: 0 ), alarm = (mon.Value == 1 && !mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mapp.AlarmType.Id : 0 ) ,userId = mon.User.Id})
+            var monRecords = from r in (
+                                          from mon in dbMon.GetAll()
+                                          join mapp in dbMapT.GetAll() on mon.MappingTag.Id equals mapp.Id
+                                        select new { monDatetime = mon.DateTime, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id, pv =  (mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mon.Value: 0 ), alarm = (mon.Value == 1 && !mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mapp.AlarmType.Id : 0 ) ,userId = mon.User.Id})
                             group r by new {r.monDatetime, r.appId, r.sigId, r.userId} into g
-                           select new { record = g.Key, monValue = g.Sum(d => d.pv), alarm = g.Sum(d => d.alarm) == 2 ? "A" : g.Sum(d => d.alarm) == 3 ? "B" : g.Sum(d => d.alarm) == 0 ? "N" : "D" })
-                       select m;
+                           select new { monRecord = g.Key, monValue = g.Sum(d => d.pv), alarm = g.Sum(d => d.alarm) };
+
+            var result = from m in monRecords
+                         join mon in dbMon.GetAll() on m.monRecord.monDatetime equals mon.DateTime
+                         join mapp in dbMapT.GetAll() on new { mapId = mon.MappingTag.Id, appId = m.monRecord.appId, sigId = m.monRecord.sigId } equals new { mapId = mapp.Id, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id }
+                         where (m.alarm == 0 ? 1 : m.alarm) == mapp.AlarmType.Id
+                         select new { monId = mon.Id, dateTime = m.monRecord.monDatetime, appId = m.monRecord.appId, sigId = m.monRecord.sigId, alarm = m.alarm, monValue = m.monValue, userId = m.monRecord.userId };
+
             /*
                 to_char(tmp.datetime, 'yyyy/mm/dd hh24:mi:ss') mon_datetime, area.are_name, sig.sig_name,
                 decode(tmp.alarm, 'A', 'Alta', 'B', 'Baja', 'N', 'Normal', 'Desconodido') ala_typ_name,
@@ -264,9 +268,7 @@ namespace SMCL.Tests
 
             foreach (var v in result)
             {
-                ObjectDumper.Write(v.record);
-                ObjectDumper.Write(v.alarm);
-                ObjectDumper.Write(v.monValue);
+                ObjectDumper.Write(v);
             }
         }
     }
