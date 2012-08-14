@@ -238,30 +238,32 @@ namespace SMCL.Controllers
             IRepository<Signal> dbSgn = new SignalRepository();
             IRepository<Appliance> dbAppl = new ApplianceRepository();
 
+            var monRecords = from r in
+                                 (  from mon in dbM.GetAll()
+                                    join mapp in dbMT.GetAll() on mon.MappingTag.Id equals mapp.Id
+                                  select new { monDatetime = mon.DateTime, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id, pv = (mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mon.Value : 0), alarm = (mon.Value == 1 && !mapp.AlarmType.Id.Equals(Convert.ToInt32("1")) ? mapp.AlarmType.Id : 0), userId = mon.User.Id })
+                            group r by new { r.monDatetime, r.appId, r.sigId, r.userId } into g
+                           select new { monRecord = g.Key, monValue = g.Sum(d => d.pv), alarm = g.Sum(d => d.alarm) };
 
-            var monitoring = from m in dbM.GetAll()
-                             join mt in dbMT.GetAll() on m.MappingTag.Id equals mt.Id
-                             join at in dbAT.GetAll() on mt.AlarmType.Id equals at.Id
-                             join sgn in dbSgn.GetAll() on mt.Signal.Id equals sgn.Id
-                             join appl in dbAppl.GetAll() on mt.Appliance.Id equals appl.Id
-                             where m.CommentsOnAlarm == null &&
-                                   (at.Id == Convert.ToInt32(ConfigurationManager.AppSettings["HighAlarmId"]) ||
-                                    at.Id == Convert.ToInt32(ConfigurationManager.AppSettings["LowAlarmId"]))
-                             select new
-                             {
-                                 m
-                             };
+            var monitoring = from m in monRecords
+                         join mon in dbM.GetAll() on m.monRecord.monDatetime equals mon.DateTime
+                         join mapp in dbMT.GetAll() on new { mapId = mon.MappingTag.Id, appId = m.monRecord.appId, sigId = m.monRecord.sigId } equals new { mapId = mapp.Id, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id }
+                         where (m.alarm == 0 ? 1 : m.alarm) == mapp.AlarmType.Id
+                               && mon.CommentsOnAlarm == null
+                               && (m.alarm == Convert.ToInt32(ConfigurationManager.AppSettings["HighAlarmId"])
+                                   || m.alarm == Convert.ToInt32(ConfigurationManager.AppSettings["LowAlarmId"]))
+                         select new { monId = mon.Id, dateTime = m.monRecord.monDatetime, appId = m.monRecord.appId, sigId = m.monRecord.sigId, alarm = m.alarm, monValue = m.monValue, userId = m.monRecord.userId };
 
             var items = monitoring.Skip(param.iDisplayStart).Take(param.iDisplayLength);
             var result = from c in
-                             items.OrderByDescending(d => d.m.DateTime)
+                             items.OrderByDescending(d => d.dateTime)
                          select new[] {
-                             c.m.DateTime.ToString(),
-                             dbAppl.GetById(dbMT.GetById(c.m.MappingTag.Id).Appliance.Id).NameAppliance,
-                             dbAT.GetById(dbMT.GetById(c.m.MappingTag.Id).AlarmType.Id).NameAlarmType,
-                             c.m.Value.ToString(),
-                             dbSgn.GetById(dbMT.GetById(c.m.MappingTag.Id).Signal.Id).Name,
-                             c.m.Id.ToString()
+                             c.dateTime.ToString(),
+                             dbAppl.GetById(c.appId).NameAppliance,
+                             dbAT.GetById((c.alarm == 0 ? Convert.ToInt32(ConfigurationManager.AppSettings["NormalAlarmId"]) : c.alarm)).NameAlarmType,
+                             c.monValue.ToString(),
+                             dbSgn.GetById(c.sigId).Name,
+                             c.monId.ToString()
                          };
 
             return Json(new
