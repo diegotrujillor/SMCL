@@ -129,7 +129,14 @@ namespace SMCL.Controllers
                     updateSignalApplianceValues(signalAppliance, float.Parse(form["SetPoint"]), false);
 
                     List<Object> logList = new List<Object>();
-                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + signalAppliance.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + DotNetToOracle(signalAppliance.Id.ToString()).Replace("-", "").ToUpper() + 
+                                              " - SignalName=" + signalAppliance.Signal.Name + 
+                                              " - ApplianceName=" + signalAppliance.Appliance.NameAppliance + 
+                                              " - Tolerance=" + signalAppliance.Tolerance + ")", 
+                                              (int)EventTypes.Create, 
+                                              (int)Session["UserId"]));
                     log.Write(logList);
 
                     return RedirectToAction("Index");
@@ -192,7 +199,14 @@ namespace SMCL.Controllers
                     dbSA.Update(sa);
 
                     List<Object> logList = new List<Object>();
-                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + signalAppliance.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + DotNetToOracle(sa.Id.ToString()).Replace("-", "").ToUpper() + 
+                                              " - SignalName=" + sa.Signal.Name + 
+                                              " - ApplianceName=" + sa.Appliance.NameAppliance + 
+                                              " - Tolerance=" + sa.Tolerance + ")", 
+                                              (int)EventTypes.Edit, 
+                                              (int)Session["UserId"]));
                     log.Write(logList);
 
                     updateSignalApplianceValues(sa, setPoint, true);
@@ -206,16 +220,12 @@ namespace SMCL.Controllers
 
                     dbSA.Save(signalAppliance);
 
-                    updateSignalApplianceValues(sa, setPoint, false);
+                    updateSignalApplianceValues(signalAppliance, setPoint, false);
 
                     List<Object> logList = new List<Object>();
-                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + signalAppliance.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + DotNetToOracle(signalAppliance.Id.ToString()).Replace("-", "").ToUpper() + " - SignalId=" + signalAppliance.Signal.Id + " - ApplianceId=" + signalAppliance.Appliance.Id + " - Tolerance=" + signalAppliance.Tolerance + ")", (int)EventTypes.Create, (int)Session["UserId"]));
                     log.Write(logList);
                 }
-
-                List<Object> logL = new List<Object>();
-                logL.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + signalAppliance.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
-                log.Write(logL);
 
                 return RedirectToAction("Index");
             }
@@ -297,21 +307,109 @@ namespace SMCL.Controllers
 
             try
             {
-                var signalAppliancesValues = dbSAppV.GetByProperty("SignalAppliance.Id", id);
+                SignalAppliance signalAppliance = dbSA.GetById(id);
 
-                foreach (var signalApplianceValue in signalAppliancesValues)
+                IRepository<MappingTag> dbMT = new MappingTagRepository();
+                IRepository<Monitoring> dbM = new MonitoringRepository();
+                IRepository<Appliance> dbA = new ApplianceRepository();
+                IRepository<Signal> dbS = new SignalRepository();
+
+                int associatedRecords = (from mapp in dbMT.GetAll()
+                                        join mon in dbM.GetAll() on mapp.Id equals mon.MappingTag.Id
+                                        where mapp.Signal.Id.Equals(signalAppliance.Signal.Id)
+                                           && mapp.Appliance.Id.Equals(signalAppliance.Appliance.Id)
+                                        select mon.Id).Count();
+
+                if (associatedRecords == 0)
                 {
-                    dbSAppV.Delete(signalApplianceValue.Id);
+
+                    var signalAppliancesValues = dbSAppV.GetByProperty("SignalAppliance.Id", id);
+
+                    foreach (var signalApplianceValue in signalAppliancesValues)
+                    {
+                        dbSAppV.Delete(signalApplianceValue.Id);
+                    }
+
+                    dbSA.Delete(id);
+
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + DotNetToOracle(signalAppliance.Id.ToString()).Replace("-", "").ToUpper() +
+                                              " - SignalName=" + dbS.GetById(signalAppliance.Signal.Id).Name +
+                                              " - ApplianceName=" + dbA.GetById(signalAppliance.Appliance.Id).NameAppliance + 
+                                              " - Tolerance=" + signalAppliance.Tolerance + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
                 }
+                else
+                {
+                    ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
 
-                dbSA.Delete(id);
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + DotNetToOracle(signalAppliance.Id.ToString()).Replace("-", "").ToUpper() +
+                                              " - SignalName=" + dbS.GetById(signalAppliance.Signal.Id).Name +
+                                              " - ApplianceName=" + dbA.GetById(signalAppliance.Appliance.Id).NameAppliance + 
+                                              " - Tolerance=" + signalAppliance.Tolerance + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
-                log.Write(logList);
+                    int differentialPressure = int.Parse(ConfigurationManager.AppSettings["DifferentialPressure"]);
+                    int temperature = int.Parse(ConfigurationManager.AppSettings["Temperature"]);
+                    int rh = int.Parse(ConfigurationManager.AppSettings["RH"]);
+
+                    string measureUnit = "N/A";
+
+                    if (signalAppliance.Signal.Id == differentialPressure)
+                    {
+                        measureUnit = ConfigurationManager.AppSettings["Percentage"].ToString();
+                    }
+                    else if (signalAppliance.Signal.Id == temperature)
+                    {
+                        measureUnit = ConfigurationManager.AppSettings["DegreeCelsius"].ToString();
+                    }
+                    else if (signalAppliance.Signal.Id == rh)
+                    {
+                        measureUnit = ConfigurationManager.AppSettings["InchesOfWater"].ToString();
+                    }
+
+                    Dictionary<string, object> properties = new Dictionary<string, object>();
+                    properties.Add("SignalAppliance.Id", signalAppliance.Id);
+
+                    float setPoint = 0, highValue = 0, lowValue = 0;
+
+                    foreach (SignalApplianceValue signalApplianceValue in dbSAppV.GetByProperties(properties))
+                    {
+                        if (signalApplianceValue.AlarmType.Id == int.Parse(ConfigurationManager.AppSettings["NormalAlarmId"]))
+                        {
+                            setPoint = signalApplianceValue.Value;
+                        }
+                        else if (signalApplianceValue.AlarmType.Id == int.Parse(ConfigurationManager.AppSettings["HighAlarmId"]))
+                        {
+                            highValue = signalApplianceValue.Value;
+                        }
+                        else if (signalApplianceValue.AlarmType.Id == int.Parse(ConfigurationManager.AppSettings["LowAlarmId"]))
+                        {
+                            lowValue = signalApplianceValue.Value;
+                        }
+                    }
+
+                    ViewBag.ApplianceName = dbA.GetById(dbSA.GetById(id).Appliance.Id).NameAppliance;
+                    ViewBag.HighValue = highValue;
+                    ViewBag.LowValue = lowValue;
+                    ViewBag.MeasureUnit = measureUnit;
+                    ViewBag.SetPoint = setPoint;
+                    ViewBag.SignalName = dbS.GetById(dbSA.GetById(id).Signal.Id).Name;
+
+                    return View(signalAppliance);
+                }
             }
             catch (GenericADOException ex)
             {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
 
                 logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
                 log.Write(logList);
@@ -514,6 +612,37 @@ namespace SMCL.Controllers
                 dbSAppV.Save(highValue);
                 dbSAppV.Save(lowValue);
             }
+        }
+
+        private static string OracleToDotNet(string text)
+        {
+            byte[] bytes = ParseHex(text);
+            Guid guid = new Guid(bytes);
+            return guid.ToString("N").ToUpperInvariant();
+
+            //Source: http://stackoverflow.com/questions/7289734/convert-from-oracles-raw16-to-nets-guid
+        }
+
+        private static string DotNetToOracle(string text)
+        {
+            Guid guid = new Guid(text);
+            return BitConverter.ToString(guid.ToByteArray()).Replace("-", "");
+
+            //Source: http://stackoverflow.com/questions/7289734/convert-from-oracles-raw16-to-nets-guid
+        }
+
+        private static byte[] ParseHex(string text)
+        {
+            // Not the most efficient code in the world, but
+            // it works...
+            byte[] ret = new byte[text.Length / 2];
+            for (int i = 0; i < ret.Length; i++)
+            {
+                ret[i] = Convert.ToByte(text.Substring(i * 2, 2), 16);
+            }
+            return ret;
+
+            //Source: http://stackoverflow.com/questions/7289734/convert-from-oracles-raw16-to-nets-guid
         }
     }
 }

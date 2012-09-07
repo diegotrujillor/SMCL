@@ -17,7 +17,7 @@ using System.Web.Routing;
 using NHibernate.Exceptions;
 
 namespace SMCL.Controllers
-{ 
+{
     public class AreaController : Controller
     {
         ILoggable log = new LogSMCL();
@@ -47,7 +47,7 @@ namespace SMCL.Controllers
         {
             ViewData["ValidationErrorMessage"] = String.Empty;
             return View();
-        } 
+        }
 
         //
         // POST: /Area/Create
@@ -61,7 +61,7 @@ namespace SMCL.Controllers
                 db.Save(this.RemoveExtraSpaces(area));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + area.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + area.Id.ToString().Replace("-", "").ToUpper() + " - Description=" + area.Description + " - Name=" + area.Name + ")", (int)EventTypes.Create, (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -69,10 +69,10 @@ namespace SMCL.Controllers
 
             return View(area);
         }
-                       
+
         //
         // GET: /Area/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Area area = db.GetById(id);
@@ -92,18 +92,18 @@ namespace SMCL.Controllers
                 db.Update(this.RemoveExtraSpaces(area));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + area.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + area.Id.ToString().Replace("-", "").ToUpper() + " - Description=" + area.Description + " - Name=" + area.Name + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
             }
-            
+
             return View(area);
         }
 
         //
         // GET: /Area/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Area area = db.GetById(id);
@@ -120,17 +120,35 @@ namespace SMCL.Controllers
             List<Object> logList = new List<Object>();
             ViewData["ValidationErrorMessage"] = String.Empty;
 
+            Area area = db.GetById(id);
+
             try
             {
-                db.Delete(id);
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
-                log.Write(logList);
+                if (area != null)
+                {
+                    db.Delete(id);
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + area.Id.ToString().Replace("-", "").ToUpper() + 
+                                              " - Description=" + area.Description + 
+                                              " - Name=" + area.Name + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
+                }
             }
-            catch (GenericADOException ex)
+            catch (GenericADOException)
             {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] +
+                                          ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " +
+                                          ControllerContext.RouteData.Values["controller"] +
+                                          "(Id=" + area.Id.ToString().Replace("-", "").ToUpper() +
+                                          " - Description=" + area.Description +
+                                          " - Name=" + area.Name + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 return View(db.GetById(id));

@@ -188,6 +188,7 @@
     <Content Include="Content\datatable\sort_desc_disabled.png" />
     <Content Include="Content\Images\bg_strength_gradient.jpg" />
     <Content Include="Content\Images\black50.png" />
+    <Content Include="Content\Images\compass_96.png" />
     <Content Include="Content\Images\Icon-HC-Edit.png" />
     <Content Include="Content\datatable\proccessing4.gif" />
     <Content Include="Content\Images\inject-bottom.png" />
@@ -195,6 +196,9 @@
     <Content Include="Content\Images\inject-right.png" />
     <Content Include="Content\Images\inject-top.png" />
     <Content Include="Content\Images\jnj-blanco-title.png" />
+    <Content Include="Content\Images\Map_Global.PNG" />
+    <Content Include="Content\Images\Map_Zoom1.PNG" />
+    <Content Include="Content\Images\Map_Zoom2.PNG" />
     <Content Include="Content\Images\mgm_alarm.png" />
     <Content Include="Content\Images\mgm_areas.png" />
     <Content Include="Content\Images\mgm_equipment.png" />
@@ -204,9 +208,6 @@
     <Content Include="Content\Images\mgm_signalEquipment.png" />
     <Content Include="Content\Images\mgm_signalVista.png" />
     <Content Include="Content\Images\mgm_users.png" />
-    <Content Include="Content\Images\pdf.png" />
-    <Content Include="Content\Images\png.png" />
-    <Content Include="Content\Images\png2.png" />
     <Content Include="Content\Images\support.png" />
     <Content Include="Content\Images\xls.png" />
     <Content Include="Content\jquery-ui.css" />
@@ -284,6 +285,9 @@
     <Content Include="Content\themes\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\themes\ui-lightness\jquery-ui-1.8.19.custom.css" />
     <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\exporting.js" />
+    <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\highcharts.src.js" />
     <Content Include="Scripts\jqplot.canvasAxisLabelRenderer.min.js" />
     <Content Include="Scripts\jqplot.canvasOverlay.min.js" />
     <Content Include="Scripts\jqplot.canvasTextRenderer.min.js" />
@@ -364,6 +368,7 @@
     <Content Include="Scripts\jquery.jqGrid.min.js" />
     <Content Include="Scripts\jquery.jqplot.min.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.maphilight.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.numeric.js" />
     <Content Include="Scripts\jquery.passwordMeter.js" />
@@ -435,6 +440,7 @@
     <Content Include="Views\SignalAppliance\Details.cshtml" />
     <Content Include="Views\SignalAppliance\Delete.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
+    <Content Include="Views\Home\MapClock.cshtml" />
     <None Include="_bin_deployableAssemblies\es\Microsoft.Web.Infrastructure.resources.dll" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
     <None Include="_bin_deployableAssemblies\es\System.Web.WebPages.Razor.resources.dll" />
@@ -638,6 +644,8 @@
           <DevelopmentServerPort>4053</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/SMCL</IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

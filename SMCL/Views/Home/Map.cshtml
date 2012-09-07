@@ -1,4 +1,5 @@
 ﻿@{
+<<<<<<< HEAD
     ViewBag.Title = "Ver Mapa";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -44,3 +45,266 @@
 
     window.onload = overlay();
 </script>
+=======
+    ViewBag.Title = "SMCL - Mapa de Laboratorio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="overlay_map" style="overflow: auto;">
+    <div id="overlay_map_sub1" style="position: relative; width: 95%;">
+        <table id="no_css" style="width: 96%; margin: 0 auto; text-align: left;">
+            <tr>
+                <td style="width: 30%;">
+                    <h2 style="color: #2078c0; text-align: left;">@ViewBag.MapTitle1</h2>
+                </td>
+                <td style="width: 35%;">
+                    <div class="conventions">
+                        <table id="no_css">
+                            <tr>
+                                <td class="conventions" colspan="3" style="width: 26%; text-align: center; font-weight: bold; background-color: #BBB; border-radius: 10px 10px 0 0; border-bottom: solid 1px #777;">
+                                    @ViewBag.MapTitle2
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%; font-size: small;">
+                                    <div class="mapRectangle1" />
+                                </td>
+                                <td style="width: 10%; font-size: small;">
+                                    @ViewBag.MapRectangle1Title
+                    
+                                </td>
+                                <td style="font-size: small;">
+                                    <div class="low_alarm_circle" style="position: relative;">
+                                        <label style="margin-left: 20px; font-size: small; ">
+                                            @System.Configuration.ConfigurationManager.AppSettings["MapLowAlarmTitle"]
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">
+                                    <p class="mapRectangle2" />
+                                </td>
+                                <td style="width: 10%">
+                                    @ViewBag.MapRectangle2Title
+                                </td>
+                                <td>
+                                    <div class="high_alarm_circle" style="position: relative; ">
+                                        <label style="margin-left: 20px; font-size: small;">
+                                            @System.Configuration.ConfigurationManager.AppSettings["MapHighAlarmTitle"]
+                                        </label>
+                                    </div>
+                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">
+                                    <p class="mapRectangle3" />
+                                </td>
+                                <td style="width: 10%;">
+                                    @ViewBag.MapRectangle3Title
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td></td>
+                <td class="alarmbox_td" style="width: 30%; text-align: right;">
+                    @ViewBag.MapDateFormattedTitle<br />
+                    <div id="mapClock" style="overflow: hidden;">
+                        <p id="monitoredDate">
+                        </p>
+                        <p id="monitoredTime">
+                        </p>
+                    </div>
+                </td>
+                <td style="width: 15%; text-align: right;">
+                    @Html.Image("MapCompass", "~/Content/Images/compass_96.png", "mapCompass", new { border = "0" })
+                </td>
+            </tr>
+            
+        </table>
+        <br />
+        @Html.Image("MapGlobal", "~/Content/Images/Map_Global.png", "mapGlobal", new { border = "0", usemap = "#laboratoryMap" })
+        <p id="A9S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A10S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A10S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A2S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A4S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A13S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A13S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A3S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A5S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A1S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A11S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A11S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A15S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A15S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A7S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A6S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A38S1" class="mapRectangle1 monitoringRecord">
+        </p>
+        <p id="A8S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A8S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A14S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A14S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A12S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A12S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <div class="alarmbox_td mapGlobalButton" onclick="overlay('overlay_map')">
+            @ViewBag.MapCloseButton
+        </div>
+    </div>
+</div>
+<div id="overlay_map_zoom1" class="overlay_map_zoom" style="overflow: auto;">
+    <div style="position: relative; width: 562px;">
+        @Html.Image("MapZoom1", "~/Content/Images/Map_Zoom1.PNG", "ZoomMap1", new { border = "0" })
+        <p id="A17S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A18S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A19S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A20S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <div class="alarmbox_td" style="float: right; width: 120px;" onclick="overlay('overlay_map_zoom1')">
+            @ViewBag.MapCloseButton
+        </div>
+    </div>
+</div>
+<div id="overlay_map_zoom2" class="overlay_map_zoom" style="overflow: auto;">
+    <div style="position: relative; width: 404px;">
+        @Html.Image("MapZoom2", "~/Content/Images/Map_Zoom2.PNG", "ZoomMap2", new { border = "0" })
+        <p id="A21S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A21S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A30S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A30S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A31S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A31S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A32S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A32S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A33S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A33S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A34S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A34S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A35S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A35S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A36S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A36S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A37S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A37S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A22S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A22S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A23S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A23S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A24S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A24S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A25S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A25S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A26S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A26S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A27S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A27S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A28S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A28S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <p id="A29S2" class="mapRectangle3 monitoringRecord">
+        </p>
+        <p id="A29S3" class="mapRectangle2 monitoringRecord">
+        </p>
+        <div class="alarmbox_td" style="float: right; width: 120px;" onclick="overlay('overlay_map_zoom2')">
+            @ViewBag.MapCloseButton
+        </div>
+    </div>
+</div>
+<map id="laboratoryMap" name="laboratoryMap">
+    <area shape="rect" coords="6,196, 155,341" href="javascript:overlay('overlay_map_zoom1')" alt="ZoomImage1" title='@System.Configuration.ConfigurationManager.AppSettings["MapZoomImageTitle"]' />
+    <area shape="rect" coords="721,231, 845,578" href="javascript:overlay('overlay_map_zoom2')" alt="ZoomImage2" title='@System.Configuration.ConfigurationManager.AppSettings["MapZoomImageTitle"]' />
+</map>
+<script type="text/javascript">
+    function overlay(elementId) {
+        if ($('#' + elementId).attr('id') == "overlay_map") {
+            if ($("#" + elementId).is(":visible")) {
+                window.close();
+            }
+        }
+
+        $("#" + elementId).toggle();
+    }
+
+    $(function () {
+        overlay("overlay_map");
+
+        reloadMap();
+        setInterval("reloadMap()", 600000);
+    });
+
+    function reloadMap() {
+        $.getJSON("../Home/GetMonitoringRecords", function (response) {
+            $.each(response.aaData, function () {
+                if (this.hAlarm) {
+                    $("#A" + this.appId + "S" + this.sigId).html(this.value + " " + this.sigMeasure + '<div class="high_alarm_circle"></div>');
+                } else if (this.lAlarm) {
+                    $("#A" + this.appId + "S" + this.sigId).html(this.value + " " + this.sigMeasure + '<div class="low_alarm_circle"></div>');
+                } else {
+                    $("#A" + this.appId + "S" + this.sigId).html(this.value + " " + this.sigMeasure);
+                }
+            });
+            $("#monitoredDate").html(response.monitoredDate);
+            $("#monitoredTime").html(response.monitoredTime);
+        });
+    }
+</script>
+>>>>>>> SMCL last changes

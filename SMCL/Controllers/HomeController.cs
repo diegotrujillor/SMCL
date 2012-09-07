@@ -51,6 +51,14 @@ namespace SMCL.Controllers
             return PartialView("InboxClock");
         }
 
+        public ActionResult MapClock()
+        {
+            DateTime now = DateTime.Now;
+            ViewBag.DateFormatted = this.GetDateFormatted(now, "D");
+            ViewBag.TimeFormatted = this.GetDateFormatted(now, "T");
+            return PartialView("MapClock");
+        }
+
         public ActionResult Index()
         {
             ViewData["ValidationErrorMessage"] = String.Empty;
@@ -110,6 +118,20 @@ namespace SMCL.Controllers
                 }
             }
 
+<<<<<<< HEAD
+=======
+            DateTime now = DateTime.Now;
+
+            ViewBag.MapTitle1 = ConfigurationManager.AppSettings["IntroTitle"];
+            ViewBag.MapTitle2 = ConfigurationManager.AppSettings["MapConventionsTitle"];
+            ViewBag.MapRectangle1Title = ConfigurationManager.AppSettings["MapRectangle1Title"];
+            ViewBag.MapRectangle2Title = ConfigurationManager.AppSettings["MapRectangle2Title"];
+            ViewBag.MapRectangle3Title = ConfigurationManager.AppSettings["MapRectangle3Title"];
+            ViewBag.MapDateFormattedTitle = ConfigurationManager.AppSettings["MapDateFormattedTitle"];
+            ViewBag.MapDateFormatted = this.GetDateFormatted(now, "D");
+            ViewBag.MapTimeFormatted = this.GetDateFormatted(now, "T");
+            ViewBag.MapCloseButton = ConfigurationManager.AppSettings["MapCloseButton"];
+>>>>>>> SMCL last changes
             return View();
         }
 
@@ -237,7 +259,9 @@ namespace SMCL.Controllers
             IRepository<MappingTag> dbMT = new MappingTagRepository();
             IRepository<Signal> dbSgn = new SignalRepository();
             IRepository<Appliance> dbAppl = new ApplianceRepository();
+            IRepository<SignalAppliance> dbSA = new SignalApplianceRepository();
 
+<<<<<<< HEAD
             var monRecords = from r in
                                  (  from mon in dbM.GetAll()
                                     join mapp in dbMT.GetAll() on mon.MappingTag.Id equals mapp.Id
@@ -253,6 +277,32 @@ namespace SMCL.Controllers
                                && (m.alarm == Convert.ToInt32(ConfigurationManager.AppSettings["HighAlarmId"])
                                    || m.alarm == Convert.ToInt32(ConfigurationManager.AppSettings["LowAlarmId"]))
                          select new { monId = mon.Id, dateTime = m.monRecord.monDatetime, appId = m.monRecord.appId, sigId = m.monRecord.sigId, alarm = m.alarm, monValue = m.monValue, userId = m.monRecord.userId };
+=======
+            DateTime minMonitoringDate = DateTime.Now.AddDays(-Convert.ToInt32(ConfigurationManager.AppSettings["MonitoringBackDays"]));
+            int normalAlarmId = Convert.ToInt32(ConfigurationManager.AppSettings["NormalAlarmId"]);
+            int activeAlarmValue = 1;
+
+            var monRecords = from r in
+                                 (from mon in dbM.GetAll()
+                                  join mapp in dbMT.GetAll() on mon.MappingTag.Id equals mapp.Id
+                                  join sa in dbSA.GetAll() on new { appId = mapp.Appliance.Id, sigId = mapp.Signal.Id } equals new { appId = sa.Appliance.Id, sigId = sa.Signal.Id }
+                                  select new { monDatetime = mon.DateTime, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id, pv = (mapp.AlarmType.Id.Equals(normalAlarmId) ? mon.Value : 0), alarm = (mon.Value == activeAlarmValue && !mapp.AlarmType.Id.Equals(normalAlarmId) ? mapp.AlarmType.Id : 0), userId = mon.User.Id }
+                                  )
+                             where r.monDatetime >= minMonitoringDate
+                             group r by new { r.monDatetime, r.appId, r.sigId, r.userId } into g
+                             select new { monRecord = g.Key, monValue = g.Sum(d => d.pv), alarm = g.Sum(d => d.alarm) };
+
+            monRecords = monRecords.OrderByDescending(r => r.monRecord.monDatetime);
+
+            var monitoring = from m in monRecords
+                             join mon in dbM.GetAll() on m.monRecord.monDatetime equals mon.DateTime
+                             join mapp in dbMT.GetAll() on new { mapId = mon.MappingTag.Id, appId = m.monRecord.appId, sigId = m.monRecord.sigId } equals new { mapId = mapp.Id, appId = mapp.Appliance.Id, sigId = mapp.Signal.Id }
+                             where (m.alarm == 0 ? normalAlarmId : m.alarm) == mapp.AlarmType.Id
+                                   && mon.CommentsOnAlarm == null
+                                   && (m.alarm == Convert.ToInt32(ConfigurationManager.AppSettings["HighAlarmId"])
+                                       || m.alarm == Convert.ToInt32(ConfigurationManager.AppSettings["LowAlarmId"]))
+                             select new { monId = mon.Id, dateTime = m.monRecord.monDatetime, appId = m.monRecord.appId, sigId = m.monRecord.sigId, alarm = m.alarm, monValue = m.monValue, userId = m.monRecord.userId };
+>>>>>>> SMCL last changes
 
             var items = monitoring.Skip(param.iDisplayStart).Take(param.iDisplayLength);
             var result = from c in
@@ -260,27 +310,128 @@ namespace SMCL.Controllers
                          select new[] {
                              c.dateTime.ToString(),
                              dbAppl.GetById(c.appId).NameAppliance,
+<<<<<<< HEAD
                              dbAT.GetById((c.alarm == 0 ? Convert.ToInt32(ConfigurationManager.AppSettings["NormalAlarmId"]) : c.alarm)).NameAlarmType,
                              c.monValue.ToString(),
                              dbSgn.GetById(c.sigId).Name,
+=======
+                             dbSgn.GetById(c.sigId).Name,
+                             c.alarm == 0 ? normalAlarmId.ToString() : c.alarm.ToString(),
+                             dbAT.GetById((c.alarm == 0 ? normalAlarmId : c.alarm)).NameAlarmType,
+                             c.monValue.ToString(),
+>>>>>>> SMCL last changes
                              c.monId.ToString()
                          };
 
             return Json(new
-                            {
-                                sEcho = param.sEcho,
-                                iTotalRecords = monitoring.Count(),
-                                iTotalDisplayRecords = monitoring.Count(),
-                                aaData = result
-                            },
+            {
+                sEcho = param.sEcho,
+                iTotalRecords = monitoring.Count(),
+                iTotalDisplayRecords = monitoring.Count(),
+                aaData = result
+            },
                         JsonRequestBehavior.AllowGet);
 
+        }
+
+        public JsonResult GetMonitoringRecords()
+        {
+            IRepository<MappingTag> dbMT = new MappingTagRepository();
+            IRepository<Monitoring> dbMon = new MonitoringRepository();
+            IRepository<SignalAppliance> dbSigApp = new SignalApplianceRepository();
+
+            int normalAlarmId = Convert.ToInt32(ConfigurationManager.AppSettings["NormalAlarmId"]);
+            int highAlarmId = Convert.ToInt32(ConfigurationManager.AppSettings["HighAlarmId"]);
+            int lowAlarmId = Convert.ToInt32(ConfigurationManager.AppSettings["LowAlarmId"]);
+
+            int differentialPressureSigId = Convert.ToInt32(ConfigurationManager.AppSettings["DifferentialPressure"]);
+            string differentialPressureMeasure = ConfigurationManager.AppSettings["InchesOfWater"];
+            int temperatureSigId = Convert.ToInt32(ConfigurationManager.AppSettings["Temperature"]);
+            string temperatureMeasure = ConfigurationManager.AppSettings["DegreeCelsius"];
+            int rhSigId = Convert.ToInt32(ConfigurationManager.AppSettings["RH"]);
+            string rhMeasure = ConfigurationManager.AppSettings["Percentage"];
+
+            string unknownMeasure = ConfigurationManager.AppSettings["UnknownMeasure"];
+
+            var monRecords = dbMon.GetAll();
+            var mappRecords = dbMT.GetAll();
+            var sigAppRecords = from sa in dbSigApp.GetAll()
+                                from mapp in mappRecords
+                                where sa.Appliance.Id.Equals(mapp.Appliance.Id)
+                                   && sa.Signal.Id.Equals(mapp.Signal.Id)
+                                   && mapp.AlarmType.Id == normalAlarmId
+                                select new { appId = mapp.Appliance.Id, sigId = mapp.Signal.Id };
+
+            IList result = new ArrayList();
+
+            string lastMonitoredDate = "";
+            string lastMonitoredTime = "";
+            bool highAlarm = false;
+            bool lowAlarm = false;
+
+            foreach (var sa in sigAppRecords)
+            {
+                var v = (from mon in monRecords
+                         join mapp in mappRecords on mon.MappingTag.Id equals mapp.Id
+                         where mapp.Appliance.Id.Equals(sa.appId)
+                            && mapp.Signal.Id.Equals(sa.sigId)
+                            && mapp.AlarmType.Id == normalAlarmId
+                         orderby mon.DateTime descending
+                         select new { appId = sa.appId, sigId = sa.sigId, monDate = mon.DateTime.ToString("D"), monTime = mon.DateTime.ToString("T"), value = mon.Value, sigMeasure = (sa.sigId == temperatureSigId ? temperatureMeasure : sa.sigId == differentialPressureSigId ? differentialPressureMeasure : sa.sigId == rhSigId ? rhMeasure : unknownMeasure) }).FirstOrDefault();
+
+                float vHigh = (from mon in monRecords
+                               join mapp in mappRecords on mon.MappingTag.Id equals mapp.Id
+                               where mapp.Appliance.Id.Equals(sa.appId)
+                                  && mapp.Signal.Id.Equals(sa.sigId)
+                                  && mapp.AlarmType.Id == highAlarmId
+                               orderby mon.DateTime descending
+                               select mon.Value).FirstOrDefault();
+
+                float vLow = (from mon in monRecords
+                              join mapp in mappRecords on mon.MappingTag.Id equals mapp.Id
+                              where mapp.Appliance.Id.Equals(sa.appId)
+                                 && mapp.Signal.Id.Equals(sa.sigId)
+                                 && mapp.AlarmType.Id == lowAlarmId
+                              orderby mon.DateTime descending
+                              select mon.Value).FirstOrDefault();
+
+                if (v != null)
+                {
+                    if (lastMonitoredDate.Length == 0 && lastMonitoredTime.Length == 0)
+                    {
+                        lastMonitoredDate = v.monDate;
+                        lastMonitoredTime = v.monTime;
+                    }
+
+                    if (vHigh == 0 & vLow == 1)
+                    {
+                        lowAlarm = true;
+                    }
+
+                    if (vHigh == 1 & vLow == 0)
+                    {
+                        highAlarm = true;
+                    }
+
+                    if (vHigh == 1 & vLow == 1)
+                    {
+                        highAlarm = lowAlarm = true;
+                    }
+
+                    result.Add(new { appId = v.appId, sigId = v.sigId, monDate = v.monDate, monTime = v.monTime, value = v.value, sigMeasure = v.sigMeasure, hAlarm = highAlarm, lAlarm = lowAlarm });
+                }
+
+                highAlarm = false;
+                lowAlarm = false;
+            }
+
+            return Json(new { aaData = result, monitoredDate = lastMonitoredDate, monitoredTime = lastMonitoredTime }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GraphDataList()
         {
             var jsonResult = new Object();
-            List<KeyValuePair<object, object>> rawList = new List<KeyValuePair<object, object>>();
+            List<KeyValuePair<object, object>> jsonList = new List<KeyValuePair<object, object>>();
 
             switch (Request.Params["Callback"])
             {
@@ -315,12 +466,14 @@ namespace SMCL.Controllers
                             cmd.Parameters.Add("SIGNAL_PARAM", OracleDbType.Int32, iSignal, ParameterDirection.Input);
                             cmd.Parameters.Add("INIT_DATE_PARAM", OracleDbType.Varchar2, iStartDate.ToString("yyyy/MM/dd"), ParameterDirection.Input);
                             cmd.Parameters.Add("END_DATE_PARAM", OracleDbType.Varchar2, iFinalDate.ToString("yyyy/MM/dd"), ParameterDirection.Input);
+                            cmd.Parameters.Add("ALARM_TYPE_EXCLUSION", OracleDbType.Int32, Convert.ToInt32(ConfigurationManager.AppSettings["AlarmTypeExclusionId"].ToString()), ParameterDirection.Input);
+                            cmd.Parameters.Add("ALARM_TYPE_RECOVER", OracleDbType.Int32, Convert.ToInt32(ConfigurationManager.AppSettings["MockNormalAlarmId"].ToString()), ParameterDirection.Input);
                             cmd.Parameters.Add("RESULTADO_C", OracleDbType.RefCursor, ParameterDirection.Output);
 
                             odr = cmd.ExecuteReader();
 
                             int number;
-                            if (odr.Read())
+                            if (odr.HasRows)
                             {
                                 if (int.TryParse(EventTypes.Report.ToString(), out number) && int.TryParse(Session["UserId"].ToString(), out number))
                                 {
@@ -330,17 +483,15 @@ namespace SMCL.Controllers
                                 }
                             }
 
+                            double monValue;
+                            double milliseconds;
                             while (odr.Read())
                             {
-                                rawList.Add(new KeyValuePair<object, object>(odr.GetValue(0).ToString(), odr.GetValue(6).ToString()));
-                            }
-                            var tempList = rawList.ToList();
+                                milliseconds = (Convert.ToDateTime(odr.GetValue(0).ToString()) - new DateTime(1970, 1, 1, 0, 0, 0)).TotalMilliseconds;
+                                monValue = Convert.ToDouble(odr.GetValue(6).ToString());
 
-                            jsonResult = from c in tempList
-                                     select new[]{
-                                         Convert.ToDateTime(c.Key.ToString()).ToString("MM/dd/yyyy HH:mm:ss"),
-                                         c.Value.ToString()
-                                     };
+                                jsonList.Add(new KeyValuePair<object, object>(milliseconds, monValue));
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -353,7 +504,7 @@ namespace SMCL.Controllers
                     break;
             }
 
-            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+            return Json(jsonList.Select(x => new[] { x.Key, x.Value }).ToArray(), JsonRequestBehavior.AllowGet);
         }
 
         private string GetAlarmSubject(int alarmTypeId)
@@ -410,6 +561,8 @@ namespace SMCL.Controllers
                 {
                     monitor = dbM.GetById(Convert.ToInt32(monitorId));
                     monitor.CommentsOnAlarm = commentsOnAlarm;
+                    monitor.CommentsOnAlarmDate = DateTime.Now;
+                    monitor.User = db.GetById(Convert.ToInt32(Session["UserId"]));
 
                     dbM.Update(monitor);
 

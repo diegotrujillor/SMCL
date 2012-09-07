@@ -22,6 +22,8 @@ namespace SMCLCore.Domain.Model
 
         public virtual User User { get; set; }
 
+        public virtual DateTime CommentsOnAlarmDate { get; set; }
+
         public override bool Equals(object obj)
         {
             if (this == obj) return true;

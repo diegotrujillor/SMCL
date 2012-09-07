@@ -18,7 +18,7 @@ using SMCL.Enums;
 using NHibernate.Exceptions;
 
 namespace SMCL.Controllers
-{ 
+{
     public class UserController : Controller
     {
         ILoggable log = new LogSMCL();
@@ -80,7 +80,7 @@ namespace SMCL.Controllers
             }
             MultiSelectList mslPassphrases = new MultiSelectList(listPassphrases, "id", "value");
             ViewData["Passphrases"] = mslPassphrases;
-            
+
             ViewData["ValidationErrorMessage"] = String.Empty;
 
             return View();
@@ -116,7 +116,7 @@ namespace SMCL.Controllers
         [HttpPost]
         public ActionResult Create(User user, FormCollection form)
         {
-            
+
             ViewData["ValidationErrorMessage"] = String.Empty;
 
             try
@@ -130,7 +130,7 @@ namespace SMCL.Controllers
                     db.Save(this.RemoveExtraSpaces(user));
 
                     List<Object> logList = new List<Object>();
-                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + user.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + user.Id.ToString().Replace("-", "").ToUpper() + " - DocumentId=" + user.DocumentId + " - LoginEmail=" + user.LoginEmail + " - FirstName=" + user.FirstName + " - MiddleName=" + user.MiddleName + " - LastName1=" + user.LastName1 + " - LastName2=" + user.LastName2 + " - PhoneNumber=" + user.PhoneNumber + ")", (int)EventTypes.Create, (int)Session["UserId"]));
                     log.Write(logList);
 
                     return RedirectToAction("Index");
@@ -140,7 +140,7 @@ namespace SMCL.Controllers
             {
                 throw ex;
             }
-            
+
             Passphrase passphrase;
             var passphrases = this.GetPassphrases();
             IList<Passphrase> listPassphrases = new List<Passphrase>();
@@ -158,10 +158,10 @@ namespace SMCL.Controllers
 
             return View(user);
         }
-        
+
         //
         // GET: /User/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             User user = db.GetById(id);
@@ -219,7 +219,7 @@ namespace SMCL.Controllers
                     db.Update(this.RemoveExtraSpaces(user));
 
                     List<Object> logList = new List<Object>();
-                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + user.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + user.Id.ToString().Replace("-", "").ToUpper() + " - DocumentId=" + user.DocumentId + " - LoginEmail=" + user.LoginEmail + " - FirstName=" + user.FirstName + " - MiddleName=" + user.MiddleName + " - LastName1=" + user.LastName1 + " - LastName2=" + user.LastName2 + " - PhoneNumber=" + user.PhoneNumber + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
                     log.Write(logList);
 
                     return RedirectToAction("Index");
@@ -250,7 +250,7 @@ namespace SMCL.Controllers
 
         //
         // GET: /User/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             User user = db.GetById(id);
@@ -280,17 +280,45 @@ namespace SMCL.Controllers
             List<Object> logList = new List<Object>();
             ViewData["ValidationErrorMessage"] = String.Empty;
 
+            User user = db.GetById(id);
+
             try
             {
-                db.Delete(id);
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
-                log.Write(logList);
+                if (user != null)
+                {
+                    db.Delete(id);
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + user.Id.ToString().Replace("-", "").ToUpper() + 
+                                              " - DocumentId=" + user.DocumentId + 
+                                              " - LoginEmail=" + user.LoginEmail + 
+                                              " - FirstName=" + user.FirstName + 
+                                              " - MiddleName=" + user.MiddleName + 
+                                              " - LastName1=" + user.LastName1 + 
+                                              " - LastName2=" + user.LastName2 + 
+                                              " - PhoneNumber=" + user.PhoneNumber + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
+                }
             }
-            catch (GenericADOException ex)
+            catch (GenericADOException)
             {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] +
+                                          ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " +
+                                          ControllerContext.RouteData.Values["controller"] +
+                                          "(Id=" + user.Id.ToString().Replace("-", "").ToUpper() +
+                                          " - DocumentId=" + user.DocumentId +
+                                          " - LoginEmail=" + user.LoginEmail +
+                                          " - FirstName=" + user.FirstName +
+                                          " - MiddleName=" + user.MiddleName +
+                                          " - LastName1=" + user.LastName1 +
+                                          " - LastName2=" + user.LastName2 +
+                                          " - PhoneNumber=" + user.PhoneNumber + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 ViewData["urlImage"] = this.GetUrlImage(db.GetById(id));
@@ -511,7 +539,7 @@ namespace SMCL.Controllers
             }
         }
 
-        
+
 
         private bool FormCollectionToUpdateIsValid(SMCLCore.Domain.Model.User user, FormCollection form)
         {
@@ -580,7 +608,7 @@ namespace SMCL.Controllers
             }
         }
 
-        
+
 
         private bool IsLoginEmailValid(string loginEmail)
         {
@@ -652,7 +680,8 @@ namespace SMCL.Controllers
         }
     }
 
-    class Passphrase{
+    class Passphrase
+    {
         public int id { get; set; }
         public string value { get; set; }
     }

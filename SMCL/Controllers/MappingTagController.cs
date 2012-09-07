@@ -16,7 +16,7 @@ using SMCL.Enums;
 using NHibernate.Exceptions;
 
 namespace SMCL.Controllers
-{ 
+{
     public class MappingTagController : Controller
     {
         ILoggable log = new LogSMCL();
@@ -53,10 +53,10 @@ namespace SMCL.Controllers
             ViewData["ValidationErrorMessage"] = String.Empty;
             ViewBag.ApplianceId = new SelectList(dbA.GetAll(), "Id", "NameAppliance");
             ViewBag.SignalId = new SelectList(dbS.GetAll(), "Id", "Name");
-            ViewBag.AlarmTypeId = new SelectList((from at in dbAT.GetAll() where at.Id != 4 select at).ToList(), "Id", "NameAlarmType");
-            
+            ViewBag.AlarmTypeId = new SelectList((from at in dbAT.GetAll() where at.Id != Convert.ToInt32(ConfigurationManager.AppSettings["MockNormalAlarmId"]) select at).ToList(), "Id", "NameAlarmType");
+
             return View();
-        } 
+        }
 
         //
         // POST: /MappingTag/Create
@@ -73,7 +73,16 @@ namespace SMCL.Controllers
                 db.Save(this.RemoveExtraSpaces(mappingtag));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + mappingtag.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + mappingtag.Id.ToString().Replace("-", "").ToUpper() + 
+                                          " - Description=" + mappingtag.Description + 
+                                          " - Tag=" + mappingtag.Tag + 
+                                          " - AlarmTypeName=" + mappingtag.AlarmType.NameAlarmType + 
+                                          " - ApplianceName=" + mappingtag.Appliance.NameAppliance + 
+                                          " - SignalName=" + mappingtag.Signal.Name + ")", 
+                                          (int)EventTypes.Create, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -85,10 +94,10 @@ namespace SMCL.Controllers
 
             return View(mappingtag);
         }
-                       
+
         //
         // GET: /MappingTag/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             MappingTag mappingtag = db.GetById(id);
@@ -98,7 +107,7 @@ namespace SMCL.Controllers
 
             ViewBag.ApplianceId = new SelectList(dbA.GetAll(), "Id", "NameAppliance", mappingtag.Appliance.Id);
             ViewBag.SignalId = new SelectList(dbS.GetAll(), "Id", "Name", mappingtag.Signal.Id);
-            ViewBag.AlarmTypeId = new SelectList(dbAT.GetAll(), "Id", "NameAlarmType", mappingtag.AlarmType.Id);
+            ViewBag.AlarmTypeId = new SelectList((from at in dbAT.GetAll() where at.Id != Convert.ToInt32(ConfigurationManager.AppSettings["MockNormalAlarmId"]) select at).ToList(), "Id", "NameAlarmType", mappingtag.AlarmType.Id);
 
             ViewData["ValidationErrorMessage"] = String.Empty;
 
@@ -120,7 +129,16 @@ namespace SMCL.Controllers
                 db.Save(this.RemoveExtraSpaces(mappingtag));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + mappingtag.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + mappingtag.Id.ToString().Replace("-", "").ToUpper() + 
+                                          " - Description=" + mappingtag.Description + 
+                                          " - Tag=" + mappingtag.Tag + 
+                                          " - AlarmTypeName=" + mappingtag.AlarmType.NameAlarmType + 
+                                          " - ApplianceName=" + mappingtag.Appliance.NameAppliance + 
+                                          " - SignalName=" + mappingtag.Signal.Name + ")", 
+                                          (int)EventTypes.Edit, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -135,7 +153,7 @@ namespace SMCL.Controllers
 
         //
         // GET: /MappingTag/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             MappingTag mappingtag = db.GetById(id);
@@ -146,7 +164,7 @@ namespace SMCL.Controllers
             ViewBag.ApplianceId = new SelectList(dbA.GetAll(), "Id", "NameAppliance", mappingtag.Appliance.Id);
             ViewBag.SignalId = new SelectList(dbS.GetAll(), "Id", "Name", mappingtag.Signal.Id);
             ViewBag.AlarmTypeId = new SelectList(dbAT.GetAll(), "Id", "NameAlarmType", mappingtag.AlarmType.Id);
-            
+
             ViewData["ValidationErrorMessage"] = String.Empty;
 
             return View(mappingtag);
@@ -161,17 +179,45 @@ namespace SMCL.Controllers
             List<Object> logList = new List<Object>();
             ViewData["ValidationErrorMessage"] = String.Empty;
 
+            MappingTag mappingtag = db.GetById(id);
+
             try
             {
-                db.Delete(id);
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
-                log.Write(logList);
-            }
-            catch (GenericADOException ex)
-            {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                IRepository<Signal> dbS = new SignalRepository();
+                IRepository<Appliance> dbA = new ApplianceRepository();
+                IRepository<AlarmType> dbAT = new AlarmTypeRepository();
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
+                if (mappingtag != null)
+                {
+                    db.Delete(id);
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + mappingtag.Id.ToString().Replace("-", "").ToUpper() + 
+                                              " - Description=" + mappingtag.Description + 
+                                              " - Tag=" + mappingtag.Tag +
+                                              " - AlarmTypeName=" + dbAT.GetById(mappingtag.AlarmType.Id).NameAlarmType +
+                                              " - ApplianceName=" + dbA.GetById(mappingtag.Appliance.Id).NameAppliance +
+                                              " - SignalName=" + dbS.GetById(mappingtag.Signal.Id).Name + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
+                }
+            }
+            catch (GenericADOException)
+            {
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
+
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] +
+                                          ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " +
+                                          ControllerContext.RouteData.Values["controller"] +
+                                          "(Id=" + mappingtag.Id.ToString().Replace("-", "").ToUpper() +
+                                          " - Description=" + mappingtag.Description +
+                                          " - Tag=" + mappingtag.Tag +
+                                          " - AlarmTypeName=" + dbAT.GetById(mappingtag.AlarmType.Id).NameAlarmType +
+                                          " - ApplianceName=" + dbA.GetById(mappingtag.Appliance.Id).NameAppliance +
+                                          " - SignalName=" + dbS.GetById(mappingtag.Signal.Id).Name + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 MappingTag entity = db.GetById(id);
@@ -189,7 +235,7 @@ namespace SMCL.Controllers
                 log.Write(logList);
 
                 return View();
-            }            
+            }
 
             return RedirectToAction("Index");
         }

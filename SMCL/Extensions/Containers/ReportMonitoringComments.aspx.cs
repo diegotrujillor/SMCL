@@ -25,6 +25,7 @@ namespace SMCL.Extensions.Containers
             HtmlInputText startDate = (HtmlInputText)FindControl("startDate");
             HtmlInputText finalDate = (HtmlInputText)FindControl("finalDate");
             HtmlInputHidden alarmTypeExclusion = (HtmlInputHidden)FindControl("alarmTypeExclusionId");
+            HtmlInputHidden alarmTypeRecover = (HtmlInputHidden)FindControl("alarmTypeRecoverId");
 
             if (!Page.IsPostBack)
             {
@@ -40,6 +41,7 @@ namespace SMCL.Extensions.Containers
                 this.SetParametersValues(ddlAppliances.SelectedItem.Value);
 
                 alarmTypeExclusion.Value = ConfigurationManager.AppSettings["AlarmTypeExclusionId"];
+                alarmTypeRecover.Value = ConfigurationManager.AppSettings["MockNormalAlarmId"];
             }
         }
 
@@ -95,7 +97,9 @@ namespace SMCL.Extensions.Containers
                 IList alarms = session.CreateCriteria(typeof(AlarmType)).Add(Restrictions.Not(Restrictions.Eq("Id", Convert.ToInt32(ConfigurationManager.AppSettings["NormalAlarmId"])))).AddOrder(Order.Asc("NameAlarmType")).List();
                 foreach (AlarmType item in alarms)
                 {
-                    ddlAlarms.Items.Add(new ListItem(item.NameAlarmType, item.Id.ToString()));
+                    if(!item.Id.Equals(Convert.ToInt32(ConfigurationManager.AppSettings["MockNormalAlarmId"]))) {
+                        ddlAlarms.Items.Add(new ListItem(item.NameAlarmType, item.Id.ToString()));
+                    }
                 }
             }
         }

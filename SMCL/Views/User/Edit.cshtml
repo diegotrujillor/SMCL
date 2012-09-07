@@ -134,7 +134,7 @@
                         </div>
                     </div>
                     <div class="editor-field">
-                        <input id="passphraseValue" type="password" name="passphraseValue" placeholder='@System.Configuration.ConfigurationManager.AppSettings["PlaceholderPassphrase"]' onclick="changeInputType" onkeypress="resetInputType()" style="width: 80%;" maxlength="80" />
+                        <input id="passphraseValue" type="password" name="passphraseValue" title="@System.Configuration.ConfigurationManager.AppSettings["PlaceholderPassphrase"]" onclick="changeInputType" @*onkeypress="resetInputType()"*@ style="width: 80%;" maxlength="80" />
                     </div>
                 </td>
                 <td>
@@ -179,7 +179,7 @@
             document.getElementById("passphraseValue").type = 'password';
         } else {
             document.getElementById("passphraseValue").type = 'text';
-            document.getElementById("passphraseValue").placeholder = '@System.Configuration.ConfigurationManager.AppSettings["PlaceholderPassphrase"]';
+            document.getElementById("passphraseValue").title = '@System.Configuration.ConfigurationManager.AppSettings["PlaceholderPassphrase"]';
         }
     }
 </script>

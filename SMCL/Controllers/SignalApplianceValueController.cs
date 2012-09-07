@@ -226,14 +226,23 @@ namespace SMCL.Controllers
             {
                 dbSA.Delete(db.GetById(id).SignalAppliance.Id);
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + id + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
             }
-            catch (GenericADOException ex)
+            catch (GenericADOException)
             {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] +
+                                          ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " +
+                                          ControllerContext.RouteData.Values["controller"] +
+                                          "(Id=" + id + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 SignalApplianceValue entity = db.GetById(id);

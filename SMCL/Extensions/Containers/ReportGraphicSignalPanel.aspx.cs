@@ -22,7 +22,9 @@ namespace SMCL.Extensions
         {
             HtmlInputText startDate = (HtmlInputText)FindControl("startDate");
             HtmlInputText finalDate = (HtmlInputText)FindControl("finalDate");
-
+            HtmlInputHidden alarmTypeExclusion = (HtmlInputHidden)FindControl("alarmTypeExclusionId");
+            HtmlInputHidden alarmTypeRecover = (HtmlInputHidden)FindControl("alarmTypeRecoverId");
+            
             if (!Page.IsPostBack)
             {
                 if (String.IsNullOrEmpty(startDate.Value))
@@ -35,6 +37,9 @@ namespace SMCL.Extensions
                 }
 
                 this.SetParametersValues(ddlAppliancesG.SelectedItem.Value);
+
+                alarmTypeExclusion.Value = ConfigurationManager.AppSettings["AlarmTypeExclusionId"];
+                alarmTypeRecover.Value = ConfigurationManager.AppSettings["MockNormalAlarmId"];
             }
         }
 
@@ -61,11 +66,6 @@ namespace SMCL.Extensions
             this.SetParametersValues(ddlAppliancesG.SelectedItem.Value);
         }
 
-        protected void ddlAlarmsG_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ReportViewer2.LocalReport.Refresh();
-        }
-
         protected void ddlSignalsG_SelectedIndexChanged(object sender, EventArgs e)
         {
             ReportViewer2.LocalReport.Refresh();
@@ -79,25 +79,6 @@ namespace SMCL.Extensions
                 foreach (Area item in areas)
                 {
                     ddlAreasG.Items.Add(new ListItem(item.Name, item.Id.ToString()));
-                }
-            }
-        }
-        
-        protected void ddlAlarmsG_Init(object sender, EventArgs e)
-        {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                IList alarms = session.CreateCriteria(typeof(AlarmType)).AddOrder(Order.Asc("NameAlarmType")).List();
-                foreach (AlarmType item in alarms)
-                {
-                    if (item.NameAlarmType.Equals("Valor"))
-                    {
-                        ddlAlarmsG.Items.Add(new ListItem("Normal", item.Id.ToString()));
-                    }
-                    else
-                    {
-                        ddlAlarmsG.Items.Add(new ListItem(item.NameAlarmType, item.Id.ToString()));
-                    }
                 }
             }
         }
@@ -118,7 +99,6 @@ namespace SMCL.Extensions
         {
             ddl.Items.Clear();
             ddl.Items.Add(new ListItem("-- Seleccione --", "0"));
-            ddl.Items.Add(new ListItem("-- Todos --", "-1"));
         }
 
         private void SetParametersValues(string applianceId)

@@ -2,6 +2,7 @@
 <publishData>
   <publishProfile publishUrl="C:\inetpub\wwwroot\SMCL" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="local-wwwroot" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <file relUrl="bin/Microsoft.ReportViewer.WinForms.dll" publishTime="06/28/2011 01:35:08" />
     <file relUrl="Content/datatable/proccessing4.gif" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/Images/jnj_logo7_bck.png" publishTime="08/13/2012 15:45:56" />
@@ -12,10 +13,24 @@
     <file relUrl="Scripts/jquery-ui.min.js" publishTime="08/13/2012 15:45:57" />
     <file relUrl="Content/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Scripts/jquery.numeric.js" publishTime="08/13/2012 15:45:57" />
+=======
+    <file relUrl="bin/Microsoft.ReportViewer.WinForms.dll" publishTime="06/28/2011 01:35:08" />
+    <file relUrl="Content/datatable/proccessing4.gif" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/Map_Zoom1.PNG" publishTime="08/15/2012 17:21:50" />
+    <file relUrl="Content/Images/jnj_logo7_bck.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/SMCL.dll" publishTime="09/06/2012 18:12:08" />
+    <file relUrl="bin/es/System.Web.Helpers.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/highcharts.js" publishTime="08/24/2012 14:24:00" />
+    <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/4inactivar.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/MapClock.cshtml" publishTime="08/23/2012 10:22:19" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png" publishTime="08/13/2012 15:45:56" />
+>>>>>>> SMCL last changes
     <file relUrl="Content/jquery.jqplot.css" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/themes/ui-lightness/jquery-ui-1.8.19.custom.css" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/themes/base/jquery.ui.tabs.css" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/jQueryImages/ui-bg_highlight-soft_75_ffe45c_1x100.png" publishTime="08/13/2012 15:45:56" />
+<<<<<<< HEAD
     <file relUrl="Views/Area/Edit.cshtml" publishTime="08/13/2012 15:45:57" />
     <file relUrl="bin/System.Web.Helpers.dll" publishTime="08/13/2012 15:45:57" />
     <file relUrl="Content/themes/redmond/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="08/13/2012 15:45:56" />
@@ -60,12 +75,60 @@
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="08/13/2012 15:45:57" />
     <file relUrl="Scripts/jquery.min.js" publishTime="08/13/2012 15:45:57" />
     <file relUrl="bin/Castle.Core.dll" publishTime="08/13/2012 15:45:57" />
+=======
+    <file relUrl="Views/Area/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/System.Web.Helpers.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/xls.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/shBrushXml.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jqplot.canvasTextRenderer.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Area/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/shThemejqPlot.min.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/shBrushJScript.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.jqGrid.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/MappingTag/Edit.cshtml" publishTime="08/23/2012 14:59:10" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_469bdd_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jqplot.canvasOverlay.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/3edit.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_glass_65_ffffff_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/AlarmType/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Role/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-icons_ef8c08_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-1.5.1.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/AlarmType/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.dataTables.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.maphilight.min.js" publishTime="08/17/2012 09:12:10" />
+    <file relUrl="Content/jQueryImages/ui-icons_222222_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/MicrosoftMvcAjax.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/modernizr-1.7.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Extensions/Containers/ReportMonitoringComments.aspx" publishTime="09/03/2012 23:42:00" />
+    <file relUrl="Content/Images/7customize.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/MappingTag/Details.cshtml" publishTime="08/23/2012 14:58:48" />
+    <file relUrl="Views/AlarmType/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/User/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.passwordMeter.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Reports/Report_Data_Signals.rdlc" publishTime="09/06/2012 16:01:27" />
+    <file relUrl="Content/themes/base/jquery.ui.dialog.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/0add_48.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalAppliance/Create.cshtml" publishTime="08/22/2012 15:53:42" />
+    <file relUrl="Content/Images/jnj-negro.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/LogOn.cshtml" publishTime="08/14/2012 10:02:44" />
+    <file relUrl="Scripts/jquery.min.js" publishTime="04/02/2012 13:24:28" />
+    <file relUrl="bin/Castle.Core.dll" publishTime="08/13/2012 15:45:56" />
+>>>>>>> SMCL last changes
     <file relUrl="Content/Images/inject-left.png" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/Images/lightbulb.png" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/themes/redmond/images/ui-icons_d8e7f3_256x240.png" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/Images/jnj-blanco.png" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Content/jquery.dataTables.css" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Scripts/MicrosoftMvcValidation.debug.js" publishTime="08/13/2012 15:45:56" />
+<<<<<<< HEAD
     <file relUrl="Views/MappingTag/Index.cshtml" publishTime="08/13/2012 15:45:57" />
     <file relUrl="Scripts/MicrosoftMvcAjax.debug.js" publishTime="08/13/2012 15:45:56" />
     <file relUrl="Views/Shared/_LogOnPartial.cshtml" publishTime="08/13/2012 15:45:57" />
@@ -627,5 +690,264 @@
     <file relUrl="Content/Images/qa_jyj.png" publishTime="01/04/2012 17:24:16" />
     <file relUrl="Content/jquery.jqplot.min.css" publishTime="06/17/2012 01:21:05" />
 >>>>>>> origin/master
+=======
+    <file relUrl="Views/MappingTag/Index.cshtml" publishTime="08/23/2012 14:59:21" />
+    <file relUrl="Scripts/MicrosoftMvcAjax.debug.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Shared/_LogOnPartial.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-icons_228ef1_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/sort_asc_disabled.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Log/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/inject-top.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/5details.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-1.7.1.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-ui-datepicker-es.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Event/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Appliance/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_glass_100_fdf5ce_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-ui-1.8.11.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-icons_cd0a0a_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/es/System.Web.WebPages.Razor.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/inject-right.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_valid_html5_badge_h_css3_semantics.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/Intro.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_valid_xhtml10.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Event/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/exporting.js" publishTime="08/24/2012 14:24:34" />
+    <file relUrl="Views/Area/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Extensions/Containers/ReportingMonitoringNoComments.aspx" publishTime="09/03/2012 23:38:15" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-icons_ffffff_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jquery-ui-1.8.18.custom.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/NHibernate.dll" publishTime="08/13/2012 15:45:58" />
+    <file relUrl="Scripts/curvycorners.src.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jqplot.canvasAxisLabelRenderer.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_2e83ff_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-icons_222222_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalApplianceValue/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Iesi.Collections.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-icons_454545_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_flat_55_fbec88_40x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalApplianceValue/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Role/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_glass_65_ffffff_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_events.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-ui.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.slider.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/Map.cshtml" publishTime="09/06/2012 12:36:04" />
+    <file relUrl="Content/datatable/sort_both.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Global.asax" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/modernizr-1.7.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.all.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/AlarmType/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Web.config" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalAppliance/Delete.cshtml" publishTime="08/22/2012 15:54:36" />
+    <file relUrl="Views/Home/Management.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/qa_jyj.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Oracle.DataAccess.dll" publishTime="02/22/2012 16:33:56" />
+    <file relUrl="Views/Home/Inbox.cshtml" publishTime="08/30/2012 17:00:14" />
+    <file relUrl="Content/Images/Map_Global.PNG" publishTime="08/15/2012 17:21:50" />
+    <file relUrl="Views/Area/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/es/System.Web.Razor.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.jqplot.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Extensions/Containers/ReportGraphicSignalPanel.aspx" publishTime="09/04/2012 04:19:56" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_cd0a0a_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-icons_228ef1_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-ui-1.8.19.custom.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/User/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/forward_disabled.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/forward_enabled.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Microsoft.ReportViewer.WebForms.xml" publishTime="03/03/2010 21:11:32" />
+    <file relUrl="Content/Images/bg_strength_gradient.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_diagonals-thick_18_b81900_40x40.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/AlarmType/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Microsoft.ReportViewer.Common.dll" publishTime="06/28/2011 01:35:08" />
+    <file relUrl="Content/Images/jnj-rojo.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-ui-1.8.11.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Appliance/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/PIE.htc" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/2delete.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalApplianceValue/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Intro.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/compass_96.png" publishTime="08/15/2012 16:26:08" />
+    <file relUrl="bin/System.Web.WebPages.Deployment.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj-blanco-title.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_gloss-wave_35_f6a828_500x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_rol.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Signal/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/System.Web.Razor.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Microsoft.ReportViewer.DataVisualization.dll" publishTime="09/25/2011 00:35:08" />
+    <file relUrl="Views/Log/Index.cshtml" publishTime="08/22/2012 08:09:53" />
+    <file relUrl="Scripts/jquery-1.5.1-vsdoc.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_labels.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-1.5.1.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_glass_100_f6f6f6_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_alarm.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="08/23/2012 16:19:51" />
+    <file relUrl="bin/hibernate.cfg.xml" publishTime="09/06/2012 09:16:49" />
+    <file relUrl="hibernate.cfg.xml" publishTime="09/06/2012 09:16:49" />
+    <file relUrl="Content/jquery-ui-1.8.7.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/1accept.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/1.gif" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/About.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/ui.jqgrid.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Shared/Error.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_reports_go_back.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery-main-jqplot.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_highlight-soft_100_eeeeee_1x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/envelope_open.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/sort_desc_disabled.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.validate.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/ui.multiselect.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_equipment.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-icons_ffffff_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Appliance/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/favicon.ico" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/DD_roundies_0.0.2a-min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-bg_diagonals-thick_20_666666_40x40.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/NHibernate.ByteCode.Castle.dll" publishTime="01/12/2012 15:13:18" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_6da8d5_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/MappingTag/Delete.cshtml" publishTime="08/23/2012 14:59:00" />
+    <file relUrl="Views/Signal/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/excanvas.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_users.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/Icon-HC-Edit.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-icons_ffd27a_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.autocomplete.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/Index.cshtml" publishTime="08/30/2012 15:02:24" />
+    <file relUrl="Content/jQueryImages/ui-bg_flat_10_000000_40x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="packages.config" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/SMCLInfrastructure.pdb" publishTime="09/05/2012 09:49:12" />
+    <file relUrl="Scripts/highcharts.src.js" publishTime="08/27/2012 12:32:26" />
+    <file relUrl="Scripts/jquery.numeric.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Castle.Core.xml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/PasswordMeter/jquery.passwordMeter.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Site.css" publishTime="09/06/2012 12:26:15" />
+    <file relUrl="Content/jquery.jqplot.min.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Reports/Report_Data_Signals_NoComments.rdlc" publishTime="09/05/2012 10:00:18" />
+    <file relUrl="Content/themes/base/jquery.ui.selectable.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/System.Web.WebPages.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Signal/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/support.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/SMCL.pdb" publishTime="09/06/2012 18:12:08" />
+    <file relUrl="bin/Iesi.Collections.xml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.progressbar.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/es/System.Web.Mvc.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/Error.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_reports_go_back2.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalApplianceValue/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Role/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/black50.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/User/Edit.cshtml" publishTime="08/30/2012 16:45:30" />
+    <file relUrl="Views/Event/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-icons_888888_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Event/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Area/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/User/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.accordion.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_flat_10_000000_40x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/SMCLCore.dll" publishTime="09/05/2012 09:49:11" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalApplianceValue/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Appliance/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jquery.sidebar.css" publishTime="08/14/2012 12:48:00" />
+    <file relUrl="Content/fisheye.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/interface.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/shCoreDefault.min.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/Map_Zoom2.PNG" publishTime="08/15/2012 17:21:50" />
+    <file relUrl="Content/Images/jnj_logo7.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jQueryImages/ui-icons_ffd27a_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/PasswordMeter/ie.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/User/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/grid.locale-en.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.button.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/es/System.Web.WebPages.Deployment.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/back_disabled.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_valid_css.gif" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.theme.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/LogOn.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/MicrosoftMvcValidation.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/MappingTag/Create.cshtml" publishTime="08/23/2012 14:58:34" />
+    <file relUrl="bin/es/Microsoft.Web.Infrastructure.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Reports.css" publishTime="08/30/2012 19:26:45" />
+    <file relUrl="Content/themes/base/jquery.ui.base.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-icons_ef8c08_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/inject-bottom.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_217bc0_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_background_intro.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jqplot.cursor.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/datatable/sort_asc.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/_ViewStart.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/NHibernate.xml" publishTime="08/13/2012 15:45:58" />
+    <file relUrl="bin/Microsoft.ReportViewer.WinForms.xml" publishTime="03/03/2010 21:11:32" />
+    <file relUrl="Scripts/jquery.sidebar.js" publishTime="08/14/2012 12:52:34" />
+    <file relUrl="Content/datatable/back_enabled.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Role/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Appliance/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/SMCLInfrastructure.dll" publishTime="09/05/2012 09:49:12" />
+    <file relUrl="Scripts/jquery.validate.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/MicrosoftAjax.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/es-CO.txt" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalAppliance/Index.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.resizable.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-icons_222222_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_logo6.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/Microsoft.ReportViewer.WebForms.dll" publishTime="06/28/2011 01:35:08" />
+    <file relUrl="Views/Home/InboxClock.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_signalVista.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/jquery-ui.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/johnson_and_johnson_no_bg.ico" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalAppliance/Edit.cshtml" publishTime="08/22/2012 15:54:16" />
+    <file relUrl="bin/Microsoft.ReportViewer.ProcessingObjectModel.dll" publishTime="09/25/2011 00:35:10" />
+    <file relUrl="Web.config" publishTime="09/06/2012 12:13:42" />
+    <file relUrl="Content/Images/Icon-Con-Search.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_signalEquipment.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Reports/Report_Graphic_Signals.rdlc" publishTime="09/05/2012 10:00:35" />
+    <file relUrl="Content/Images/alarm.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-icons_2e83ff_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/mgm_areas.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/jqplot.dateAxisRenderer.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Role/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj-qa-latam.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_f9bd01_256x240.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Signal/Create.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Scripts/shCore.min.js" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/Icon-Rep-Search.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/es/System.Web.WebPages.resources.dll" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Signal/Edit.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Home/Reporting.cshtml" publishTime="09/06/2012 14:50:01" />
+    <file relUrl="Content/Images/8hide.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/Event/Delete.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/jnj_logo4.jpg" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/6refresh.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/SMCLCore.pdb" publishTime="09/05/2012 09:49:11" />
+    <file relUrl="Content/datatable/sort_desc.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Views/SignalAppliance/Details.cshtml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.core.css" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/Images/0add_16.png" publishTime="08/13/2012 15:45:56" />
+    <file relUrl="Content/themes/base/jquery.ui.datepicker.css" publishTime="08/13/2012 15:45:56" />
+>>>>>>> SMCL last changes
   </publishProfile>
 </publishData>

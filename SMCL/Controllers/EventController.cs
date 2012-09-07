@@ -59,7 +59,7 @@ namespace SMCL.Controllers
                 db.Save(this.RemoveExtraSpaces(eventt));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + eventt.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + eventt.Id.ToString().Replace("-", "").ToUpper() + " - Description=" + eventt.Description + " - Name=" + eventt.Name + ")", (int)EventTypes.Create, (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -90,7 +90,7 @@ namespace SMCL.Controllers
                 db.Update(this.RemoveExtraSpaces(eventt));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + eventt.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + eventt.Id.ToString().Replace("-", "").ToUpper() + " - Description=" + eventt.Description + " - Name=" + eventt.Name + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -113,11 +113,19 @@ namespace SMCL.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
+            Event eventt = db.GetById(id);
+
             db.Delete(id);
 
             List<Object> logList = new List<Object>();
-            logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
+            logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                      ControllerContext.RouteData.Values["controller"] + 
+                                      "(Id=" + eventt.Id.ToString().Replace("-", "").ToUpper() + 
+                                      " - Description=" + eventt.Description + 
+                                      " - Name=" + eventt.Name + ")", 
+                                      (int)EventTypes.Delete, 
+                                      (int)Session["UserId"]));
             log.Write(logList);
 
             return RedirectToAction("Index");

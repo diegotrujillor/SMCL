@@ -16,7 +16,7 @@ using SMCL.Enums;
 using NHibernate.Exceptions;
 
 namespace SMCL.Controllers
-{ 
+{
     public class AlarmTypeController : Controller
     {
         ILoggable log = new LogSMCL();
@@ -46,7 +46,7 @@ namespace SMCL.Controllers
         {
             ViewData["ValidationErrorMessage"] = String.Empty;
             return View();
-        } 
+        }
 
         //
         // POST: /AlarmType/Create
@@ -60,7 +60,7 @@ namespace SMCL.Controllers
                 db.Save(this.RemoveExtraSpaces(alarmtype));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + alarmtype.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + alarmtype.Id.ToString().Replace("-", "").ToUpper() + " - Description=" + alarmtype.Description + " - NameAlarmType=" + alarmtype.NameAlarmType + ")", (int)EventTypes.Create, (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -68,10 +68,10 @@ namespace SMCL.Controllers
 
             return View(alarmtype);
         }
-        
+
         //
         // GET: /AlarmType/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             AlarmType alarmtype = db.GetById(id);
@@ -91,18 +91,18 @@ namespace SMCL.Controllers
                 db.Update(this.RemoveExtraSpaces(alarmtype));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + alarmtype.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + alarmtype.Id.ToString().Replace("-", "").ToUpper() + " - Description=" + alarmtype.Description + " - NameAlarmType=" + alarmtype.NameAlarmType + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
             }
-            
+
             return View(alarmtype);
         }
 
         //
         // GET: /AlarmType/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             AlarmType alarmtype = db.GetById(id);
@@ -119,17 +119,35 @@ namespace SMCL.Controllers
             List<Object> logList = new List<Object>();
             ViewData["ValidationErrorMessage"] = String.Empty;
 
+            AlarmType alarmtype = db.GetById(id);
+
             try
             {
-                db.Delete(id);
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
-                log.Write(logList);
+                if (alarmtype != null)
+                {
+                    db.Delete(id);
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + alarmtype.Id.ToString().Replace("-", "").ToUpper() + 
+                                              " - Description=" + alarmtype.Description + 
+                                              " - NameAlarmType=" + alarmtype.NameAlarmType + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
+                }
             }
-            catch (GenericADOException ex)
+            catch (GenericADOException)
             {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] +
+                                          ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + alarmtype.Id.ToString().Replace("-", "").ToUpper() + 
+                                          " - Description=" + alarmtype.Description + 
+                                          " - NameAlarmType=" + alarmtype.NameAlarmType + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 return View(db.GetById(id));

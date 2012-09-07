@@ -16,7 +16,7 @@ using SMCL.Enums;
 using NHibernate.Exceptions;
 
 namespace SMCL.Controllers
-{ 
+{
     public class ApplianceController : Controller
     {
         ILoggable log = new LogSMCL();
@@ -48,9 +48,9 @@ namespace SMCL.Controllers
         {
             ViewData["ValidationErrorMessage"] = String.Empty;
             ViewBag.AreaId = new SelectList(dbA.GetAll(), "Id", "Name");
-            
+
             return View();
-        } 
+        }
 
         //
         // POST: /Appliance/Create
@@ -65,7 +65,14 @@ namespace SMCL.Controllers
                 db.Save(this.RemoveExtraSpaces(appliance));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + appliance.Id + ")", (int)EventTypes.Create, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["CreateText"] + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + appliance.Id.ToString().Replace("-", "").ToUpper() + 
+                                          " - Description=" + appliance.Description + 
+                                          " - ApplianceName=" + appliance.NameAppliance + 
+                                          " - AreaName=" + appliance.Area.Name + ")", 
+                                          (int)EventTypes.Create, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -75,10 +82,10 @@ namespace SMCL.Controllers
 
             return View(appliance);
         }
-        
+
         //
         // GET: /Appliance/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Appliance appliance = db.GetById(id);
@@ -102,7 +109,14 @@ namespace SMCL.Controllers
                 db.Update(this.RemoveExtraSpaces(appliance));
 
                 List<Object> logList = new List<Object>();
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + appliance.Id + ")", (int)EventTypes.Edit, (int)Session["UserId"]));
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["EditText"] + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + appliance.Id.ToString().Replace("-", "").ToUpper() + 
+                                          " - Description=" + appliance.Description + 
+                                          " - ApplianceName=" + appliance.NameAppliance + 
+                                          " - AreaName=" + appliance.Area.Name + ")", 
+                                          (int)EventTypes.Edit, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 return RedirectToAction("Index");
@@ -115,14 +129,14 @@ namespace SMCL.Controllers
 
         //
         // GET: /Appliance/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Appliance appliance = db.GetById(id);
             appliance.Area = dbA.GetById(appliance.Area.Id);
             ViewBag.AreaId = new SelectList(dbA.GetAll(), "Id", "Name", appliance.Area.Id);
             ViewData["ValidationErrorMessage"] = String.Empty;
-            
+
             return View(appliance);
         }
 
@@ -135,17 +149,39 @@ namespace SMCL.Controllers
             List<Object> logList = new List<Object>();
             ViewData["ValidationErrorMessage"] = String.Empty;
 
+            Appliance appliance = db.GetById(id);
+
             try
             {
-                db.Delete(id);
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ControllerContext.RouteData.Values["controller"] + "(Id=" + id + ")", (int)EventTypes.Delete, (int)Session["UserId"]));
-                log.Write(logList);
-            }
-            catch (GenericADOException ex)
-            {
-                ViewData["ValidationErrorMessage"] = "Imposible eliminar, registros dependientes asociados.";
+                IRepository<Area> dbA = new AreaRepository();
 
-                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + ex.InnerException.Message, (int)EventTypes.Delete, (int)Session["UserId"]));
+                if (appliance != null)
+                {
+                    db.Delete(id);
+                    logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                              ControllerContext.RouteData.Values["controller"] + 
+                                              "(Id=" + appliance.Id.ToString().Replace("-", "").ToUpper() + 
+                                              " - Description=" + appliance.Description + 
+                                              " - ApplianceName=" + appliance.NameAppliance + 
+                                              " - AreaName=" + dbA.GetById(appliance.Area.Id).Name + ")", 
+                                              (int)EventTypes.Delete, 
+                                              (int)Session["UserId"]));
+                    log.Write(logList);
+                }
+            }
+            catch (GenericADOException)
+            {
+                ViewData["ValidationErrorMessage"] = ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"];
+
+                logList.Add(log.GetNewLog(ConfigurationManager.AppSettings["DeleteText"] + 
+                                          ConfigurationManager.AppSettings["CannotDeleteHasAssociatedRecords"] + " " + 
+                                          ControllerContext.RouteData.Values["controller"] + 
+                                          "(Id=" + appliance.Id.ToString().Replace("-", "").ToUpper() + 
+                                          " - Description=" + appliance.Description + 
+                                          " - ApplianceName=" + appliance.NameAppliance +
+                                          " - AreaName=" + dbA.GetById(appliance.Area.Id).Name + ")", 
+                                          (int)EventTypes.Delete, 
+                                          (int)Session["UserId"]));
                 log.Write(logList);
 
                 Appliance entity = db.GetById(id);

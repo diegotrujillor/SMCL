@@ -96,7 +96,7 @@
 
         <div id="alarms" align="center" style="float:left; margin-left: 115px; margin-top: 70px;">
             <fieldset>
-                <legend>Alarmas</legend>
+                <legend>L&iacute;mites</legend>
 
                 <table>
                     <colgroup>
@@ -156,6 +156,12 @@
         });
 
         $(".positive").numeric({ negative: true }, function () { alert("N/A"); this.value = ""; this.focus(); });
+
+        var setPoint = strToFloat($("#SetPoint").val(), 2);
+        var tolerance = strToFloat($("#Tolerance").val(), 2);
+
+        $("input[name=highAlarm]").val(floatSum(setPoint, tolerance, 2));
+        $("input[name=lowAlarm]").val(floatSub(setPoint, tolerance, 2));
 
     });
 

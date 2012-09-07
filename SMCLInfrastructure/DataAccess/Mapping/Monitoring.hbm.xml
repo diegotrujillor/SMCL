@@ -8,6 +8,7 @@
     <property name="Value" column="MON_VALUE" precision="10" scale="5" not-null="true"/>
     <property name="DateTime" column="MON_DATETIME" type="DateTime" not-null="true"/>
     <property name="CommentsOnAlarm" column="MON_COMMENTS_ON_ALARM" length="10000"/>
+    <property name="CommentsOnAlarmDate" column="MON_COMMENTS_ON_ALARM_DATE" type="DateTime"/>
 
     <many-to-one name="MappingTag" class="MappingTag" fetch="select">
       <column name="MAP_ID" not-null="true"/>

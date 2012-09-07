@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\DTO\MapMonitoringRecordDTO.cs" />
     <Compile Include="Domain\Model\SignalApplianceValue.cs" />
     <Compile Include="Domain\Model\SignalAppliance.cs" />
     <Compile Include="Domain\Model\UserRole.cs" />

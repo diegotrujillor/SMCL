@@ -151,6 +151,10 @@ table#alarmbox td {
 }
 
 #overlay {
+<<<<<<< HEAD
+=======
+	/*display: none;*/
+>>>>>>> SMCL last changes
 	visibility: hidden;
 	position: fixed;
 	left: 0px;
@@ -165,9 +169,80 @@ table#alarmbox td {
 
 #overlay div {
 	top: 15%;
+<<<<<<< HEAD
 	margin: 0 auto;
 	position: relative;
 	width:50%;
+=======
+	width:50%;
+	margin: 0 auto;
+	position: relative;
+	background-color: #fff;
+	border:1px solid #000;
+	padding:15px;
+	text-align:center;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	-pie-background: rgba(255,255,255,0.85);
+	behavior: url('../Content/PIE.htc');
+	background: rgba(255,255,255,0.85);
+}
+
+#mapClock p {
+	margin: 0px;
+}
+
+#overlay_map {
+	display: none;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width:100%;
+	height:100%;
+	text-align:center;
+	z-index: 1000;
+	background: transparent url('../Content/Images/black50.png') top left repeat;
+	background: rgba(0,0,0,0.5) none;
+}
+
+#overlay_map_sub1 {
+	top: 15%;
+	margin: 0 auto;
+	position: relative;
+	background-color: #fff;
+	border:1px solid #000;
+	padding:15px;
+	text-align:center;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	-pie-background: rgba(255,255,255,0.85);
+	behavior: url('../Content/PIE.htc');
+	background: rgba(255,255,255,0.85);
+}
+
+.overlay_map_zoom {
+	display: none;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width:100%;
+	height:100%;
+	text-align:center;
+	z-index: 1000;
+	background: transparent url('../Content/Images/black50.png') top left repeat;
+	background: rgba(0,0,0,0.5) none;
+}
+
+.overlay_map_zoom div {
+	top: 5%;
+	margin: 0 auto;
+	position: relative;
+	width:30%;
+>>>>>>> SMCL last changes
 	background-color: #fff;
 	border:1px solid #000;
 	padding:15px;
@@ -423,6 +498,36 @@ div#title {
 #logindisplay a:hover {
 	color: white;
 	text-decoration: none;
+<<<<<<< HEAD
+=======
+}
+
+.mapRectangle1
+{
+	width: 30px; 
+	height: 15px; 
+	margin: 0 auto;
+	border: solid 1px #000;
+	background-color: #666;
+}
+
+.mapRectangle2
+{
+	width: 30px; 
+	height: 15px; 
+	margin: 0 auto;
+	border: solid 1px #000; 
+	background-color: #0000ff;
+}
+
+.mapRectangle3
+{
+	width: 30px; 
+	height: 15px; 
+	margin: 0 auto;
+	border: solid 1px #000; 
+	background-color: #edc97a;
+>>>>>>> SMCL last changes
 }
 
 /* Styles for validation helpers
@@ -546,4 +651,377 @@ div#title {
 #displayMessages {
 	clear: left;
 	margin: 15px 0px 0px;
+<<<<<<< HEAD
+=======
+}
+
+/****************************************Signal Appliances styles***********************************/
+
+.monitoringRecord {
+	font-size: 9px;
+	position: absolute;
+	width: 60px;
+}
+
+.mapRectangle1.monitoringRecord {
+	color: #FFF;
+}
+
+.mapRectangle3.monitoringRecord {
+	color: #000;
+}
+
+.mapRectangle2.monitoringRecord {
+	color: #FFF;
+}
+
+#A9S1 {
+	top: 20%;
+	left: 28%;
+}
+
+#A10S2 {
+	top: 270px;
+	left: 380px;
+}
+
+#A10S3 {
+	top: 286px;
+	left: 380px;
+}
+
+#A13S2 {
+	top: 353px;
+	left: 230px;
+}
+
+#A13S3 {
+	top: 368px;
+	left: 230px;
+}
+
+#A2S1 {
+	top: 347px;
+	left: 440px;	
+}
+
+#A4S1 {
+	top: 353px;
+	left: 340px;
+}
+
+#A3S1 {
+	top: 395px;
+	left: 440px;
+}
+
+#A17S2 {
+	top: 270px;
+	left: 60px;
+}
+
+#A18S2 {
+	top: 365px;
+	left: 60px;
+}
+
+#A19S2 {
+	top: 465px;
+	left: 275px;
+}
+
+#A20S2 {
+	top: 470px;
+	left: 150px;
+}
+
+#A5S1 {
+	top: 485px;
+	left: 290px;
+}
+
+#A1S1 {
+	top: 485px;
+	left: 210px;
+}
+
+#A11S2 {
+	top: 530px;
+	left: 230px;
+}
+
+#A11S3 {
+	top: 546px;
+	left: 230px;
+}
+
+#A15S2 {
+	top: 445px;
+	left: 430px;
+}
+
+#A15S3 {
+	top: 461px;
+	left: 430px;
+}
+
+#A7S1 {
+	top: 655px;
+	left: 340px;
+}
+
+#A6S1 {
+	top: 680px;
+	left: 505px;
+}
+
+#A38S1 {
+	top: 190px;
+	left: 800px;
+}
+
+#A8S2 {
+	top: 575px;
+	left: 650px;
+}
+
+#A8S3 {
+	top: 591px;
+	left: 650px;
+}
+
+#A14S3 {
+	top: 210px;
+	left: 965px;	
+}
+
+#A14S2 {
+	top: 225px;
+	left: 965px;
+}
+
+#A21S2 {
+	top: 100px;
+	left: 100px;
+}
+
+#A21S3 {
+	top: 116px;
+	left: 100px;    
+}
+
+#A30S2 {
+	top: 155px;
+	left: 100px;
+}
+
+#A30S3 {
+	top: 171px;
+	left: 100px;    
+}
+
+#A31S2 {
+	top: 205px;
+	left: 100px;
+}
+
+#A31S3 {
+	top: 221px;
+	left: 100px;    
+}
+
+#A32S2 {
+	top: 260px;
+	left: 100px;
+}
+
+#A32S3 {
+	top: 276px;
+	left: 100px;    
+}
+
+#A33S2 {
+	top: 315px;
+	left: 100px;
+}
+
+#A33S3 {
+	top: 331px;
+	left: 100px;    
+}
+
+#A34S2 {
+	top: 370px;
+	left: 100px;
+}
+
+#A34S3 {
+	top: 386px;
+	left: 100px;    
+}
+
+#A35S2 {
+	top: 435px;
+	left: 100px;
+}
+
+#A35S3 {
+	top: 451px;
+	left: 100px;    
+}
+
+#A36S2 {
+	top: 495px;
+	left: 100px;
+}
+
+#A36S3 {
+	top: 511px;
+	left: 100px;    
+}
+
+#A37S2 {
+	top: 555px;
+	left: 100px;
+}
+
+#A37S3 {
+	top: 571px;
+	left: 100px;    
+}
+
+#A22S2 {
+	top: 80px;
+	left: 210px;
+}
+
+#A22S3 {
+	top: 96px;
+	left: 210px;    
+}
+
+#A23S2 {
+	top: 135px;
+	left: 210px;
+}
+
+#A23S3 {
+	top: 151px;
+	left: 210px;    
+}
+
+#A24S2 {
+	top: 260px;
+	left: 210px;
+}
+
+#A24S3 {
+	top: 276px;
+	left: 210px;    
+}
+
+#A25S2 {
+	top: 320px;
+	left: 210px;
+}
+
+#A25S3 {
+	top: 336px;
+	left: 210px;    
+}
+
+#A26S2 {
+	top: 380px;
+	left: 210px;
+}
+
+#A26S3 {
+	top: 396px;
+	left: 210px;    
+}
+
+#A27S2 {
+	top: 435px;
+	left: 210px;
+}
+
+#A27S3 {
+	top: 451px;
+	left: 210px;    
+}
+
+#A28S2 {
+	top: 495px;
+	left: 210px;
+}
+
+#A28S3 {
+	top: 511px;
+	left: 210px;    
+}
+
+#A29S2 {
+	top: 550px;
+	left: 210px;
+}
+
+#A29S3 {
+	top: 566px;
+	left: 210px;    
+}
+
+#A12S3 {
+	top: 525px;
+	left: 1060px;
+}
+
+#A12S2 {
+	top: 540px;
+	left: 1060px;
+}
+
+.mapGlobalButton {
+	background-color: #e8eef4; 
+	border: solid 1px #777;
+	color: #034af3; 
+	padding: 12px; 
+	width: 120px; 
+	margin: 0 auto; 
+	margin-top: 10px;
+}
+
+.low_alarm_circle {
+   position: absolute;
+   left: 50px;
+   width: 10px;
+   height: 10px;
+   background: yellow; 
+   -moz-border-radius: 70px; 
+   -webkit-border-radius: 70px; 
+   -khtml-border-radius: 70px;
+   border-radius: 70px;
+   behavior: url('../Content/PIE.htc');
+}
+
+.high_alarm_circle { 
+   position: absolute;
+   left: 50px;
+   width: 10px;
+   height: 10px;
+   background: red; 
+   -moz-border-radius: 70px; 
+   -webkit-border-radius: 70px; 
+   -khtml-border-radius: 70px;
+   border-radius: 70px;
+   behavior: url('../Content/PIE.htc');
+}
+
+.conventions {
+   border: solid 1px #888;
+   -moz-border-radius: 10px; 
+   -webkit-border-radius: 10px; 
+   -khtml-border-radius: 10px;
+   border-radius: 10px;
+   behavior: url('../Content/PIE.htc');
+>>>>>>> SMCL last changes
 }
